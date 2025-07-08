@@ -3,9 +3,9 @@ import classes from './Footer.module.css';
 
 function Footer({ children, ...props }) {
     return ( 
-        <>
-            Footer
-        </>
+        <footer className={classes.footer}>
+            © КД Времена года 2025
+        </footer>
      );
 }
 

@@ -3,7 +3,26 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Gotham 400', sans-serif; */
     scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Gotham 400';
+  src: url('/Gotham/gotham_light.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gotham 500';
+  src: url('/Gotham/gotham_medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Gotham 600';
+  src: url('/Gotham/gotham_bold.otf') format('opentype');
+  font-weight: 600;
 }
 
 a {
@@ -15,12 +34,10 @@ a {
 }
 
 body {
-    background-color: #eef0f4;
+    background-color: #E9E9E9;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    gap: 80px;
-    padding-bottom: 80px;
 }

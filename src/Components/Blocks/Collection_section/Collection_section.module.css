@@ -1,0 +1,54 @@
+.collection {
+    width: 100%;
+    height: 100dvh;
+    background: url('/collection_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.collection::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0000008F;
+}
+
+.collection p {
+    z-index: 1;
+    color: #fff;
+}
+
+.top {
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-family: Cormorant;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 86.47px;
+    text-transform: uppercase;
+}
+
+.middle {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 86px;
+}
+
+.bottom {
+    margin-top: 57px;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
