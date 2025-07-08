@@ -1,0 +1,52 @@
+.elegantSlider {
+    width: 100%;
+    height: 100dvh;
+    background-color: #000;
+    padding-bottom: 145px;
+}
+
+.startBlock {
+    width: 100%;
+    height: 100dvh;
+    background: url('/elegantStartAnimation.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.startBlock_item {
+    color: #fff;
+    padding: 66px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 60%;
+}
+
+.startBlock_item img {
+    width: 103px;
+    height: 103px;
+    cursor: pointer;
+}
+
+.startBlock_item p:first-child {
+    font-family: Cormorant;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 96px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.startBlock_item p:nth-child(2) {
+    font-family: Gotham;
+    font-weight: 400;
+    font-style: Book;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0%;
+}

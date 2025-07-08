@@ -1,0 +1,92 @@
+.flats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 157px 93px 0;
+}
+
+.flats>img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    display: block;
+}
+
+.flatsText {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 56px;
+}
+
+.flatsSlider {
+    width: 100%;
+    margin-top: 120px;
+}
+
+.flatsHistory {
+    width: 100%;
+    background: url('/historyFlat.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 50px;
+    padding: 350px 0;
+    padding-right: 85px;
+}
+
+.flatsHistory_name {
+    font-family: Cormorant;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 112%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.flatsHistory_main{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 75px;
+    padding-right: 50px;
+}
+
+.flatsHistory_statistic {
+    display: flex;
+    gap: 120px;
+}
+
+.flatsHistory_statistic_block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flatsHistory_statistic_block p:first-child {
+    font-family: Cormorant;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 120px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.flatsHistory_statistic_block p:last-child {
+    font-family: Cormorant;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 112.00000000000001%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+
+}
