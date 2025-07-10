@@ -26,37 +26,41 @@ function Flats_section({ children, ...props }) {
                     <Slider images={images} />
                 </section>
             </section>
-            
-            <section className={classes.flatsHistory}>
-                <p className={classes.flatsHistory_name}>Квартиры, которые становятся <br /> частью  вашей истории</p>
 
-                <div className={classes.flatsHistory_main}>
-                    <div className={classes.flatsHistory_statistic}>
-                        <div className={classes.flatsHistory_statistic_block}>
-                            <p>12</p>
-                            <p>ЭТАЖЕЙ</p>
+            <div style={{backgroundColor: '#fff'}}>
+
+                <section className={classes.flatsHistory}>
+                    <p className={classes.flatsHistory_name}>Квартиры, которые становятся <br /> частью  вашей истории</p>
+
+                    <div className={classes.flatsHistory_main}>
+                        <div className={classes.flatsHistory_statistic}>
+                            <div className={classes.flatsHistory_statistic_block}>
+                                <p>12</p>
+                                <p>ЭТАЖЕЙ</p>
+                            </div>
+                            <div className={classes.flatsHistory_statistic_block}>
+                                <p>4</p>
+                                <p>ПОДЪЕЗДА</p>
+                            </div>
+                            <div className={classes.flatsHistory_statistic_block}>
+                                <p>190</p>
+                                <p>КВАРТИР</p>
+                            </div>
                         </div>
-                        <div className={classes.flatsHistory_statistic_block}>
-                            <p>4</p>
-                            <p>ПОДЪЕЗДА</p>
-                        </div>
-                        <div className={classes.flatsHistory_statistic_block}>
-                            <p>190</p>
-                            <p>КВАРТИР</p>
+                        <div className={classes.flatsHistory_statistic}>
+                            <div className={classes.flatsHistory_statistic_block}>
+                                <p>64</p>
+                                <p>подземный <br /> паркинг</p>
+                            </div>
+                            <div className={classes.flatsHistory_statistic_block}>
+                                <p>86</p>
+                                <p>НАземный <br /> паркинг</p>
+                            </div>
                         </div>
                     </div>
-                    <div className={classes.flatsHistory_statistic}>
-                        <div className={classes.flatsHistory_statistic_block}>
-                            <p>64</p>
-                            <p>подземный <br /> паркинг</p>
-                        </div>
-                        <div className={classes.flatsHistory_statistic_block}>
-                            <p>86</p>
-                            <p>НАземный <br /> паркинг</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+
+            </div>
         </>
     );
 }

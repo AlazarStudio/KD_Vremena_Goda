@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     padding: 157px 93px 0;
+    background-color: #fff;
 }
 
 .flats>img {

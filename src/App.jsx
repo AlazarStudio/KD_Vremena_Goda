@@ -5,6 +5,7 @@ import Main_Page from "./Components/Pages/Main_Page";
 import Non_Found_Page from "./Components/Pages/Non_Found_Page";
 import Layout from "./Components/Standart/Layout/Layout";
 import InstallButton from "./Components/Pages/InstallButton/InstallButton";
+import AnimatinTest from "./Components/Pages/AnimatinTest/AnimatinTest";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main_Page />} />
+          <Route path="animation" element={<AnimatinTest />} />
           <Route path="*" element={<Non_Found_Page />} />
         </Route>
       </Routes>
