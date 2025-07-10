@@ -10,6 +10,7 @@ function Empty({ children, ...props }) {
         <>
             <Header/>
             <Outlet />
+            {/* <Footer/> */}
         </>
     );
 }

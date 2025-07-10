@@ -7,9 +7,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.6s ease-out 0.3s forwards;
 }
 
-.header img{
+.header img {
     width: 57px;
     height: 57px;
     object-fit: cover;
@@ -19,4 +23,16 @@
     font-size: 20px;
     color: #fff;
     width: 200px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
