@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import classes from "./Collection_section.module.css";
 
 function Collection_section({ reveal }) {

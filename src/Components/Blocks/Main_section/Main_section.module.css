@@ -8,6 +8,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .main img {
