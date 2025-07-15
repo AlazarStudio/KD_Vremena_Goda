@@ -1,29 +1,35 @@
 .animWrapper {
-  position: relative;
-  height: 2500vh;
+    position: relative;
+    height: 2500vh;
 }
 
 .wrapper {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden;
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
 }
 
 .maskedBlock {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.maskedBlock {
+    /* contain: strict; */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
