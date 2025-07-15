@@ -154,13 +154,20 @@ function AnimatinTest() {
             {/* Контент */}
             <div className={classes.wrapper}>
                 <div className={classes.background}>
-                    {/* <Header /> */}
+
                     {/* 👇 Меняем фон в зависимости от этапа */}
-                    {useFirstMask ? <Main_section /> : <Collection_section />}
+                    {useFirstMask
+                        ?
+                        <>
+                            <Header />
+                            <Main_section />
+                        </>
+                        :
+                        <Collection_section />}
                 </div>
 
                 {/* Маска 1 — показывает Collection поверх Main */}
-                {useFirstMask && (
+                (
                     <div
                         className={classes.maskedBlock}
                         style={{
@@ -168,9 +175,9 @@ function AnimatinTest() {
                             WebkitMask: "url(#flowerMask1)",
                         }}
                     >
-                        <Collection_section reveal={scrollY >= 4000} />
+                        <Collection_section reveal={scrollY >= 4500} />
                     </div>
-                )}
+                )
 
                 {/* Маска 2 — показывает History поверх Collection */}
                 (
@@ -183,7 +190,7 @@ function AnimatinTest() {
                         transition: "opacity 0.5s ease",
                     }}
                 >
-                    <History_section shown={scrollY >= 9500} />
+                    <History_section shown={scrollY >= 11000} />
                 </div>
                 )
             </div>
