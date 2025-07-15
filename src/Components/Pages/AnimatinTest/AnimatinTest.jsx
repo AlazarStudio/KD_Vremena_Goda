@@ -91,6 +91,8 @@ function AnimatinTest() {
     const useFirstMask = scrollY < 9500;
     const useSecondMask = scrollY >= 9500;
 
+
+
     return (
         <div className={classes.animWrapper}>
             {/* SVG masks */}
@@ -112,20 +114,39 @@ function AnimatinTest() {
                         </g>
                     </mask>
 
-                    <mask id="flowerMask2" maskUnits="userSpaceOnUse" x="0" y="0" width={width} height={height * 2}>
+                    <mask
+                        id="flowerMask2"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width={width}
+                        height={height * 2}
+                    >
                         <rect width={width} height={height * 2} fill="black" />
-                        <g style={{
-                            transform: `translate(${cx}px, ${cy}px) scale(${smoothScale2}) translate(-110px, -110px)`,
-                            willChange: "transform"
-                        }}>
-                            <path d="
-                M130,110
-                A50,50 0 1 1 110,130
-                A50,50 0 1 1 90,110
-                A50,50 0 1 1 110,90
-                A50,50 0 1 1 130,110
-              " fill="white" />
-                        </g>
+                        {[...Array(6)].map((_, i) => {
+                            const stripCount = 6;
+                            const rectWidth = width / stripCount;
+                            const offsetX = i * rectWidth;
+
+                            // 💡 scale с задержкой — растёт от 0 до 1, но сдвинут на delay
+                            const baseDelay = (Math.sin(i * 1) + 1) / 2; // «хаотичный» порядок
+                            const speedFactor = 0.15 + (Math.cos(i * 0.9) + 1) / 10; // 0.15 — 0.35
+
+                            const localProgress = Math.max(0, Math.min(1, (smoothScale2 - baseDelay) * speedFactor));
+                            const translateY = (1 - localProgress) * height;
+
+                            return (
+                                <rect
+                                    key={i}
+                                    x={offsetX}
+                                    y={0}
+                                    width={rectWidth}
+                                    height={height}
+                                    fill="white"
+                                    transform={`translate(0, ${translateY})`}
+                                />
+                            );
+                        })}
                     </mask>
                 </defs>
             </svg>
@@ -147,23 +168,23 @@ function AnimatinTest() {
                             WebkitMask: "url(#flowerMask1)",
                         }}
                     >
-                        <Collection_section reveal={scrollY >= 4000}/>
+                        <Collection_section reveal={scrollY >= 4000} />
                     </div>
                 )}
 
                 {/* Маска 2 — показывает History поверх Collection */}
-                 (
-                    <div
-                        className={classes.maskedBlock}
-                        style={{
-                            mask: "url(#flowerMask2)",
-                            WebkitMask: "url(#flowerMask2)",
-                            // pointerEvents: scrollY >= 9500 ? "auto" : "none",
-                            transition: "opacity 0.5s ease",
-                        }}
-                    >
-                        <History_section shown={scrollY >= 9500} />
-                    </div>
+                (
+                <div
+                    className={classes.maskedBlock}
+                    style={{
+                        mask: "url(#flowerMask2)",
+                        WebkitMask: "url(#flowerMask2)",
+                        // pointerEvents: scrollY >= 9500 ? "auto" : "none",
+                        transition: "opacity 0.5s ease",
+                    }}
+                >
+                    <History_section shown={scrollY >= 9500} />
+                </div>
                 )
             </div>
         </div>
