@@ -24,7 +24,7 @@ function MyComponent({ enableCountScroll }) {
           transform: `translateY(-${historyOffset.current}px)`,
         }}
       >
-        <History_section />
+        <History_section shown={count === 1 && historyState !== "keep"}/>
       </div>
     </div>,
     <Flats_section key="flats" />,

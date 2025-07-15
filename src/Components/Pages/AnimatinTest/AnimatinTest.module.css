@@ -1,59 +1,51 @@
 .animWrapper {
     position: relative;
-    height: 350vh;
+    height: 1200vh;
 }
 
-.box {
+.wrapper {
     position: relative;
-    width: 100%;
     height: 100%;
-    /* длинная прокрутка */
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-.bg2 {
+.background {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 100vh;
+    background: red;
+    z-index: 0;
+}
+
+.title {
+    color: white;
+    font-size: 3rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
+    font-family: 'Georgia', serif;
 }
 
-.bg1 {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-}
-
-
-.masked {
+.maskedBlock {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* два экрана */
     z-index: 2;
-
-    -webkit-mask-image: url("data:image/svg+xml;utf8,\
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'>\
-        <path d='M130,110 A50,50 0 1 1 110,130 \
-        A50,50 0 1 1 90,110 A50,50 0 1 1 110,90 \
-        A50,50 0 1 1 130,110 Z' fill=\'white\'/>\
-        </svg>");
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url("data:image/svg+xml;utf8,\
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'>\
-        <path d='M130,110 A50,50 0 1 1 110,130 \
-        A50,50 0 1 1 90,110 A50,50 0 1 1 110,90 \
-        A50,50 0 1 1 130,110 Z' fill=\'white\'/>\
-        </svg>");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 0%;
+    pointer-events: none;
 }
-
 
 .contentBelow {
     position: relative;
     z-index: 3;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
 }
+
