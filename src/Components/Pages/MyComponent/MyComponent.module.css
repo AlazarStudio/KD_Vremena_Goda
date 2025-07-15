@@ -39,3 +39,8 @@
   transition: transform 0.2s linear;
   will-change: transform;
 }
+
+.noSlideUp {
+  transform: none !important;
+  transition: none !important;
+}

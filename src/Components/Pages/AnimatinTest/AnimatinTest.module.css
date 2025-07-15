@@ -1,51 +1,29 @@
 .animWrapper {
-    position: relative;
-    height: 1200vh;
+  position: relative;
+  height: 15000vh;
 }
 
 .wrapper {
-    position: relative;
-    height: 100%;
-    overflow-x: hidden;
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: red;
-    z-index: 0;
-}
-
-.title {
-    color: white;
-    font-size: 3rem;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    font-family: 'Georgia', serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
 }
 
 .maskedBlock {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    /* два экрана */
-    z-index: 2;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
 }
-
-.contentBelow {
-    position: relative;
-    z-index: 3;
-    background-color: #fff;
-    width: 100%;
-    height: 100vh;
-}
-

@@ -27,7 +27,7 @@ function Flats_section({ children, ...props }) {
                 </section>
             </section>
 
-            <div style={{backgroundColor: '#fff'}}>
+            {/* <div style={{backgroundColor: '#fff'}}>
 
                 <section className={classes.flatsHistory}>
                     <p className={classes.flatsHistory_name}>Квартиры, которые становятся <br /> частью  вашей истории</p>
@@ -60,7 +60,7 @@ function Flats_section({ children, ...props }) {
                     </div>
                 </section>
 
-            </div>
+            </div> */}
         </>
     );
 }

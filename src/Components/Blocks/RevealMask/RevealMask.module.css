@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.flats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.history {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.strip {
+  width: 20%;
+  height: 100%;
+  overflow: hidden;
+  clip-path: inset(100% 0 0 0);
+  animation: revealUp 1s ease-out forwards;
+}
+
+.strip > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: auto;
+}
+
+/* Задержки по очереди */
+.delay0 { animation-delay: 0s; }
+.delay1 { animation-delay: 0.3s; }
+.delay2 { animation-delay: 0.2s; }
+.delay3 { animation-delay: 0.1s; }
+.delay4 { animation-delay: 0.4s; }
+
+@keyframes revealUp {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
