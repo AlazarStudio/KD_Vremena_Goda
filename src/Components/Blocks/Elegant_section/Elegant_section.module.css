@@ -1,13 +1,17 @@
+/* .connect{
+    height: calc(300dvh + 112px);
+} */
+
 .elegantSlider {
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     background-color: #000;
     padding-bottom: 145px;
 }
 
 .startBlock {
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     background: url('/elegantStartAnimation.png');
     background-size: cover;
     background-repeat: no-repeat;

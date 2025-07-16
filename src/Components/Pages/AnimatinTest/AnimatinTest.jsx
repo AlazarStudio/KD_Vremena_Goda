@@ -5,6 +5,10 @@ import Collection_section from "../../Blocks/Collection_section/Collection_secti
 import Header from "../../Blocks/Header/Header";
 import History_section from "../../Blocks/History_section/History_section";
 import Flats_section from "../../Blocks/Flats_section/Flats_section";
+import Elegant_section from "../../Blocks/Elegant_section/Elegant_section";
+import Contacts from "../../Blocks/Contacts/Contacts";
+import Consultation from "../../Blocks/Consultation/Consultation";
+import Footer from "../../Blocks/Footer/Footer";
 
 function AnimatinTest() {
     const [scrollY, setScrollY] = useState(0);
@@ -187,6 +191,74 @@ function AnimatinTest() {
     }, []);
 
 
+
+
+
+
+    const [smoothScale4, setSmoothScale4] = useState(0);
+    const targetScaleRef4 = useRef(0);
+    const raf4 = useRef(null);
+
+    const [smoothOffset3, setSmoothOffset3] = useState(0);
+    const targetOffsetRef3 = useRef(0);
+    const rafOffset3 = useRef(null);
+
+    const elegantRef = useRef(null);
+    const [elegantHeight, setElegantHeight] = useState(0);
+
+
+    useEffect(() => {
+        const resizeObserver = new ResizeObserver(() => {
+            if (elegantRef.current) {
+                setElegantHeight(elegantRef.current.offsetHeight);
+            }
+        });
+        if (elegantRef.current) resizeObserver.observe(elegantRef.current);
+        return () => resizeObserver.disconnect();
+    }, []);
+
+    if (flatsRef.current) {
+        const scrollStart3 = 24000 + (flatsHeight - height) / 0.3; // точка старта после Flats
+        if (scrollY < scrollStart3) {
+            targetScaleRef4.current = 0;
+        } else {
+            targetScaleRef4.current = (scrollY - scrollStart3) / (viewport.height * 0.6);
+        }
+    }
+
+    useEffect(() => {
+        const animate4 = () => {
+            setSmoothScale4(prev => {
+                const diff = targetScaleRef4.current - prev;
+                return Math.abs(diff) < 0.001 ? prev : prev + diff * 0.03;
+            });
+            raf4.current = requestAnimationFrame(animate4);
+        };
+        raf4.current = requestAnimationFrame(animate4);
+        return () => cancelAnimationFrame(raf4.current);
+    }, []);
+
+    useEffect(() => {
+        const scrollStart3 = 28000 + (flatsHeight - height) / 0.3 + 2000;
+        const scrollSpeedFactor3 = 0.3;
+        const scrollOffset3 = Math.max(0, (scrollY - scrollStart3) * scrollSpeedFactor3);
+        const maxOffset3 = elegantHeight - height;
+        const limitedOffset3 = Math.min(scrollOffset3, maxOffset3);
+        targetOffsetRef3.current = limitedOffset3;
+    }, [scrollY, height, flatsHeight]);
+
+    useEffect(() => {
+        const animateOffset3 = () => {
+            setSmoothOffset3(prev => {
+                const diff = targetOffsetRef3.current - prev;
+                return Math.abs(diff) < 0.5 ? targetOffsetRef3.current : prev + diff * 0.04;
+            });
+            rafOffset3.current = requestAnimationFrame(animateOffset3);
+        };
+        rafOffset3.current = requestAnimationFrame(animateOffset3);
+        return () => cancelAnimationFrame(rafOffset3.current);
+    }, []);
+
     return (
         <div className={classes.animWrapper}>
             {/* SVG masks */}
@@ -278,6 +350,41 @@ function AnimatinTest() {
                         })}
                     </mask>
 
+                    <mask
+                        id="flowerMask4"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width={width}
+                        height={height * 4}
+                        maskType="alpha"
+                    >
+                        <rect width={width} height={height * 4} fill="black" />
+                        {[...Array(6)].map((_, i) => {
+                            const stripCount = 6;
+                            const rectWidth = width / stripCount;
+                            const offsetX = i * rectWidth;
+
+                            const baseDelay = (Math.sin(i * 1.2) + 1) / 2;
+                            const speedFactor = 0.15 + (Math.cos(i * 0.85) + 1) / 10;
+
+                            const localProgress = Math.max(0, Math.min(1, (smoothScale4 - baseDelay) * speedFactor));
+                            const translateY = (1 - localProgress) * height;
+
+                            return (
+                                <rect
+                                    key={i}
+                                    x={offsetX}
+                                    y={0}
+                                    width={rectWidth}
+                                    height={height * 3}
+                                    fill="white"
+                                    transform={`translate(0, ${translateY})`}
+                                />
+                            );
+                        })}
+                    </mask>
+
                 </defs>
             </svg>
 
@@ -296,8 +403,6 @@ function AnimatinTest() {
                         <Collection_section />}
                 </div>
 
-                {/* Маска 1 — показывает Collection поверх Main */}
-
                 <div
                     className={classes.maskedBlock}
                     style={{
@@ -308,9 +413,6 @@ function AnimatinTest() {
                 >
                     <Collection_section reveal={scrollY >= 4500} />
                 </div>
-
-
-                {/* Маска 2 — показывает History поверх Collection */}
 
                 <div
                     className={classes.maskedBlock}
@@ -324,7 +426,6 @@ function AnimatinTest() {
                 >
                     <History_section shown={scrollY >= 11000} />
                 </div>
-
 
                 <div
                     ref={flatsRef}
@@ -341,6 +442,24 @@ function AnimatinTest() {
                         shown={scrollY >= 19000}
                         scale={scrollY >= 23500 && scrollY <= 24600}
                         tower={scrollY >= 26500}
+                    />
+                </div>
+
+                <div
+                    ref={elegantRef}
+                    className={classes.maskedBlock}
+                    style={{
+                        transform: `translateY(${-smoothOffset3}px) translateZ(0)`,
+                        willChange: 'transform',
+                        mask: "url(#flowerMask4)",
+                        WebkitMask: "url(#flowerMask4)",
+                        zIndex: scrollY >= 30000 ? 8 : 0
+                    }}
+                >
+                    <Elegant_section
+                        shown={scrollY >= 32000}
+                        contactShow={scrollY >= 37000}
+                        consultation={scrollY >= 40000 }
                     />
                 </div>
 

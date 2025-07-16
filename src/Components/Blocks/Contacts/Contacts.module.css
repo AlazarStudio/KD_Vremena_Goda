@@ -30,7 +30,11 @@
     font-size: 20px;
     line-height: 150%;
     letter-spacing: 0%;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 
 .contactsLeftItem p:nth-child(2) {
     font-family: Cormorant;
@@ -40,12 +44,42 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.contactsLeft_img {
+.contactsLeft_img1 {
     position: absolute;
-    bottom: -102px;
-    height: 750px;
+    bottom: 0px;
+    height: 650px;
+    
+    opacity: 0;
+    transform: translateY(300px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contactsLeft_img2 {
+    position: absolute;
+    left: 430px;
+    bottom: -200px;
+    height: 650px;
+    
+    opacity: 0;
+    transform: translateY(-200px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contactsLeft_img3 {
+    position: absolute;
+    left: 480px;
+    top: 200px;
+    width: 250px;
+    height: 250px;
+    
+    opacity: 0;
+    transform: translateX(-500px) rotateZ(0deg);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .contactsRight_miniText {
@@ -56,6 +90,7 @@
 }
 
 .contactsRight_bigText {
+    display: flex;
     font-family: Cormorant;
     font-weight: 500;
     font-style: Medium;
@@ -64,17 +99,43 @@
     letter-spacing: 0%;
     text-transform: uppercase;
     color: #000;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.contactsRight img{
+.contactsRight img {
     margin-bottom: 100px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.contactsRight_miniText{
+.contactsRight_miniText {
     margin: 20px 0;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.contactsRight_miniTextItem{
+.contactsRight_miniTextItem {
     margin-top: 100px;
     margin-bottom: 20px;
+
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+}
+
+.showRotate {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) rotate(180deg) !important;
 }

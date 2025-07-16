@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import classes from './Elegant_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
+import Contacts from "../Contacts/Contacts";
+import Consultation from "../Consultation/Consultation";
 
-function Elegant_section({ children, ...props }) {
+function Elegant_section({ children, shown, contactShow, consultation, ...props }) {
     let [isStarted, setIsStarted] = useState(true);
 
     let images = [
@@ -16,21 +18,27 @@ function Elegant_section({ children, ...props }) {
         "Slider2 - img8.png",
     ];
 
+    // console.log(contactShow, consultation)
+
     return (
-        <section className={classes.elegantSlider}>
-            {isStarted
-                ?
-                <div className={classes.startBlock}>
-                    <div className={classes.startBlock_item}>
-                        <p>элегантные <br /> интерьеры</p>
-                        <p>ELEGANT INTERIORS</p>
-                        <img src="/ArrowRightBottom.png" alt=""  onClick={() => setIsStarted(!isStarted)}/>
+        <div className={classes.connect}>
+            <section className={classes.elegantSlider}>
+                {isStarted
+                    ?
+                    <div className={classes.startBlock}>
+                        <div className={classes.startBlock_item}>
+                            <p>элегантные <br /> интерьеры</p>
+                            <p>ELEGANT INTERIORS</p>
+                            <img src="/ArrowRightBottom.png" alt="" onClick={() => setIsStarted(!isStarted)} />
+                        </div>
                     </div>
-                </div>
-                :
-                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} />
-            }
-        </section>
+                    :
+                    <Slider images={images} itemsPerSlide={3} arrowsBottom={true} />
+                }
+            </section>
+            <Contacts contactShow={contactShow}/>
+            <Consultation consultation={consultation}/>
+        </div>
     );
 }
 
