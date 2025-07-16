@@ -16,9 +16,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Main_Page />} />
-          <Route path="animation" element={<AnimatinTest />} />
-          <Route path="animationTest" element={<AnimationTestNew />} />
+          <Route index element={<AnimatinTest />} />
+          {/* <Route path="animation" element={<AnimatinTest />} />
+          <Route path="animationTest" element={<AnimationTestNew />} /> */}
           <Route path="*" element={<Non_Found_Page />} />
         </Route>
       </Routes>
