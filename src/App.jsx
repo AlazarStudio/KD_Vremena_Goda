@@ -12,7 +12,7 @@ import Preloader from "./Components/Blocks/Preloader/Preloader";
 function App() {
   return (
     <>
-      {/* <Preloader /> */}
+      <Preloader />
 
       <Routes>
         <Route path="/" element={<Layout />}>

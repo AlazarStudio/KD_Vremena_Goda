@@ -102,7 +102,7 @@ function AnimatinTest() {
     const useSecondMask = scrollY >= 9500;
 
     const scrollStart = 14000;
-    const scrollSpeedFactor = 0.3; // чем меньше, тем медленнее движение
+    const scrollSpeedFactor = 0.3;
     const scrollOffset = Math.max(0, (scrollY - scrollStart) * scrollSpeedFactor);
     const maxOffset = 1700 - height;
     const limitedOffset = Math.min(scrollOffset, maxOffset);
@@ -145,11 +145,21 @@ function AnimatinTest() {
     const targetOffsetRef2 = useRef(0);
     const rafOffset2 = useRef(null);
 
+    const flatsRef = useRef(null);
+    const [flatsHeight, setFlatsHeight] = useState(0);
+
     useEffect(() => {
-        const scrollStart2 = 14000 + (1700 - height) / 0.3;
+        if (flatsRef.current) {
+            setFlatsHeight(flatsRef.current.offsetHeight);
+        }
+    }, [viewport.height, viewport.width]);
+
+
+    useEffect(() => {
+        const scrollStart2 = 20000 + (1700 - height) / 0.3;
         const scrollSpeedFactor2 = 0.3;
         const scrollOffset2 = Math.max(0, (scrollY - scrollStart2) * scrollSpeedFactor2);
-        const maxOffset2 = (1030) - height;
+        const maxOffset2 = flatsHeight - height;
         const limitedOffset2 = Math.min(scrollOffset2, maxOffset2);
         targetOffsetRef2.current = limitedOffset2;
     }, [scrollY, height]);
@@ -165,6 +175,17 @@ function AnimatinTest() {
         rafOffset2.current = requestAnimationFrame(animateOffset2);
         return () => cancelAnimationFrame(rafOffset2.current);
     }, []);
+
+    useEffect(() => {
+        const resizeObserver = new ResizeObserver(() => {
+            if (flatsRef.current) {
+                setFlatsHeight(flatsRef.current.offsetHeight);
+            }
+        });
+        if (flatsRef.current) resizeObserver.observe(flatsRef.current);
+        return () => resizeObserver.disconnect();
+    }, []);
+
 
     return (
         <div className={classes.animWrapper}>
@@ -202,9 +223,8 @@ function AnimatinTest() {
                             const rectWidth = width / stripCount;
                             const offsetX = i * rectWidth;
 
-                            // 💡 scale с задержкой — растёт от 0 до 1, но сдвинут на delay
-                            const baseDelay = (Math.sin(i * 1) + 1) / 2; // «хаотичный» порядок
-                            const speedFactor = 0.15 + (Math.cos(i * 0.9) + 1) / 10; // 0.15 — 0.35
+                            const baseDelay = (Math.sin(i * 1) + 1) / 2;
+                            const speedFactor = 0.15 + (Math.cos(i * 0.9) + 1) / 10;
 
                             const localProgress = Math.max(0, Math.min(1, (smoothScale2 - baseDelay) * speedFactor));
                             const translateY = (1 - localProgress) * height;
@@ -277,7 +297,7 @@ function AnimatinTest() {
                 </div>
 
                 {/* Маска 1 — показывает Collection поверх Main */}
-                (
+
                 <div
                     className={classes.maskedBlock}
                     style={{
@@ -288,10 +308,10 @@ function AnimatinTest() {
                 >
                     <Collection_section reveal={scrollY >= 4500} />
                 </div>
-                )
+
 
                 {/* Маска 2 — показывает History поверх Collection */}
-                (
+
                 <div
                     className={classes.maskedBlock}
                     style={{
@@ -300,28 +320,30 @@ function AnimatinTest() {
                         mask: "url(#flowerMask2)",
                         WebkitMask: "url(#flowerMask2)",
                         zIndex: 6
-                        // pointerEvents: scrollY >= 9500 ? "auto" : "none",
-                        // transition: "opacity 0.5s ease",
                     }}
                 >
                     <History_section shown={scrollY >= 11000} />
                 </div>
-                )
-                (
+
+
                 <div
+                    ref={flatsRef}
                     className={classes.maskedBlock}
                     style={{
                         transform: `translateY(${-smoothOffset2}px) translateZ(0)`,
+                        willChange: 'transform',
                         mask: "url(#flowerMask3)",
                         WebkitMask: "url(#flowerMask3)",
-                        // pointerEvents: scrollY >= 17800 ? "auto" : "none",
-                        // transition: "opacity 0.5s ease",
                         zIndex: 7
                     }}
                 >
-                    <Flats_section shown={scrollY >= 17400} />
+                    <Flats_section
+                        shown={scrollY >= 19000}
+                        scale={scrollY >= 23500 && scrollY <= 24600}
+                        tower={scrollY >= 26500}
+                    />
                 </div>
-                )
+
             </div>
         </div>
     );

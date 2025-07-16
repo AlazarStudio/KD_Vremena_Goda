@@ -1,6 +1,7 @@
-.sliderBlock{
+.sliderBlock {
   position: relative;
 }
+
 .sliderContainer {
   position: relative;
   overflow: hidden;
@@ -18,7 +19,7 @@
   display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease;
+  transition: transform 0.9s ease;
 }
 
 .slide {
@@ -54,19 +55,19 @@
   right: 120px;
 }
 
-.bottomArrowLeft{
+.bottomArrowLeft {
   left: 44%;
   bottom: -120px;
 }
 
-.bottomArrowRigth{
+.bottomArrowRigth {
   right: 44%;
   bottom: -120px;
 }
 
 .slideTrack {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 1.2s ease-in-out;
   width: 100%;
   height: 100%;
 }
@@ -89,4 +90,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.mouseArrow {
+  position: fixed;
+  z-index: 999;
+  /* pointer-events: none; */
+  transition: transform 0.05s linear;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+.leftMouseArrow {
+  left: 20px;
+}
+
+.rightMouseArrow {
+  right: 20px;
 }
