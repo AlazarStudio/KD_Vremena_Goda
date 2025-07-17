@@ -18,8 +18,6 @@ function Elegant_section({ children, shown, contactShow, consultation, ...props 
         "Slider2 - img8.png",
     ];
 
-    // console.log(contactShow, consultation)
-
     return (
         <div className={classes.connect}>
             <section className={classes.elegantSlider}>
@@ -27,7 +25,7 @@ function Elegant_section({ children, shown, contactShow, consultation, ...props 
                     ?
                     <div className={classes.startBlock}>
                         <div className={classes.startBlock_item}>
-                            <p>элегантные <br /> интерьеры</p>
+                            <p>элегантные <br />интерьеры</p>
                             <p>ELEGANT INTERIORS</p>
                             <img src="/ArrowRightBottom.png" alt="" onClick={() => setIsStarted(!isStarted)} />
                         </div>
@@ -36,9 +34,8 @@ function Elegant_section({ children, shown, contactShow, consultation, ...props 
                     <Slider images={images} itemsPerSlide={3} arrowsBottom={true} />
                 }
             </section>
-            <Contacts contactShow={contactShow}/>
-            <Consultation consultation={consultation}/>
-        </div>
+
+        </div>  
     );
 }
 

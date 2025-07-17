@@ -440,7 +440,7 @@ function AnimatinTest() {
                 >
                     <Flats_section
                         shown={scrollY >= 19000}
-                        scale={scrollY >= 23500 && scrollY <= 24600}
+                        scale={scrollY >= 24000 && scrollY <= 24600}
                         tower={scrollY >= 26500}
                     />
                 </div>
@@ -453,14 +453,16 @@ function AnimatinTest() {
                         willChange: 'transform',
                         mask: "url(#flowerMask4)",
                         WebkitMask: "url(#flowerMask4)",
-                        zIndex: scrollY >= 30000 ? 8 : 0
+                        zIndex: scrollY >= 28000 ? 8 : 0
                     }}
                 >
                     <Elegant_section
                         shown={scrollY >= 32000}
-                        contactShow={scrollY >= 37000}
-                        consultation={scrollY >= 40000 }
+                        // contactShow={scrollY >= 37000}
+                        // consultation={scrollY >= 40000}
                     />
+                    <Contacts contactShow={scrollY >= 37000} />
+                    <Consultation consultation={scrollY >= 40000} />
                 </div>
 
             </div>
