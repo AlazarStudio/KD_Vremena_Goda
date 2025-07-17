@@ -1,10 +1,14 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Gotham 400', sans-serif; */
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Gotham 400', sans-serif; */
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @font-face {
@@ -26,18 +30,18 @@
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 :root {
-    --blockWidth: 1300px;
+  --blockWidth: 1300px;
 }
 
 body {
-    background-color: #E9E9E9;
+  background-color: #E9E9E9;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
