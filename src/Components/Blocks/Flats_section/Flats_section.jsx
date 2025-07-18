@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Flats_section({ children, shown, scale, tower, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, ...props }) {
     let images = [
         "Slider1 - img1.png",
         "Slider1 - img2.png",
@@ -11,6 +11,12 @@ function Flats_section({ children, shown, scale, tower, ...props }) {
         "Slider1 - img5.png",
         "Slider1 - img6.png",
     ];
+
+    useEffect(() => {
+        if (scale) {
+            window.scrollTo({ top: 23930 });
+        }
+    }, [scale]);
 
     return (
         <>
@@ -23,8 +29,12 @@ function Flats_section({ children, shown, scale, tower, ...props }) {
                     Холл, где начинается вечер
                 </p>
 
-                <section className={`${classes.flatsSlider} ${scale ? classes.showScale : ""}`}>
-                    <Slider images={images} followMouse={true} shown={shown} scale={scale} />
+                <section className={`${classes.flatsSlider}`}>
+                    <div className={classes.forSlider} style={{
+                        transform: scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) '
+                    }} >
+                        <Slider images={images} followMouse={true} shown={shown} scale={scale} />
+                    </div>
                 </section>
             </section>
 

@@ -439,8 +439,9 @@ function AnimatinTest() {
                     }}
                 >
                     <Flats_section
+                        scrollPos={scrollY}
                         shown={scrollY >= 19000}
-                        scale={scrollY >= 24000 && scrollY <= 24600}
+                        scale={scrollY >= 22000 && scrollY <= 24600}
                         tower={scrollY >= 26500}
                     />
                 </div>

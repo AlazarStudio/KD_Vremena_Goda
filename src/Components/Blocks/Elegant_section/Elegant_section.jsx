@@ -125,6 +125,9 @@ function Elegant_section({ shown }) {
                 }}
                 // onClick={handleHide}
             >
+                <div className={classes.exitButon} onClick={handleHide}>
+                    <img src="/close.png" alt="" />
+                </div>
                 <Slider images={images} itemsPerSlide={3} arrowsBottom={true} shown={isOpened} handleHide={handleHide}/>
             </div>
 

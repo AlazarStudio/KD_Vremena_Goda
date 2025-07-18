@@ -6,10 +6,6 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
 
-    const isAtStart = currentIndex <= 0;
-    const isAtEnd = currentIndex >= images.length - itemsPerSlide;
-    
-
     const rafRef = useRef(null);
 
     const slideWidth = 100 / itemsPerSlide;
