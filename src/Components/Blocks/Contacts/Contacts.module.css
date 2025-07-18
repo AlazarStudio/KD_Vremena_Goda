@@ -62,24 +62,9 @@
 .contactsLeft_img2 {
     position: absolute;
     left: 430px;
-    bottom: -200px;
+    bottom: 0px;
     height: 650px;
-    
-    opacity: 0;
-    transform: translateY(-200px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.contactsLeft_img3 {
-    position: absolute;
-    left: 480px;
-    top: 200px;
-    width: 250px;
-    height: 250px;
-    
-    opacity: 0;
-    transform: translateX(-500px) rotateZ(0deg);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: transform 0.5s ease-out;
 }
 
 .contactsRight_miniText {

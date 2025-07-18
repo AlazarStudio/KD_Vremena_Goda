@@ -1,22 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Slider.module.css';
 
-function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale }) {
+function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale, handleHide }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
 
+    const isAtStart = currentIndex <= 0;
+    const isAtEnd = currentIndex >= images.length - itemsPerSlide;
+    
+
     const rafRef = useRef(null);
 
     const slideWidth = 100 / itemsPerSlide;
-    const totalSlides = Math.ceil(images.length / itemsPerSlide);
+    const totalSlides = images.length;
 
     const prevSlide = () => {
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
+        console.log(currentIndex)
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => Math.min(prev + 1, totalSlides - 1));
+        setCurrentIndex((prev) => Math.min(prev + 1, images.length - itemsPerSlide));
     };
 
 
@@ -55,7 +60,6 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
         return () => cancelAnimationFrame(rafRef.current);
     }, [mousePos, followMouse]);
 
-    // console.log(followMouse, arrowsBottom, scale)
 
     return (
         <div
@@ -67,14 +71,19 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)` }}
                     >
-                        {Array.from({ length: totalSlides }, (_, slideIndex) => (
+                        {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>
                                 {images
                                     .slice(slideIndex * itemsPerSlide, (slideIndex + 1) * itemsPerSlide)
                                     .map((img, index) => (
-                                        <div className={classes.slide} key={index} style={{ width: slideWidth }}>
+                                        <div className={classes.slide} key={index}
+                                            style={{
+                                                maxWidth: `${slideWidth}%`,
+                                                padding: itemsPerSlide > 1 ? '20px 10px 0 10px' : 0
+                                            }}
+                                        >
                                             <img src={`/${img}`} alt={`slide-${index}`} />
                                         </div>
                                     ))}
@@ -82,60 +91,76 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         ))}
                     </div>
                 </div>
-
-                {!followMouse && !arrowsBottom && (
-                    <>
-                        <div className={classes.prevButton} onClick={prevSlide}>
-                            <img src="/ArrowLeft.png" alt="" />
-                        </div>
-                        <div className={classes.nextButton} onClick={nextSlide}>
-                            <img src="/ArrowRight.png" alt="" />
-                        </div>
-                    </>
-                )}
-
-                {!followMouse && arrowsBottom && (
-                    <>
-                        <div className={`${classes.prevButton} ${classes.bottomArrowLeft}`} onClick={prevSlide}>
-                            <img src="/ArrowLeftBottom.png" alt="" />
-                        </div>
-                        <div className={`${classes.nextButton} ${classes.bottomArrowRigth}`} onClick={nextSlide}>
-                            <img src="/ArrowRightBottom.png" alt="" />
-                        </div>
-                    </>
-                )}
-
-                {followMouse && scale && (
-                    <>
-                        {showLeft && (
-                            <div
-                                className={`${classes.mouseArrow}`}
-                                style={{
-                                    left: `${hoverPos.x}px`,
-                                    top: `${hoverPos.y}px`,
-                                    transform: `translate(-90%, -120%)`,
-                                    opacity: `${currentIndex <= 0 ? 0.2 : 1}`
-                                }}
-                            >
-                                <img src="/ArrowLeft.png" alt="left" />
-                            </div>
-                        )}
-                        {showRight && (
-                            <div
-                                className={`${classes.mouseArrow}`}
-                                style={{
-                                    left: `${hoverPos.x}px`,
-                                    top: `${hoverPos.y}px`,
-                                    transform: `translate(-90%, -120%)`,
-                                    opacity: `${currentIndex == totalSlides - 1 ? 0.2 : 1}`
-                                }}
-                            >
-                                <img src="/ArrowRight.png" alt="right" />
-                            </div>
-                        )}
-                    </>
-                )}
             </div>
+
+            {arrowsBottom && <div className={classes.bottomCloseBar} onClick={handleHide}></div>}
+
+            {!followMouse && !arrowsBottom && (
+                <>
+                    <div className={classes.prevButton} onClick={prevSlide}>
+                        <img src="/ArrowLeft.png" alt="" />
+                    </div>
+                    <div className={classes.nextButton} onClick={nextSlide}>
+                        <img src="/ArrowRight.png" alt="" />
+                    </div>
+                </>
+            )}
+
+            {followMouse && scale && (
+                <>
+                    {showLeft && (
+                        <div
+                            className={`${classes.mouseArrow}`}
+                            style={{
+                                left: `${hoverPos.x}px`,
+                                top: `${hoverPos.y}px`,
+                                transform: `translate(-90%, -120%)`,
+                                opacity: `${currentIndex <= 0 ? 0.2 : 1}`
+                            }}
+                        >
+                            <img src="/ArrowLeft.png" alt="left" />
+                        </div>
+                    )}
+                    {showRight && (
+                        <div
+                            className={`${classes.mouseArrow}`}
+                            style={{
+                                left: `${hoverPos.x}px`,
+                                top: `${hoverPos.y}px`,
+                                transform: `translate(-90%, -120%)`,
+                                opacity: `${currentIndex == totalSlides - 1 ? 0.2 : 1}`
+                            }}
+                        >
+                            <img src="/ArrowRight.png" alt="right" />
+                        </div>
+                    )}
+                </>
+            )}
+
+            {!followMouse && arrowsBottom && (
+                <>
+                    <div
+                        className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
+                        onClick={prevSlide}
+                        style={{
+                            opacity: currentIndex <= 0 ? 0.4 : 1,
+                            cursor:  currentIndex <= 0 ?'auto': 'pointer'
+                        }}
+                    >
+                        <img src="/ArrowLeftBottom.png" alt="" />
+                    </div>
+                    <div
+                        className={`${classes.nextButton} ${classes.bottomArrowRigth} ${shown ? classes.show : ""}`}
+                        onClick={nextSlide}
+                        style={{
+                            opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
+                            cursor:  currentIndex >= images.length - itemsPerSlide  ?'auto': 'pointer'
+                        }}
+                    >
+                        <img src="/ArrowRightBottom.png" alt="" />
+                    </div>
+                </>
+            )}
         </div >
     );
 }

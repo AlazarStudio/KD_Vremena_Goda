@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from './Contacts.module.css';
 
 function Contacts({ children, contactShow, ...props }) {
+    const imgRef = useRef(null);
+    const sectionRef = useRef(null);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        if (!imgRef.current || !sectionRef.current) return;
+
+        const sectionRect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const sectionTop = sectionRect.top;
+        const sectionHeight = sectionRect.height;
+
+        // если блок не в зоне видимости — сбрасываем transform
+        if (sectionTop >= windowHeight || sectionTop + sectionHeight <= 0) {
+            imgRef.current.style.transform = `translateY(0px)`;
+            return;
+        }
+
+        // от начала появления до полного входа — нормализуем в диапазон 0..1
+        const progress = Math.min(1, Math.max(0, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
+
+        const scrollSpeed = 3; // чем больше — тем быстрее "выпрыгивает"
+        const offset = scrollSpeed * progress * 150;
+
+        imgRef.current.style.transform = `translateY(${offset-200}px)`;
+
+    }, [scrollY]);
+
+
     return (
-        <section className={classes.contacts}>
+        <section className={classes.contacts} ref={sectionRef}>
             <div className={classes.contactsLeft}>
                 <div className={classes.contactsLeftItem}
                 >
@@ -18,19 +57,15 @@ function Contacts({ children, contactShow, ...props }) {
                 </div>
 
                 <img
-                    className={`${classes.contactsLeft_img3} ${contactShow ? classes.showRotate : ""}`}
-                    src="/contacts_logo.png" alt=""
-                    style={{ transitionDelay: "0.6s" }}
-                />
-                <img
                     className={`${classes.contactsLeft_img1} ${contactShow ? classes.show : ""}`}
                     src="/contacts1.png" alt=""
                     style={{ transitionDelay: "0.4s" }}
                 />
+
                 <img
-                    className={`${classes.contactsLeft_img2} ${contactShow ? classes.show : ""}`}
+                    ref={imgRef}
+                    className={`${classes.contactsLeft_img2}`}
                     src="/contacts2.png" alt=""
-                    style={{ transitionDelay: "0.5s" }}
                 />
             </div>
             <div className={classes.contactsRight}>

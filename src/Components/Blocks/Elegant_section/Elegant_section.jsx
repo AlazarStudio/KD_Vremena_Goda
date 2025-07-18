@@ -18,6 +18,7 @@ function Elegant_section({ shown }) {
     const [circlePos, setCirclePos] = useState({ cx: "50%", cy: "100%" });
     const [isMasking, setIsMasking] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [isOpened, setIsOpened] = useState(false);
 
     const targetRef = useRef(0);
     const currentRef = useRef(0);
@@ -65,6 +66,7 @@ function Elegant_section({ shown }) {
                     startAnimationTo(1600);
                     setIsClosing(false);
                     setIsMasking(true);
+                    setIsOpened(true)
                 }, 500)
             } else {
                 requestAnimationFrame(checkScroll);
@@ -86,6 +88,7 @@ function Elegant_section({ shown }) {
         setIsClosing(true);
         setTimeout(() => setIsClosing(false), 1200)
         startAnimationTo(0);
+        setIsOpened(false)
     };
 
     return (
@@ -120,13 +123,13 @@ function Elegant_section({ shown }) {
                     WebkitMask: "url(#circleMask)",
                     pointerEvents: radius > 0 ? "all" : "none",
                 }}
-                onClick={handleHide}
+                // onClick={handleHide}
             >
-                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} />
+                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} shown={isOpened} handleHide={handleHide}/>
             </div>
 
             {/* КНОПКА, поверх всего */}
-            <div className={`${classes.floatingButton}  ${!isMasking && shown ? classes.showBTN : ""}`}>
+            <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
                 <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
                     <img
                         src="/ArrowRightBottom.png"
