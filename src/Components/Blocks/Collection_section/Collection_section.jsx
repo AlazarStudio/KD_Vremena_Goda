@@ -8,42 +8,42 @@ function Collection_section({ reveal }) {
                 className={`${classes.top} ${reveal ? classes.show : ""}`}
                 style={{ transitionDelay: "0.4s" }}
             >
-                A collection of spaces in a clubhouse in the city center
+                The historical part of the city
             </p>
             <p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
                 style={{ transitionDelay: "0.3s" }}
             >
-                Коллекция пространств
+                Историческая часть 
             </p>
-            <p
+             <p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
-                style={{ transitionDelay: "0.3s" }}
+                style={{ transitionDelay: "0.5s" }}
             >
-                в клубном доме
+                города
             </p>
-            <p
+            {/*<p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
                 style={{ transitionDelay: "0.3s" }}
             >
                 в центре города
-            </p>
+            </p> */}
             <p
                 className={`${classes.middle} ${reveal ? classes.showRevers : ""}`}
                 style={{ transitionDelay: "0.4s" }}
             >
-                Вдохновленный архитектурой Старого города, наш дом сочетает эстетику,
-                тишину и статус. <br />
-                Всего несколько квартир. Каждая — как самостоятельный объект
-                коллекции: <br />
-                LIGHT / CALM / FLOW / INNER.
+                Спокойная архитектура. <br />
+                Уверенные решения. <br />
+                Продуманное окружение. <br />
+                Этот дом построен для тех, кто ценит устойчивость. <br />
+                В деталях, в жизни, в себе.
             </p>
-            <p
+            {/* <p
                 className={`${classes.bottom} ${reveal ? classes.showRevers : ""}`}
                 style={{ transitionDelay: "0.5s" }}
             >
                 Это не просто жильё. Это адрес, который говорит за вас.
-            </p>
+            </p> */}
         </section>
     );
 }

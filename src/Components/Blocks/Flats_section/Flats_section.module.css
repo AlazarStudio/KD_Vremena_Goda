@@ -31,7 +31,7 @@
 
 .flatsSlider {
     width: 100%;
-    margin: 200px 0 200px;
+    margin: 172px 0 200px;
     opacity: 1;
     transform: translateY(-100px) scale(0.9);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;

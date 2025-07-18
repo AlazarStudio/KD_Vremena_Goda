@@ -20,9 +20,7 @@ function Flats_section({ children, shown, scale, tower, ...props }) {
 
                 <p className={`${classes.flatsText} ${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.6s" }}>
-                    В центре города, среди тихих улиц и архитектуры <br />
-                    с историей, — клубный дом “Времена года” <br />
-                    с концептом «Коллекция пространств».
+                    Холл, где начинается вечер
                 </p>
 
                 <section className={`${classes.flatsSlider} ${scale ? classes.showScale : ""}`}>
@@ -33,13 +31,13 @@ function Flats_section({ children, shown, scale, tower, ...props }) {
             <div style={{ backgroundColor: '#fff' }}>
                 <section className={classes.flatsHistory}>
                     <img src="/tower.png" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`}
-                         />
+                    />
                     <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}
-                         >
+                    >
                         Квартиры, которые становятся
                     </p>
                     <p className={`${classes.flatsHistory_name_second} ${tower ? classes.show : ""}`}
-                         >
+                    >
                         частью  вашей истории
                     </p>
 

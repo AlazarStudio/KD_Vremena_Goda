@@ -76,7 +76,7 @@ function Contacts({ children, contactShow, ...props }) {
                     Связаться с нами
                 </p>
                 <a className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
-                    href="tel:+70000000000" style={{ transitionDelay: "0.6s" }}>
+                    href="tel:+70000000000" style={{ transitionDelay: "0.5s" }}>
                     +7 (000) 000 00 00
                 </a>
                 <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
@@ -84,8 +84,12 @@ function Contacts({ children, contactShow, ...props }) {
                     Наш адрес
                 </p>
                 <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
+                    style={{ transitionDelay: "0.7s" }}>
+                    Москва, ул. Малая
+                </p>
+                <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.8s" }}>
-                    Москва, ул. Малая Никитская, 33
+                    Никитская, 33
                 </p>
                 <p className={`${classes.contactsRight_miniText} ${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.9s" }}>

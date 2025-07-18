@@ -43,7 +43,7 @@
     font-weight: 400;
     font-size: 20px;
     text-align: center;
-    margin-top: 86px;
+    margin-top: 60px;
 }
 
 .bottom {
@@ -53,10 +53,15 @@
     text-align: center;
 }
 
-.collection .top,
-.collection .name {
+.collection .top{
     opacity: 0;
     transform: translateY(-150px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.collection .name {
+    opacity: 0;
+    transform: translateX(-150px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
