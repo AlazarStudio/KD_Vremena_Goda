@@ -14,13 +14,13 @@ function Collection_section({ reveal }) {
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
                 style={{ transitionDelay: "0.3s" }}
             >
-                Историческая часть 
+                Историческая 
             </p>
              <p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
                 style={{ transitionDelay: "0.5s" }}
             >
-                города
+                часть города
             </p>
             {/*<p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}

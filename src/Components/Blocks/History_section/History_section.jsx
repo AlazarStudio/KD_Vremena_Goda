@@ -36,6 +36,7 @@ function History_section({ children, shown, ...props }) {
                 </div>
             </div>
             <img src="/history_background.png" alt="" className={classes.history_bottomImg} />
+            <img src="/history_background_mobile.png" alt="" className={classes.history_bottomImg1} />
         </section>
     );
 }

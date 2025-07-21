@@ -10,7 +10,22 @@ import Contacts from "../../Blocks/Contacts/Contacts";
 import Consultation from "../../Blocks/Consultation/Consultation";
 import Footer from "../../Blocks/Footer/Footer";
 
+function useMediaQuery(query) {
+    const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+
+    useEffect(() => {
+        const media = window.matchMedia(query);
+        const listener = () => setMatches(media.matches);
+
+        media.addEventListener('change', listener);
+        return () => media.removeEventListener('change', listener);
+    }, [query]);
+
+    return matches;
+}
+
 function AnimatinTest() {
+    const isMobile = useMediaQuery('(max-width: 768px)');
     const [scrollY, setScrollY] = useState(0);
     const [viewport, setViewport] = useState({
         width: window.innerWidth,
@@ -108,7 +123,7 @@ function AnimatinTest() {
     const scrollStart = 14000;
     const scrollSpeedFactor = 0.3;
     const scrollOffset = Math.max(0, (scrollY - scrollStart) * scrollSpeedFactor);
-    const maxOffset = 1700 - height;
+    const maxOffset = (isMobile ? 1200 : 1700) - height;
     const limitedOffset = Math.min(scrollOffset, maxOffset);
 
     // 👇 плавное значение, как у smoothScale
@@ -160,7 +175,7 @@ function AnimatinTest() {
 
 
     useEffect(() => {
-        const scrollStart2 = 20000 + (1700 - height) / 0.3;
+        const scrollStart2 = (isMobile ? 22000 : 20000) + ((isMobile ? 1200 : 1700) - height) / 0.3;
         const scrollSpeedFactor2 = 0.3;
         const scrollOffset2 = Math.max(0, (scrollY - scrollStart2) * scrollSpeedFactor2);
         const maxOffset2 = flatsHeight - height;
@@ -259,6 +274,8 @@ function AnimatinTest() {
         return () => cancelAnimationFrame(rafOffset3.current);
     }, []);
 
+    // console.log(scrollY)
+
     return (
         <div className={classes.animWrapper}>
             {/* SVG masks */}
@@ -292,7 +309,7 @@ function AnimatinTest() {
                         <rect width={width} height={height * 4} fill="black" />
                         {[...Array(6)].map((_, i) => {
                             const stripCount = 6;
-                            const rectWidth = width / stripCount;
+                            const rectWidth = Math.round(width / stripCount);
                             const offsetX = i * rectWidth;
 
                             const baseDelay = (Math.sin(i * 1) + 1) / 2;
@@ -327,7 +344,7 @@ function AnimatinTest() {
                         <rect width={width} height={height * 4} fill="black" />
                         {[...Array(6)].map((_, i) => {
                             const stripCount = 6;
-                            const rectWidth = width / stripCount;
+                            const rectWidth = Math.round(width / stripCount);
                             const offsetX = i * rectWidth;
 
                             const baseDelay = (Math.sin(i * 1.7) + 1) / 2;
@@ -362,7 +379,7 @@ function AnimatinTest() {
                         <rect width={width} height={height * 4} fill="black" />
                         {[...Array(6)].map((_, i) => {
                             const stripCount = 6;
-                            const rectWidth = width / stripCount;
+                            const rectWidth = Math.round(width / stripCount);
                             const offsetX = i * rectWidth;
 
                             const baseDelay = (Math.sin(i * 1.2) + 1) / 2;
@@ -411,7 +428,7 @@ function AnimatinTest() {
                         zIndex: 5
                     }}
                 >
-                    <Collection_section reveal={scrollY >= 4500} />
+                    <Collection_section reveal={isMobile ? scrollY >= 2500 : scrollY >= 4500} />
                 </div>
 
                 <div
@@ -442,7 +459,8 @@ function AnimatinTest() {
                         scrollPos={scrollY}
                         shown={scrollY >= 19000}
                         scale={scrollY >= 22000 && scrollY <= 24600}
-                        tower={scrollY >= 26500}
+                        tower={isMobile ? scrollY >= 24000 : scrollY >= 26500}
+                        isMobile={isMobile}
                     />
                 </div>
 
@@ -454,13 +472,14 @@ function AnimatinTest() {
                         willChange: 'transform',
                         mask: "url(#flowerMask4)",
                         WebkitMask: "url(#flowerMask4)",
-                        zIndex: scrollY >= 28000 ? 8 : 0
+                        zIndex: scrollY >= 25000 ? 8 : 0
                     }}
                 >
                     <Elegant_section
-                        shown={scrollY >= 32000}
-                        // contactShow={scrollY >= 37000}
-                        // consultation={scrollY >= 40000}
+                        shown={isMobile ? scrollY >= 28000 : scrollY >= 32000}
+                        isMobile={isMobile}
+                    // contactShow={scrollY >= 37000}
+                    // consultation={scrollY >= 40000}
                     />
                     <Contacts contactShow={scrollY >= 37000} />
                     <Consultation consultation={scrollY >= 40000} />

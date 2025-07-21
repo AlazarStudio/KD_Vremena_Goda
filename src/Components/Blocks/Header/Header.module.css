@@ -24,6 +24,7 @@
     font-size: 20px;
     color: #fff;
     width: 200px;
+    text-align: center;
 }
 
 @keyframes slideDown {
@@ -35,5 +36,11 @@
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        display: none;
     }
 }

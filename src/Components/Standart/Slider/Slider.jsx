@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Slider.module.css';
 
-function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale, handleHide }) {
+function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale, handleHide, isMobile }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
@@ -63,7 +63,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             onMouseMove={followMouse ? handleMouseMove : undefined}
             onClick={followMouse ? handleClick : undefined}
         >
-            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : '100dvh' }}>
+            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85vh' : isMobile ? "100%" : '100vh' }}>
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
@@ -102,7 +102,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 </>
             )}
 
-            {followMouse && scale && (
+            {followMouse && scale && !isMobile && (
                 <>
                     {showLeft && (
                         <div
@@ -140,7 +140,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         onClick={prevSlide}
                         style={{
                             opacity: currentIndex <= 0 ? 0.4 : 1,
-                            cursor:  currentIndex <= 0 ?'auto': 'pointer'
+                            cursor: currentIndex <= 0 ? 'auto' : 'pointer'
                         }}
                     >
                         <img src="/ArrowLeftBottom.png" alt="" />
@@ -150,7 +150,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         onClick={nextSlide}
                         style={{
                             opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
-                            cursor:  currentIndex >= images.length - itemsPerSlide  ?'auto': 'pointer'
+                            cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer'
                         }}
                     >
                         <img src="/ArrowRightBottom.png" alt="" />

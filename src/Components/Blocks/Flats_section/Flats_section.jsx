@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, ...props }) {
     let images = [
         "Slider1 - img1.png",
         "Slider1 - img2.png",
@@ -13,10 +13,12 @@ function Flats_section({ children, shown, scale, tower, scrollPos, ...props }) {
     ];
 
     useEffect(() => {
-        if (scale) {
-            window.scrollTo({ top: 23930 });
+        if (!isMobile && scale) {
+            window.scrollTo({ top: 24220 });
         }
     }, [scale]);
+
+    // console.log(shown)
 
     return (
         <>
@@ -31,24 +33,26 @@ function Flats_section({ children, shown, scale, tower, scrollPos, ...props }) {
 
                 <section className={`${classes.flatsSlider}`}>
                     <div className={classes.forSlider} style={{
-                        transform: scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) '
+                        transform: !isMobile && (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ')
                     }} >
-                        <Slider images={images} followMouse={true} shown={shown} scale={scale} />
+                        <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} />
                     </div>
                 </section>
             </section>
 
             <div style={{ backgroundColor: '#fff' }}>
                 <section className={classes.flatsHistory}>
-                    <img src="/tower.png" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`}
-                    />
-                    <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}
-                    >
+                    <img src="/tower.png" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
+
+                    <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
                         Квартиры, которые становятся
                     </p>
-                    <p className={`${classes.flatsHistory_name_second} ${tower ? classes.show : ""}`}
-                    >
+                    <p className={`${classes.flatsHistory_name_second} ${tower ? classes.show : ""}`}>
                         частью  вашей истории
+                    </p>
+
+                    <p className={`${classes.flatsHistory_name_mobile} ${tower ? classes.show : ""}`}>
+                        Квартиры, которые становятся частью  вашей истории
                     </p>
 
                     <div className={classes.flatsHistory_main}>

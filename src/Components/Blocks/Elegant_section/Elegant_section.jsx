@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import classes from './Elegant_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Elegant_section({ shown }) {
+function Elegant_section({ shown, isMobile }) {
     let images = [
         "Slider2 - img1.png",
         "Slider2 - img2.png",
@@ -123,12 +123,12 @@ function Elegant_section({ shown }) {
                     WebkitMask: "url(#circleMask)",
                     pointerEvents: radius > 0 ? "all" : "none",
                 }}
-                // onClick={handleHide}
+            // onClick={handleHide}
             >
                 <div className={classes.exitButon} onClick={handleHide}>
                     <img src="/close.png" alt="" />
                 </div>
-                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} shown={isOpened} handleHide={handleHide}/>
+                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
             </div>
 
             {/* КНОПКА, поверх всего */}
