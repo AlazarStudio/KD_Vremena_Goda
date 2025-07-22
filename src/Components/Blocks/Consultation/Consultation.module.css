@@ -85,8 +85,46 @@
 
 }
 
-
 .show {
     opacity: 1 !important;
     transform: translateX(0) translateY(0) !important;
+}
+
+@media (max-width: 768px) {
+    .consultation_item{
+        flex-direction: column;
+        gap: 20px;
+        justify-self: center;
+    }
+
+    .consultation{
+        padding: 80px 30px;
+    }
+
+    .consultation_item_left{
+        width: 100%;
+        font-size: 32px;
+    }
+
+    .consultation_item_right{
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .consultation_item_right form{
+        padding: 0;
+    }
+
+    .consultation_item_right form label p {
+        font-size: 12px;
+    }
+
+    .consultation_item_right form label input {
+        width: 17px;
+    }
+
+    .consultation_item_right form button {
+        height: 54px;
+        font-size: 14px;
+    }
 }

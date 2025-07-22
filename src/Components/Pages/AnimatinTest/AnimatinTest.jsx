@@ -481,8 +481,8 @@ function AnimatinTest() {
                     // contactShow={scrollY >= 37000}
                     // consultation={scrollY >= 40000}
                     />
-                    <Contacts contactShow={scrollY >= 37000} />
-                    <Consultation consultation={scrollY >= 40000} />
+                    <Contacts isMobile={isMobile} contactShow={isMobile ? scrollY >= 33000 : scrollY >= 37000} />
+                    <Consultation consultation={isMobile ? scrollY >= 36000 : scrollY >= 40000} />
                 </div>
 
             </div>

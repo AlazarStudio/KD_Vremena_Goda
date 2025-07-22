@@ -13,7 +13,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
 
     const prevSlide = () => {
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
-        console.log(currentIndex)
+        // console.log(currentIndex)
     };
 
     const nextSlide = () => {
@@ -67,7 +67,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
-                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)` }}
+                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: isMobile ? 0 : '80px' }}
                     >
                         {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>
@@ -77,7 +77,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                                         <div className={classes.slide} key={index}
                                             style={{
                                                 maxWidth: `${slideWidth}%`,
-                                                padding: itemsPerSlide > 1 ? '20px 10px 0 10px' : 0
+                                                padding: itemsPerSlide > 1 ? '0px 10px 0 10px' : 0
                                             }}
                                         >
                                             <img src={`/${img}`} alt={`slide-${index}`} />
@@ -139,6 +139,8 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
                         onClick={prevSlide}
                         style={{
+                            bottom: isMobile ? '-115px' : '-120px',
+                            left: isMobile ? '15%' : '42%',
                             opacity: currentIndex <= 0 ? 0.4 : 1,
                             cursor: currentIndex <= 0 ? 'auto' : 'pointer'
                         }}
@@ -149,6 +151,8 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         className={`${classes.nextButton} ${classes.bottomArrowRigth} ${shown ? classes.show : ""}`}
                         onClick={nextSlide}
                         style={{
+                            bottom: isMobile ? '-115px' : '-120px',
+                            right: isMobile ? '15%' : '42%',
                             opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
                             cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer'
                         }}

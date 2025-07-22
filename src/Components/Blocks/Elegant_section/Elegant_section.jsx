@@ -49,8 +49,9 @@ function Elegant_section({ shown, isMobile }) {
     };
 
     const waitForScrollAndReveal = () => {
+        let scrollPosition = isMobile ? 30000 : 34000
         const checkScroll = () => {
-            if (Math.round(window.scrollY) == 34000) {
+            if (Math.round(window.scrollY) == scrollPosition) {
                 setTimeout(() => {
                     let cx = 0;
                     let cy = 0;
@@ -73,7 +74,7 @@ function Elegant_section({ shown, isMobile }) {
             }
         };
 
-        window.scrollTo({ top: 34000 });
+        window.scrollTo({ top: scrollPosition });
         requestAnimationFrame(checkScroll);
     };
 
@@ -128,7 +129,7 @@ function Elegant_section({ shown, isMobile }) {
                 <div className={classes.exitButon} onClick={handleHide}>
                     <img src="/close.png" alt="" />
                 </div>
-                <Slider images={images} itemsPerSlide={3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
+                <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
             </div>
 
             {/* КНОПКА, поверх всего */}

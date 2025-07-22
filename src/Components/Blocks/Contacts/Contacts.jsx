@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Contacts.module.css';
 
-function Contacts({ children, contactShow, ...props }) {
+function Contacts({ children, contactShow, isMobile, ...props }) {
     const imgRef = useRef(null);
     const sectionRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
@@ -34,9 +34,9 @@ function Contacts({ children, contactShow, ...props }) {
         const progress = Math.min(1, Math.max(0, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
 
         const scrollSpeed = 3; // чем больше — тем быстрее "выпрыгивает"
-        const offset = scrollSpeed * progress * 150;
+        const offset = scrollSpeed * progress * (isMobile ? 60 : 150);
 
-        imgRef.current.style.transform = `translateY(${offset-200}px)`;
+        imgRef.current.style.transform = `translateY(${offset - 100}px)`;
 
     }, [scrollY]);
 
@@ -56,18 +56,19 @@ function Contacts({ children, contactShow, ...props }) {
                     </p>
                 </div>
 
-                <img
-                    className={`${classes.contactsLeft_img1} ${contactShow ? classes.show : ""}`}
-                    src="/contacts1.png" alt=""
-                    style={{ transitionDelay: "0.4s" }}
-                />
-
-                <img
-                    ref={imgRef}
-                    className={`${classes.contactsLeft_img2}`}
-                    src="/contacts2.png" alt=""
-                />
             </div>
+
+            <img
+                className={`${classes.contactsLeft_img1} ${contactShow ? classes.show : ""}`}
+                src="/contacts1.png" alt=""
+                style={{ transitionDelay: "0.4s" }}
+            />
+
+            <img
+                ref={imgRef}
+                className={`${classes.contactsLeft_img2}`}
+                src="/contacts2.png" alt=""
+            />
             <div className={classes.contactsRight}>
                 <img src="/contacts_logo_text.png" alt="" className={`${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.4s" }} />
@@ -85,11 +86,11 @@ function Contacts({ children, contactShow, ...props }) {
                 </p>
                 <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.7s" }}>
-                    Москва, ул. Малая
+                    Фабричная, 7 Правительственный
                 </p>
                 <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.8s" }}>
-                    Никитская, 33
+                    квартал / Золотой квартал
                 </p>
                 <p className={`${classes.contactsRight_miniText} ${contactShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.9s" }}>
