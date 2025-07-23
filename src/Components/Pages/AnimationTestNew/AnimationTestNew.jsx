@@ -20,7 +20,7 @@ function AnimationTestNew({ isMobile }) {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, [viewport.height,]);
+  }, []);
 
   const mainSectionRef = useRef(null);
   const collectionSectionRef = useRef(null);
@@ -76,6 +76,7 @@ function AnimationTestNew({ isMobile }) {
   // console.log(scrollY)
 
   return (
+    // <>123</>
     <div style={{ overflow: 'hidden' }}>
 
       <div ref={mainSectionRef}>

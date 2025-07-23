@@ -68,7 +68,7 @@
 .topBlock {
     position: relative;
     z-index: 1;
-    background: url("/public/history_background.png");
+    background: url("/history_background.png");
     height: 100dvh;
     color: white;
     display: flex;
