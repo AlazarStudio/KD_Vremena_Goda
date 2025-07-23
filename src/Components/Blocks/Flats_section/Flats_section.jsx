@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, ...props }) {
     let images = [
         "Slider1 - img1.png",
         "Slider1 - img2.png",
@@ -18,11 +18,11 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, ...
         }
     }, [scale]);
 
-    // console.log(shown)
+    // console.log(scale)
 
     return (
         <>
-            <section className={`${classes.flats} `}>
+            <section className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
                 <img src="/flats_logo.png" alt="" className={`${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.4s" }} />
 
@@ -31,9 +31,12 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, ...
                     Холл, где начинается вечер
                 </p>
 
-                <section className={`${classes.flatsSlider}`}>
+                <section className={`${classes.flatsSlider}`} style={{
+                    height: mobileChange && '100%'
+                }}>
                     <div className={classes.forSlider} style={{
-                        transform: !isMobile && (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ')
+                        transform: !isMobile ? (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(0px) '),
+                        height: mobileChange && '100%'
                     }} >
                         <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} />
                     </div>

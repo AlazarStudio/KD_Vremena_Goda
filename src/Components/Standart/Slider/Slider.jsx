@@ -62,12 +62,15 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             className={classes.sliderBlock}
             onMouseMove={followMouse ? handleMouseMove : undefined}
             onClick={followMouse ? handleClick : undefined}
+            style={{
+                height: isMobile ? "100%" : 'auto'
+            }}
         >
             <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85vh' : isMobile ? "100%" : '100vh' }}>
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
-                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: isMobile ? 0 : '80px' }}
+                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)` }}
                     >
                         {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>
@@ -139,7 +142,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
                         onClick={prevSlide}
                         style={{
-                            bottom: isMobile ? '-115px' : '-120px',
+                            bottom: isMobile ? '15px' : '-120px',
                             left: isMobile ? '15%' : '42%',
                             opacity: currentIndex <= 0 ? 0.4 : 1,
                             cursor: currentIndex <= 0 ? 'auto' : 'pointer'
@@ -151,7 +154,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         className={`${classes.nextButton} ${classes.bottomArrowRigth} ${shown ? classes.show : ""}`}
                         onClick={nextSlide}
                         style={{
-                            bottom: isMobile ? '-115px' : '-120px',
+                            bottom: isMobile ? '15px' : '-120px',
                             right: isMobile ? '15%' : '42%',
                             opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
                             cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer'

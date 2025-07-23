@@ -1,74 +1,61 @@
 import React, { useEffect, useState, useRef } from "react";
 import classes from "./AnimationTestNew.module.css";
+import Main_section from "../../Blocks/Main_section/Main_section";
+import Collection_section from "../../Blocks/Collection_section/Collection_section";
+import History_section from "../../Blocks/History_section/History_section";
+import Flats_section from "../../Blocks/Flats_section/Flats_section";
+import Elegant_section from "../../Blocks/Elegant_section/Elegant_section";
+import Contacts from "../../Blocks/Contacts/Contacts";
+import Consultation from "../../Blocks/Consultation/Consultation";
 
-function AnimationTestNew() {
-  const [radius, setRadius] = useState(0);
-  const [circlePos, setCirclePos] = useState({ cx: "50%", cy: "100%" }); // изначально снизу по центру
+function AnimationTestNew({ isMobile }) {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrollY(y);
+    };
 
-  const targetRef = useRef(0);
-  const currentRef = useRef(0);
-  const raf = useRef(null);
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [viewport.height,]);
 
-  const animate = () => {
-    const diff = targetRef.current - currentRef.current;
+  // console.log(scrollY)
 
-    if (Math.abs(diff) < 1) {
-      currentRef.current = targetRef.current;
-      setRadius(currentRef.current);
-      return;
+  const sectionRef = useRef(null);
+  const [targetScroll, setTargetScroll] = useState(0);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      const blockTop = sectionRef.current.offsetTop;
+      setTargetScroll(blockTop);
     }
-
-    const speed = diff > 0 ? 0.02 : 0.04; // раскрытие медленнее, схлопывание быстрее
-    currentRef.current += diff * speed;
-
-    setRadius(currentRef.current);
-    raf.current = requestAnimationFrame(animate);
-  };
-
-  const startAnimationTo = (target) => {
-    targetRef.current = target;
-    cancelAnimationFrame(raf.current);
-    raf.current = requestAnimationFrame(animate);
-  };
-
-  const handleReveal = (e) => {
-    const { clientX, clientY } = e;
-    setCirclePos({ cx: clientX, cy: clientY }); // мышь как центр
-    startAnimationTo(1600);
-  };
-
-  const handleHide = () => startAnimationTo(0);
+  }, []);
 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.topBlock}>
-        <h1 onClick={handleReveal}>Top (нажми в любую точку)</h1>
+    <div style={{ overflow: 'hidden' }}>
+      <Main_section mobileChange={true} />
+      <Collection_section reveal={scrollY >= 500} />
+      <History_section shown={scrollY >= 1000} />
+      <Flats_section
+        scrollPos={scrollY}
+        shown={scrollY >= 2300}
+        scale={scrollY >= 2600 && scrollY <= 3500}
+        tower={scrollY >= 3500}
+        isMobile={isMobile}
+        mobileChange={true}
+      />
+      <div ref={sectionRef}>
+        <Elegant_section
+          shown={scrollY >= 4500}
+          isMobile={isMobile}
+          targetScroll={targetScroll}
+        />
       </div>
-
-      <svg width="0" height="0">
-        <defs>
-          <mask id="circleMask">
-            <rect width="100%" height="100%" fill="black" />
-            <circle
-              cx={circlePos.cx}
-              cy={circlePos.cy}
-              r={radius}
-              fill="white"
-            />
-          </mask>
-        </defs>
-      </svg>
-
-      <div
-        className={classes.maskedBlock}
-        style={{
-          mask: "url(#circleMask)",
-          WebkitMask: "url(#circleMask)",
-          pointerEvents: radius > 0 ? "all" : "none",
-        }}
-      >
-        <h2 onClick={handleHide}>Masked (нажми чтобы закрыть)</h2>
-      </div>
+      <Contacts isMobile={isMobile} contactShow={scrollY >= 500} />
+      <Consultation consultation={scrollY >= 5500} />
     </div>
   );
 }

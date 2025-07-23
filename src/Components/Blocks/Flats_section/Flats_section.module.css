@@ -161,8 +161,8 @@
 
     .flatsSlider {
         height: 220px;
-        margin: 50px 0;
-        transform: scale(0.9);
+        margin: 40px 0 80px;
+        /* transform: scale(0.9); */
     }
 
     .flatsHistory {

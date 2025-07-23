@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import classes from './Elegant_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Elegant_section({ shown, isMobile }) {
+function Elegant_section({ shown, isMobile, targetScroll }) {
     let images = [
         "Slider2 - img1.png",
         "Slider2 - img2.png",
@@ -49,7 +49,10 @@ function Elegant_section({ shown, isMobile }) {
     };
 
     const waitForScrollAndReveal = () => {
-        let scrollPosition = isMobile ? 30000 : 34000
+        let scrollPosition = isMobile ?
+            (targetScroll ? targetScroll : 0)
+            :
+            34000
         const checkScroll = () => {
             if (Math.round(window.scrollY) == scrollPosition) {
                 setTimeout(() => {

@@ -147,7 +147,6 @@ function AnimatinTest() {
         return () => cancelAnimationFrame(rafOffset.current);
     }, []);
 
-
     useEffect(() => {
         const animate3 = () => {
             setSmoothScale3(prev => {
@@ -204,10 +203,6 @@ function AnimatinTest() {
         if (flatsRef.current) resizeObserver.observe(flatsRef.current);
         return () => resizeObserver.disconnect();
     }, []);
-
-
-
-
 
 
     const [smoothScale4, setSmoothScale4] = useState(0);
@@ -273,8 +268,6 @@ function AnimatinTest() {
         rafOffset3.current = requestAnimationFrame(animateOffset3);
         return () => cancelAnimationFrame(rafOffset3.current);
     }, []);
-
-    // console.log(scrollY)
 
     return (
         <div className={classes.animWrapper}>
