@@ -132,6 +132,8 @@
         padding: 50px 40px;
         gap: 0;
         justify-content: start;
+        height: 130dvh;
+        max-height: 850px;
     }
 
     .contactsLeft_img1 {
@@ -143,7 +145,7 @@
     }
 
     .contactsLeft_img2 {
-        left: 135px;
+        left: 33%;
         height: 400px;
         /* display: none; */
     }

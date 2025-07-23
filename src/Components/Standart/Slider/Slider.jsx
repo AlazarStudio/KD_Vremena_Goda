@@ -66,7 +66,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 height: isMobile ? "100%" : 'auto'
             }}
         >
-            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85vh' : isMobile ? "100%" : '100dvh' }}>
+            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : isMobile ? "100%" : '100dvh' }}>
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}

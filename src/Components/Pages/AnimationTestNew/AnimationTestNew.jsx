@@ -22,8 +22,6 @@ function AnimationTestNew({ isMobile }) {
     };
   }, [viewport.height,]);
 
-  // console.log(scrollY)
-
   const mainSectionRef = useRef(null);
   const collectionSectionRef = useRef(null);
   const historySectionRef = useRef(null);
@@ -71,6 +69,12 @@ function AnimationTestNew({ isMobile }) {
     }
   }, []);
 
+  function getPercent(num, per = 40) {
+    return Math.round(num * per / 100)
+  }
+
+  // console.log(scrollY)
+
   return (
     <div style={{ overflow: 'hidden' }}>
 
@@ -79,19 +83,19 @@ function AnimationTestNew({ isMobile }) {
       </div>
 
       <div ref={collectionSectionRef}>
-        <Collection_section reveal={scrollY >= collectionSectionScroll - 500} />
+        <Collection_section reveal={scrollY >= collectionSectionScroll - getPercent(collectionSectionScroll)} />
       </div>
 
       <div ref={historySectionRef}>
-        <History_section shown={scrollY >= historySectionScroll - 500} />
+        <History_section shown={scrollY >= historySectionScroll - getPercent(historySectionScroll)} />
       </div>
 
       <div ref={flatsSectionRef}>
         <Flats_section
           scrollPos={scrollY}
-          shown={scrollY >= flatsSectionScroll - 500}
-          scale={scrollY >= flatsSectionScroll - 100 && scrollY <= flatsSectionScroll + 500}
-          tower={scrollY >= flatsSectionScroll + 700}
+          shown={scrollY >= flatsSectionScroll - getPercent(flatsSectionScroll)}
+          scale={scrollY >= flatsSectionScroll - getPercent(flatsSectionScroll, 10) && scrollY <= flatsSectionScroll + getPercent(flatsSectionScroll)}
+          tower={scrollY >= flatsSectionScroll + getPercent(flatsSectionScroll, 10)}
           isMobile={isMobile}
           mobileChange={true}
         />
@@ -99,18 +103,18 @@ function AnimationTestNew({ isMobile }) {
 
       <div ref={elegantSectionRef}>
         <Elegant_section
-          shown={scrollY >= elegantSectionScroll - 100}
+          shown={scrollY >= elegantSectionScroll}
           isMobile={isMobile}
           targetScroll={elegantSectionScroll}
         />
       </div>
 
       <div ref={contactsSectionRef}>
-        <Contacts isMobile={isMobile} contactShow={scrollY >= contactsSectionScroll - 500} />
+        <Contacts isMobile={isMobile} contactShow={scrollY >= contactsSectionScroll - getPercent(contactsSectionScroll, 10)} />
       </div>
 
       <div ref={consultationSectionRef}>
-        <Consultation consultation={scrollY >= consultationSectionScroll - 500} />
+        <Consultation consultation={scrollY >= consultationSectionScroll - getPercent(consultationSectionScroll, 10)} />
       </div>
     </div >
   );
