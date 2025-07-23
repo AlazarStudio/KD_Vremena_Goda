@@ -24,39 +24,95 @@ function AnimationTestNew({ isMobile }) {
 
   // console.log(scrollY)
 
-  const sectionRef = useRef(null);
-  const [targetScroll, setTargetScroll] = useState(0);
+  const mainSectionRef = useRef(null);
+  const collectionSectionRef = useRef(null);
+  const historySectionRef = useRef(null);
+  const flatsSectionRef = useRef(null);
+  const elegantSectionRef = useRef(null);
+  const contactsSectionRef = useRef(null);
+  const consultationSectionRef = useRef(null);
+
+  const [mainSectionScroll, setMainSectionScroll] = useState(0);
+  const [collectionSectionScroll, setCollectionSectionScroll] = useState(0);
+  const [historySectionScroll, setHistorySectionScroll] = useState(0);
+  const [flatsSectionScroll, setFlatsSectionScroll] = useState(0);
+  const [elegantSectionScroll, setElegantSectionScroll] = useState(0);
+  const [contactsSectionScroll, setContactsSectionScroll] = useState(0);
+  const [consultationSectionScroll, setConsultationSectionScroll] = useState(0);
 
   useEffect(() => {
-    if (sectionRef.current) {
-      const blockTop = sectionRef.current.offsetTop;
-      setTargetScroll(blockTop);
+    if (mainSectionRef.current) {
+      const blockTop = mainSectionRef.current.offsetTop;
+      setMainSectionScroll(blockTop);
+    }
+    if (collectionSectionRef.current) {
+      const blockTop = collectionSectionRef.current.offsetTop;
+      setCollectionSectionScroll(blockTop);
+    }
+    if (historySectionRef.current) {
+      const blockTop = historySectionRef.current.offsetTop;
+      setHistorySectionScroll(blockTop);
+    }
+    if (flatsSectionRef.current) {
+      const blockTop = flatsSectionRef.current.offsetTop;
+      setFlatsSectionScroll(blockTop);
+    }
+    if (elegantSectionRef.current) {
+      const blockTop = elegantSectionRef.current.offsetTop;
+      setElegantSectionScroll(blockTop);
+    }
+    if (contactsSectionRef.current) {
+      const blockTop = contactsSectionRef.current.offsetTop;
+      setContactsSectionScroll(blockTop);
+    }
+    if (consultationSectionRef.current) {
+      const blockTop = consultationSectionRef.current.offsetTop;
+      setConsultationSectionScroll(blockTop);
     }
   }, []);
 
   return (
     <div style={{ overflow: 'hidden' }}>
-      <Main_section mobileChange={true} />
-      <Collection_section reveal={scrollY >= 500} />
-      <History_section shown={scrollY >= 1000} />
-      <Flats_section
-        scrollPos={scrollY}
-        shown={scrollY >= 2300}
-        scale={scrollY >= 2600 && scrollY <= 3500}
-        tower={scrollY >= 3500}
-        isMobile={isMobile}
-        mobileChange={true}
-      />
-      <div ref={sectionRef}>
-        <Elegant_section
-          shown={scrollY >= 4500}
+
+      <div ref={mainSectionRef}>
+        <Main_section mobileChange={true} />
+      </div>
+
+      <div ref={collectionSectionRef}>
+        <Collection_section reveal={scrollY >= collectionSectionScroll - 500} />
+      </div>
+
+      <div ref={historySectionRef}>
+        <History_section shown={scrollY >= historySectionScroll - 500} />
+      </div>
+
+      <div ref={flatsSectionRef}>
+        <Flats_section
+          scrollPos={scrollY}
+          shown={scrollY >= flatsSectionScroll - 500}
+          scale={scrollY >= flatsSectionScroll - 100 && scrollY <= flatsSectionScroll + 500}
+          tower={scrollY >= flatsSectionScroll + 700}
           isMobile={isMobile}
-          targetScroll={targetScroll}
+          mobileChange={true}
         />
       </div>
-      <Contacts isMobile={isMobile} contactShow={scrollY >= 500} />
-      <Consultation consultation={scrollY >= 5500} />
-    </div>
+
+      <div ref={elegantSectionRef}>
+        <Elegant_section
+          shown={scrollY >= elegantSectionScroll - 100}
+          isMobile={isMobile}
+          targetScroll={elegantSectionScroll}
+        />
+      </div>
+
+      <div ref={contactsSectionRef}>
+        <Contacts isMobile={isMobile} contactShow={scrollY >= contactsSectionScroll - 500} />
+      </div>
+
+      <div ref={consultationSectionRef}>
+        <Consultation consultation={scrollY >= consultationSectionScroll - 500} />
+      </div>
+    </div >
   );
 }
 

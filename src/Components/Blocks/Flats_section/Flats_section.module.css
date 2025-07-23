@@ -31,7 +31,7 @@
 
 .flatsSlider {
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     margin: 172px 0 200px;
 }
 
@@ -41,7 +41,7 @@
 
 .flatsHistory {
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background: url('/historyFlat.png');
     background-size: cover;
     background-repeat: no-repeat;
