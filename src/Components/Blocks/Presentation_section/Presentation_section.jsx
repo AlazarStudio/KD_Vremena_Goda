@@ -9,7 +9,8 @@ function Presentation_section({ children, presShow, ...props }) {
                     style={{ transitionDelay: "0.2s" }}>
                     ОТКРОЙТЕ ДЛЯ СЕБЯ ВСЕ ГРАНИ ПРОЕКТА «Времена Года»
                 </div>
-                <form className={`${classes.presentation_left_form} ${presShow ? classes.show : ""}`}  style={{ transitionDelay: "0.4s" }}>
+                <form className={`${classes.presentation_left_form} ${presShow ? classes.show : ""}`}
+                    style={{ transitionDelay: "0.4s" }}>
                     <label>Получите подробную презентацию</label>
                     <input type="text" placeholder="Имя" />
                     <input type="text" placeholder="Email" />

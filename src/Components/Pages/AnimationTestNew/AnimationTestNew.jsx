@@ -7,6 +7,7 @@ import Flats_section from "../../Blocks/Flats_section/Flats_section";
 import Elegant_section from "../../Blocks/Elegant_section/Elegant_section";
 import Contacts from "../../Blocks/Contacts/Contacts";
 import Consultation from "../../Blocks/Consultation/Consultation";
+import Presentation_section from "../../Blocks/Presentation_section/Presentation_section";
 
 function AnimationTestNew({ isMobile }) {
   const [scrollY, setScrollY] = useState(0);
@@ -27,6 +28,7 @@ function AnimationTestNew({ isMobile }) {
   const historySectionRef = useRef(null);
   const flatsSectionRef = useRef(null);
   const elegantSectionRef = useRef(null);
+  const presentationSectionRef = useRef(null);
   const contactsSectionRef = useRef(null);
   const consultationSectionRef = useRef(null);
 
@@ -35,6 +37,7 @@ function AnimationTestNew({ isMobile }) {
   const [historySectionScroll, setHistorySectionScroll] = useState(0);
   const [flatsSectionScroll, setFlatsSectionScroll] = useState(0);
   const [elegantSectionScroll, setElegantSectionScroll] = useState(0);
+  const [presentationSectionScroll, setPresentationSectionScroll] = useState(0);
   const [contactsSectionScroll, setContactsSectionScroll] = useState(0);
   const [consultationSectionScroll, setConsultationSectionScroll] = useState(0);
 
@@ -62,6 +65,10 @@ function AnimationTestNew({ isMobile }) {
     if (contactsSectionRef.current) {
       const blockTop = contactsSectionRef.current.offsetTop;
       setContactsSectionScroll(blockTop);
+    }
+    if (presentationSectionRef.current) {
+      const blockTop = presentationSectionRef.current.offsetTop;
+      setPresentationSectionScroll(blockTop);
     }
     if (consultationSectionRef.current) {
       const blockTop = consultationSectionRef.current.offsetTop;
@@ -108,6 +115,10 @@ function AnimationTestNew({ isMobile }) {
           isMobile={isMobile}
           targetScroll={elegantSectionScroll}
         />
+      </div>
+
+      <div ref={presentationSectionRef}>
+        <Presentation_section presShow={scrollY >= presentationSectionScroll - getPercent(presentationSectionScroll, 10)} />
       </div>
 
       <div ref={contactsSectionRef}>

@@ -70,7 +70,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
-                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)` }}
+                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: !isMobile && '20px' }}
                     >
                         {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>
@@ -137,15 +137,16 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             )}
 
             {!followMouse && arrowsBottom && (
-                <>
+                <div style={{height: isMobile && '15dvh'}}>
                     <div
                         className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
                         onClick={prevSlide}
                         style={{
-                            bottom: isMobile ? '15px' : '-120px',
+                            bottom: isMobile ? '0px' : '-120px',
                             left: isMobile ? '15%' : '42%',
                             opacity: currentIndex <= 0 ? 0.4 : 1,
-                            cursor: currentIndex <= 0 ? 'auto' : 'pointer'
+                            cursor: currentIndex <= 0 ? 'auto' : 'pointer',
+                            height: isMobile && '15dvh',
                         }}
                     >
                         <img src="/ArrowLeftBottom.png" alt="" />
@@ -154,15 +155,16 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                         className={`${classes.nextButton} ${classes.bottomArrowRigth} ${shown ? classes.show : ""}`}
                         onClick={nextSlide}
                         style={{
-                            bottom: isMobile ? '15px' : '-120px',
+                            bottom: isMobile ? '0px' : '-120px',
                             right: isMobile ? '15%' : '42%',
                             opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
-                            cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer'
+                            cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer',
+                            height: isMobile && '15dvh',
                         }}
                     >
                         <img src="/ArrowRightBottom.png" alt="" />
                     </div>
-                </>
+                </div>
             )}
         </div >
     );

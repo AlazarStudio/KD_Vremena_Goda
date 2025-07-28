@@ -90,7 +90,7 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
         document.body.style.overflow = "";
         setIsMasking(false);
         setIsClosing(true);
-        setTimeout(() => setIsClosing(false), 1200)
+        setTimeout(() => setIsClosing(false), 1400)
         startAnimationTo(0);
         setIsOpened(false)
     };
@@ -106,19 +106,6 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
                 </div>
             </div>
 
-            <svg width="0" height="0">
-                <defs>
-                    <mask id="circleMask">
-                        <rect width="100%" height="100%" fill="black" />
-                        <circle
-                            cx={circlePos.cx}
-                            cy={circlePos.cy}
-                            r={radius}
-                            fill="white"
-                        />
-                    </mask>
-                </defs>
-            </svg>
 
             <div
                 className={classes.maskedBlock}
@@ -127,12 +114,24 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
                     WebkitMask: "url(#circleMask)",
                     pointerEvents: radius > 0 ? "all" : "none",
                 }}
-            // onClick={handleHide}
             >
                 <div className={classes.exitButon} onClick={handleHide}>
                     <img src="/close.png" alt="" />
                 </div>
                 <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
+                <svg width="0" height="0">
+                    <defs>
+                        <mask id="circleMask">
+                            <rect width="100%" height="100%" fill="black" />
+                            <circle
+                                cx={circlePos.cx}
+                                cy={circlePos.cy}
+                                r={radius}
+                                fill="white"
+                            />
+                        </mask>
+                    </defs>
+                </svg>
             </div>
 
             {/* КНОПКА, поверх всего */}

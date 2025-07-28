@@ -115,6 +115,22 @@
 
 
 @media (max-width: 768px) {
+    .presentation {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: fit-content;
+    }
+
+    .presentation_left{
+        padding: 40px 30px;
+        width: 100%;
+    }
+
+    .presentation_left_title{
+        font-size: 32px;
+        text-align: center;
+    }
+
     .presentation form {
         padding: 0;
     }
@@ -130,5 +146,19 @@
     .presentation form button {
         height: 54px;
         font-size: 14px;
+    }
+
+    .presentation_right{
+        width: 100%;
+        min-height: 500px;
+    }
+
+    .presCircle{
+        width: 110%;
+        bottom: -50%;
+    }
+
+    .presImg{
+        height: 100%;
     }
 }

@@ -32,6 +32,16 @@
   right: 120px;
 }
 
+.prevButton img{
+  height: 60%;
+  transform: translate(0, 35%);
+}
+
+.nextButton img{
+  height: 60%;
+  transform: translate(0, 35%);
+}
+
 .bottomArrowLeft {
   left: 42%;
   bottom: -120px;
