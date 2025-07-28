@@ -22,7 +22,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
     return (
         <>
-            <section className={`${classes.flats} `} style={{ height: mobileChange ? '100dvh' : 'auto' }}>
+            <section className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
                 <img src="/flats_logo.png" alt="" className={`${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.4s" }} />
 
@@ -35,7 +35,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                     height: mobileChange && '100%'
                 }}>
                     <div className={classes.forSlider} style={{
-                        transform: !isMobile ? (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(0px) '),
+                        transform: !isMobile ? (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
                         height: mobileChange && '100%'
                     }} >
                         <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} />

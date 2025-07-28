@@ -99,7 +99,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
         setIsOpenedToMove(false)
     };
 
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         if (!isOpenedToMove) {
