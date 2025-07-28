@@ -1,0 +1,182 @@
+.elegantSlider {
+    width: 100%;
+    height: 100dvh;
+    background-color: #000;
+    padding-bottom: 145px;
+}
+
+.startBlock {
+    width: 100%;
+    height: 100dvh;
+    background: url('/elegantStartAnimation.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.startBlock_item {
+    color: #fff;
+    padding: 66px 0 0 66px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 60%;
+    margin-bottom: 200px;
+}
+
+.startBlock_item img {
+    width: 103px;
+    height: 103px;
+    cursor: pointer;
+}
+
+.startBlock_item p:first-child {
+    font-family: Cormorant;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 96px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.startBlock_item p:nth-child(2) {
+    font-family: Gotham;
+    font-weight: 400;
+    font-style: Book;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0%;
+
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.wrapper {
+    position: relative;
+    height: 100dvh;
+}
+
+.topBlock {
+    position: relative;
+    z-index: 1;
+    background: url("/history_background.png");
+    height: 100dvh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.moveRight {
+    transform: translateX(-100%);
+}
+
+.maskedBlock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: #000;
+    /* z-index: 2; */
+    mask-type: luminance;
+    pointer-events: none;
+    /* transition: opacity 2s ease-out; */
+}
+
+.floatingButton {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 60%;
+    padding-left: 66px;
+    z-index: 100;
+    cursor: pointer;
+    /* transition: all 0.8s ease; */
+
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.floatingButtonImg {
+    width: 103px;
+    height: 103px;
+}
+
+.circleBlock {
+    width: 103px;
+    height: 103px;
+    background-color: #D1B99F00;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.circleBlock:hover {
+    background-color: #D1B99F;
+}
+
+.circleBlockBg {
+    background-color: #D1B99F;
+}
+
+.show {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+}
+
+.showBTN {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+}
+
+.exitButon {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    transition: all 0.4s ease;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.exitButon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+@media (max-width: 768px) {
+    .startBlock {
+        align-items: flex-start;
+    }
+
+    .startBlock_item p:first-child {
+        font-size: 32px;
+    }
+
+    .startBlock_item p:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .floatingButton {
+        width: 100%;
+    }
+}
