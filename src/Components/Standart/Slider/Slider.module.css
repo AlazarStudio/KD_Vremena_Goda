@@ -34,12 +34,12 @@
 
 .prevButton img{
   height: 60%;
-  transform: translate(0, 35%);
+  /* transform: translate(0, 35%); */
 }
 
 .nextButton img{
   height: 60%;
-  transform: translate(0, 35%);
+  /* transform: translate(0, 35%); */
 }
 
 .bottomArrowLeft {

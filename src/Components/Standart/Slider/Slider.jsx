@@ -70,7 +70,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 <div className={classes.slider}>
                     <div
                         className={classes.slideTrack}
-                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: !isMobile && '20px' }}
+                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: !isMobile && arrowsBottom && '20px' }}
                     >
                         {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>
@@ -137,7 +137,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             )}
 
             {!followMouse && arrowsBottom && (
-                <div style={{height: isMobile && '15dvh'}}>
+                <div style={{ height: isMobile && '15dvh' }}>
                     <div
                         className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
                         onClick={prevSlide}
@@ -149,7 +149,10 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             height: isMobile && '15dvh',
                         }}
                     >
-                        <img src="/ArrowLeftBottom.png" alt="" />
+                        <img src="/ArrowLeftBottom.png" alt=""
+                            style={{
+                                transform: isMobile && 'translate(0, 35%)'
+                            }} />
                     </div>
                     <div
                         className={`${classes.nextButton} ${classes.bottomArrowRigth} ${shown ? classes.show : ""}`}
@@ -162,7 +165,10 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             height: isMobile && '15dvh',
                         }}
                     >
-                        <img src="/ArrowRightBottom.png" alt="" />
+                        <img src="/ArrowRightBottom.png" alt=""
+                            style={{
+                                transform: isMobile && 'translate(0, 35%)'
+                            }} />
                     </div>
                 </div>
             )}
