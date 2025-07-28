@@ -34,7 +34,7 @@ function Contacts({ children, contactShow, isMobile, ...props }) {
         const progress = Math.min(1, Math.max(0, (windowHeight - sectionTop) / (windowHeight + sectionHeight)));
 
         const scrollSpeed = 3; // чем больше — тем быстрее "выпрыгивает"
-        const offset = scrollSpeed * progress * (isMobile ? 60 : 150);
+        const offset = scrollSpeed * progress * (isMobile ? 60 : 100);
 
         imgRef.current.style.transform = `translateY(${offset - 100}px)`;
 

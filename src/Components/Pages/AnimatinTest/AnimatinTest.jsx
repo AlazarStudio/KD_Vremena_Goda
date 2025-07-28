@@ -9,6 +9,7 @@ import Elegant_section from "../../Blocks/Elegant_section/Elegant_section";
 import Contacts from "../../Blocks/Contacts/Contacts";
 import Consultation from "../../Blocks/Consultation/Consultation";
 import Footer from "../../Blocks/Footer/Footer";
+import Presentation_section from "../../Blocks/Presentation_section/Presentation_section";
 
 function useMediaQuery(query) {
     const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
@@ -269,6 +270,8 @@ function AnimatinTest() {
         return () => cancelAnimationFrame(rafOffset3.current);
     }, []);
 
+    // console.log(scrollY)
+
     return (
         <div className={classes.animWrapper}>
             {/* SVG masks */}
@@ -387,7 +390,7 @@ function AnimatinTest() {
                                     x={offsetX}
                                     y={0}
                                     width={rectWidth}
-                                    height={height * 3}
+                                    height={height * 4}
                                     fill="white"
                                     transform={`translate(0, ${translateY})`}
                                 />
@@ -471,11 +474,11 @@ function AnimatinTest() {
                     <Elegant_section
                         shown={isMobile ? scrollY >= 28000 : scrollY >= 32000}
                         isMobile={isMobile}
-                    // contactShow={scrollY >= 37000}
-                    // consultation={scrollY >= 40000}
                     />
-                    <Contacts isMobile={isMobile} contactShow={isMobile ? scrollY >= 33000 : scrollY >= 37000} />
-                    <Consultation consultation={isMobile ? scrollY >= 36000 : scrollY >= 40000} />
+                    <Presentation_section presShow={isMobile ? scrollY >= 32000 : scrollY >= 36000}/>
+                    <Contacts isMobile={isMobile} contactShow={isMobile ? scrollY >= 35000 : scrollY >= 39000} />
+                    <Consultation consultation={isMobile ? scrollY >= 38000 : scrollY >= 42000} />
+                    <Footer />
                 </div>
 
             </div>
