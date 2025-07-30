@@ -8,6 +8,7 @@ import InstallButton from "./Components/Pages/InstallButton/InstallButton";
 import AnimatinTest from "./Components/Pages/AnimatinTest/AnimatinTest";
 import AnimationTestNew from "./Components/Pages/AnimationTestNew/AnimationTestNew";
 import Preloader from "./Components/Blocks/Preloader/Preloader";
+import AnimationShow from "./Components/Blocks/AnimationShow/AnimationShow";
 
 function useMediaQuery(query) {
   const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
@@ -28,11 +29,12 @@ function App() {
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
 
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile}/> : <AnimatinTest />} />
+          <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile} /> : <AnimatinTest />} />
+          <Route path="animation" element={<AnimationShow />} />
           <Route path="*" element={<Non_Found_Page />} />
         </Route>
       </Routes>

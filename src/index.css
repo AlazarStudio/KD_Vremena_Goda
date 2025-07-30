@@ -7,9 +7,9 @@
   scroll-behavior: smooth;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   display: none;
-}
+} */
 
 @font-face {
   font-family: 'Gotham 400';

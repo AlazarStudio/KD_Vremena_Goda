@@ -1,0 +1,54 @@
+.wrapper {
+  margin: 0;
+  height: 10000vh;
+}
+
+.bottom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  /* начальный мусор, потом заменяется JS */
+  transition: clip-path 0.4s linear;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.history {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+  transition: clip-path 0.3s linear;
+  overflow-y: scroll;
+  pointer-events: none;
+}
+
+.history::-webkit-scrollbar {
+  display: none;
+}
+
+.historyContainer {
+  position: relative;
+  z-index: 2;
+}

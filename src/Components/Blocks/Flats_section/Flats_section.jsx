@@ -12,11 +12,11 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
         "Slider1 - img6.png",
     ];
 
-    useEffect(() => {
-        if (!isMobile && scale) {
-            window.scrollTo({ top: 24220 });
-        }
-    }, [scale]);
+    // useEffect(() => {
+    //     if (!isMobile && scale) {
+    //         window.scrollTo({ top: 24220 });
+    //     }
+    // }, [scale]);
 
     // console.log(scale)
 
