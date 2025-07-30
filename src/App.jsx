@@ -29,12 +29,12 @@ function App() {
 
   return (
     <>
-      {/* <Preloader /> */}
+      <Preloader />
 
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile} /> : <AnimatinTest />} />
-          <Route path="animation" element={<AnimationShow />} />
+          <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile} /> : <AnimationShow />} />
+          {/* <Route path="animation" element={<AnimationShow />} /> */}
           <Route path="*" element={<Non_Found_Page />} />
         </Route>
       </Routes>

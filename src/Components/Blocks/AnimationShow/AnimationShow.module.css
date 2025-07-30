@@ -1,6 +1,6 @@
 .wrapper {
   margin: 0;
-  height: 10000vh;
+  height: 1300vh;
 }
 
 .bottom {
@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1;
+  
   color: white;
   display: flex;
   justify-content: center;
@@ -32,6 +32,7 @@
   pointer-events: none;
 }
 
+
 .history {
   position: fixed;
   top: 0;
@@ -39,16 +40,47 @@
   width: 100%;
   height: 100vh;
   z-index: 3;
-  transition: clip-path 0.3s linear;
-  overflow-y: scroll;
   pointer-events: none;
+  transition: clip-path 0.3s linear;
+  transform: translateY(0);
+  /* обязательно */
+  will-change: transform;
 }
 
-.history::-webkit-scrollbar {
-  display: none;
+.history>div {
+  will-change: transform;
 }
 
-.historyContainer {
-  position: relative;
-  z-index: 2;
+.flats {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 4;
+  /* pointer-events: none; */
+  transition: clip-path 0.3s linear;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.flats>div {
+  will-change: transform;
+}
+
+.elegant {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+  /* pointer-events: none; */
+  transition: clip-path 0.3s linear;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.elegant>div {
+  will-change: transform;
 }

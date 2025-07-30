@@ -4,6 +4,12 @@ import Header from "../Header/Header";
 import Main_section from "../Main_section/Main_section";
 import Collection_section from "../Collection_section/Collection_section";
 import History_section from "../History_section/History_section";
+import Flats_section from "../Flats_section/Flats_section";
+import Elegant_section from "../Elegant_section/Elegant_section";
+import Presentation_section from "../Presentation_section/Presentation_section";
+import Contacts from "../Contacts/Contacts";
+import Consultation from "../Consultation/Consultation";
+import Footer from "../Footer/Footer";
 
 function createSmoothDriver(initial = 0, speed = 0.12) {
     let current = initial;
@@ -39,10 +45,29 @@ function createSmoothDriver(initial = 0, speed = 0.12) {
     };
 }
 
-
 function AnimationShow() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+        setTimeout(() => window.scrollTo(0, 0), 50);
+    }, []);
+
     const topRef = useRef(null);
     const smoothRadius = useRef(createSmoothDriver(0, 0.12)).current;
+
+    const [hasScrolled, setHasScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => {
+            if (!hasScrolled && window.scrollY > 0) {
+                setHasScrolled(true);
+            }
+        };
+
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, [hasScrolled]);
+
 
     useEffect(() => {
         const onScroll = () => {
@@ -96,41 +121,52 @@ function AnimationShow() {
 
 
     const [isUnpinned, setIsUnpinned] = useState(false);
-
     const historyMaskRef = useRef(null);
     const smoothRectOffset = useRef(createSmoothDriver(0, 0.12)).current;
-    
+
+    const historyContentRef = useRef(null);
+    const smoothHistoryOffset = useRef(createSmoothDriver(0, 0.12)).current;
+
+    const [historyMaxOffset, setHistoryMaxOffset] = useState(0);
 
     useEffect(() => {
         const onScroll = () => {
-            const scrollStart = 2500; // момент начала анимации
-            const scrollEnd = scrollStart + window.innerHeight;
             const scrollY = window.scrollY;
 
+            // Фаза 1: Раскрытие маски
+            const scrollStart = 1800;
+            const scrollEnd = scrollStart + window.innerHeight;
             const progress = Math.min(Math.max((scrollY - scrollStart) / (scrollEnd - scrollStart), 0), 1);
             const maxOffset = window.innerHeight;
             smoothRectOffset.set(progress * maxOffset);
 
             if (progress >= 1) {
-                setIsUnpinned(true); // раскрылся — отпускаем
-            } else if (progress < 1) {
-                setIsUnpinned(false); // если прокрутили обратно — снова фиксируем
+                setTimeout(() => {
+                    setIsUnpinned(true);
+                }, 500)
+            } else {
+                setIsUnpinned(false);
+            }
+
+            // Фаза 2: Двигаем весь блок вверх
+            if (isUnpinned && !isUnpinned2) {
+                const localScroll = Math.max(scrollY - scrollEnd - 200, 0);
+                const limitedOffset = Math.min(localScroll, historyMaxOffset);
+                smoothHistoryOffset.set(limitedOffset);
             }
         };
 
-        const unsubscribe = smoothRectOffset.onUpdate(offset => {
+        const unsubMask = smoothRectOffset.onUpdate(offset => {
             if (historyMaskRef.current) {
                 const count = 6;
                 const rects = [];
                 const rectWidth = window.innerWidth / count;
                 const height = window.innerHeight;
                 const progress = offset / height;
-
-                const scaledProgress = progress * 7; // ⬅ ключевая строчка
+                const scaledProgress = progress * 7;
 
                 for (let i = 0; i < count; i++) {
                     const x = i * rectWidth;
-
                     const baseDelay = (Math.sin(i * 1) + 1) / 2;
                     const speedFactor = 0.15 + (Math.cos(i * 0.9) + 1) / 10;
                     const localProgress = Math.max(0, Math.min(1, (scaledProgress - baseDelay) * speedFactor));
@@ -144,32 +180,219 @@ function AnimationShow() {
             }
         });
 
-
+        const unsubTransform = smoothHistoryOffset.onUpdate(offset => {
+            if (historyContentRef.current) {
+                historyContentRef.current.style.transform = `translateY(-${offset}px)`;
+            }
+        });
 
         window.addEventListener("scroll", onScroll);
         return () => {
             window.removeEventListener("scroll", onScroll);
-            unsubscribe();
+            unsubMask();
+            unsubTransform();
         };
+    }, [isUnpinned]);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            if (historyContentRef.current) {
+                const scrollHeight = historyContentRef.current.scrollHeight;
+                const max = scrollHeight - window.innerHeight;
+                setHistoryMaxOffset(max > 0 ? max : 0);
+            }
+        };
+
+        updateHeight();
+        window.addEventListener("resize", updateHeight);
+        return () => window.removeEventListener("resize", updateHeight);
     }, []);
+
+
+    const [isUnpinned2, setIsUnpinned2] = useState(false);
+    const flatsMaskRef = useRef(null);
+    const flatsContentRef = useRef(null);
+    const smoothRectOffset2 = useRef(createSmoothDriver(0, 0.12)).current;
+    const smoothFlatsOffset = useRef(createSmoothDriver(0, 0.12)).current;
+
+
+    useEffect(() => {
+        const onScroll = () => {
+            const scrollStart = 4000;
+            const scrollEnd = scrollStart + window.innerHeight;
+            const scrollY = window.scrollY;
+
+            const progress = Math.min(Math.max((scrollY - scrollStart) / (scrollEnd - scrollStart), 0), 1);
+            const maxOffset = window.innerHeight;
+            smoothRectOffset2.set(progress * maxOffset);
+
+            if (progress >= 1) {
+                setTimeout(() => setIsUnpinned2(true), 500);
+            } else {
+                setIsUnpinned2(false);
+            }
+
+            if (isUnpinned2) {
+                const localScroll = Math.max(scrollY - scrollEnd - 200, 0);
+                smoothFlatsOffset.set(localScroll);
+            }
+        };
+
+        const unsubMask = smoothRectOffset2.onUpdate(offset => {
+            if (flatsMaskRef.current) {
+                const count = 6;
+                const rects = [];
+                const rectWidth = window.innerWidth / count;
+                const height = window.innerHeight;
+                const progress = offset / height;
+                const scaledProgress = progress * 7;
+
+                for (let i = 0; i < count; i++) {
+                    const x = i * rectWidth;
+                    const baseDelay = (Math.sin(i * 1.5) + 1) / 2;
+                    const speedFactor = 0.15 + (Math.cos(i * 1.1) + 1) / 10;
+                    const localProgress = Math.max(0, Math.min(1, (scaledProgress - baseDelay) * speedFactor));
+                    const translateY = (1 - localProgress) * height;
+                    rects.push(`M${x},${translateY} h${rectWidth} v${height} h-${rectWidth} Z`);
+                }
+
+                const path = rects.join(" ");
+                flatsMaskRef.current.style.clipPath = `path('${path}')`;
+            }
+        });
+
+        const unsubTransform = smoothFlatsOffset.onUpdate(offset => {
+            if (flatsContentRef.current) {
+                const flatsHeight = flatsContentRef.current.offsetHeight;
+                const clampedOffset = Math.min(offset, flatsHeight - window.innerHeight);
+                flatsContentRef.current.style.transform = `translateY(-${clampedOffset}px)`;
+            }
+        });
+
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            unsubMask();
+            unsubTransform();
+        };
+    }, [isUnpinned2]);
+
+
+
+
+    const elegantMaskRef = useRef(null);
+    const elegantContentRef = useRef(null);
+    const smoothRectOffset3 = useRef(createSmoothDriver(0, 0.12)).current;
+    const smoothElegantOffset = useRef(createSmoothDriver(0, 0.12)).current;
+    const [isElegantUnpinned, setIsElegantUnpinned] = useState(false);
+
+    // console.log(scrollY)
+
+    useEffect(() => {
+        const scrollStart = 7200;
+        const scrollEnd = scrollStart + window.innerHeight;
+
+        const onScroll = () => {
+            const scrollY = window.scrollY;
+            const progress = Math.min(Math.max((scrollY - scrollStart) / (scrollEnd - scrollStart), 0), 1);
+            smoothRectOffset3.set(progress * window.innerHeight);
+
+            if (progress >= 1) {
+                setTimeout(() => setIsElegantUnpinned(true), 500);
+            } else {
+                setIsElegantUnpinned(false);
+            }
+
+            if (isElegantUnpinned) {
+                const localScroll = Math.max(scrollY - scrollEnd, 0);
+                smoothElegantOffset.set(localScroll);
+            }
+        };
+
+        const unsubMask = smoothRectOffset3.onUpdate(offset => {
+            if (!elegantMaskRef.current) return;
+            const count = 6;
+            const rectWidth = window.innerWidth / count;
+            const height = window.innerHeight;
+            const progress = offset / height;
+            const scaledProgress = progress * 7;
+
+            const rects = Array.from({ length: count }).map((_, i) => {
+                const x = i * rectWidth;
+                const baseDelay = (Math.sin(i * 1.5) + 1) / 2;
+                const speedFactor = 0.15 + (Math.cos(i * 1.1) + 1) / 10;
+                const localProgress = Math.max(0, Math.min(1, (scaledProgress - baseDelay) * speedFactor));
+                const translateY = (1 - localProgress) * height;
+                return `M${x},${translateY} h${rectWidth} v${height} h-${rectWidth} Z`;
+            });
+
+            elegantMaskRef.current.style.clipPath = `path('${rects.join(" ")}')`;
+        });
+
+        const unsubTransform = smoothElegantOffset.onUpdate(offset => {
+            if (elegantContentRef.current) {
+                const maxScroll = elegantContentRef.current.offsetHeight - window.innerHeight;
+                const clampedOffset = Math.min(offset, maxScroll);
+                elegantContentRef.current.style.transform = `translateY(-${clampedOffset}px)`;
+            }
+        });
+
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            unsubMask();
+            unsubTransform();
+        };
+    }, [isElegantUnpinned]);
 
 
     return (
         <div className={classes.wrapper}>
-            <div className={classes.bottom}>
+            <div className={classes.bottom} style={{
+                zIndex: 1
+            }}>
                 <Header />
                 <Main_section />
             </div>
 
-            <div className={classes.top} ref={topRef}>
+            <div className={classes.top} ref={topRef} style={{
+                zIndex: hasScrolled ? 2 : 0
+            }}>
                 <Collection_section reveal={true} />
             </div>
-            
-            <div className={classes.history} ref={historyMaskRef} >
-                <History_section shown={true} />
+
+            <div className={classes.history} ref={historyMaskRef} style={{
+                zIndex: hasScrolled ? 3 : 0
+            }}>
+                <div ref={historyContentRef}>
+                    <History_section shown={true} blockHeight={window.innerHeight} />
+                </div>
             </div>
 
+            <div className={classes.flats} ref={flatsMaskRef} style={{
+                zIndex: hasScrolled ? 4 : 0
+            }}>
+                <div ref={flatsContentRef}>
+                    <Flats_section
+                        scrollPos={scrollY}
+                        shown={true}
+                        scale={true}
+                        tower={true}
+                    />
+                </div>
+            </div>
 
+            <div className={classes.elegant} ref={elegantMaskRef} style={{
+                zIndex: hasScrolled ? 5 : 0
+            }}>
+                <div ref={elegantContentRef}>
+                    <Elegant_section shown={true} />
+                    <Presentation_section presShow={true} />
+                    <Contacts contactShow={true} />
+                    <Consultation consultation={true} />
+                    <Footer />
+                </div>
+            </div>
         </div>
     );
 }

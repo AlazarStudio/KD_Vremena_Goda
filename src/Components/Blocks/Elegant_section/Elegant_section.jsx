@@ -52,7 +52,7 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
         let scrollPosition = isMobile ?
             (targetScroll ? targetScroll : 0)
             :
-            34000
+            8333
         const checkScroll = () => {
             if (Math.round(window.scrollY) == scrollPosition) {
                 setTimeout(() => {

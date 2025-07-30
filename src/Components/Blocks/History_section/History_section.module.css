@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.history::before {
+.history_info_before {
     content: '';
     position: absolute;
     top: 0;
