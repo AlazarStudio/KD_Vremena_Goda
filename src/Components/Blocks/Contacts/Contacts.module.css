@@ -7,6 +7,11 @@
     justify-content: space-between;
     gap: 80px;
     position: relative;
+    overflow: hidden;
+}
+
+.forImg{
+    position: relative;
 }
 
 .contactsLeft {
@@ -64,6 +69,7 @@
     left: 530px;
     bottom: 0px;
     height: 650px;
+    z-index: 9999;
     transition: transform 0.5s ease-out;
 }
 

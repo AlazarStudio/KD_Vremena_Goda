@@ -7,9 +7,13 @@ export function useIsVisible(ref) {
         const checkVisibility = () => {
             if (!ref.current) return;
             const rect = ref.current.getBoundingClientRect();
-            const fullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-            const partiallyVisible = rect.top < window.innerHeight && rect.bottom > 0;
-            setIsVisible(partiallyVisible); // можно заменить на fullyVisible если нужно строго
+            const elementHeight = rect.height;
+
+            const visiblePart = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+            const visibleRatio = visiblePart / elementHeight;
+
+            setIsVisible(visibleRatio >= 0.4); // виден хотя бы на 50%
         };
 
         checkVisibility(); // начальная проверка

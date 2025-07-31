@@ -10,6 +10,7 @@ import Presentation_section from "../Presentation_section/Presentation_section";
 import Contacts from "../Contacts/Contacts";
 import Consultation from "../Consultation/Consultation";
 import Footer from "../Footer/Footer";
+import { useIsVisible } from "../../../useIsVisible";
 
 function createSmoothDriver(initial = 0, speed = 0.12) {
     let current = initial;
@@ -46,11 +47,20 @@ function createSmoothDriver(initial = 0, speed = 0.12) {
 }
 
 function AnimationShow() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        requestAnimationFrame(() => window.scrollTo(0, 0));
-        setTimeout(() => window.scrollTo(0, 0), 50);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    //     requestAnimationFrame(() => window.scrollTo(0, 0));
+    //     setTimeout(() => window.scrollTo(0, 0), 50);
+    // }, []);
+
+
+    const [showCollectionAnim, setShowCollectionAnim] = useState(false);
+    const [showHistoryAnim, setShowHistoryAnim] = useState(false);
+    const [showFlatsAnim, setShowFlatsAnim] = useState(false);
+    const [showFlatsHistoryAnim, setShowFlatsHistoryAnim] = useState(false);
+    const [showElegantPrezentationAnim, setShowElegantPrezentationAnim] = useState(false);
+    const [showElegantContactsAnim, setShowElegantContactsAnim] = useState(false);
+    const [showElegantConsultationAnim, setShowElegantConsultationAnim] = useState(false);
 
     const topRef = useRef(null);
     const smoothRadius = useRef(createSmoothDriver(0, 0.12)).current;
@@ -74,6 +84,14 @@ function AnimationShow() {
             const scrollEnd = window.innerHeight * 2; // когда скролл >= этого значения — цветок раскрыт полностью
             const scrollY = window.scrollY;
             const progress = Math.min(scrollY / (scrollEnd * 1.5), 1); // clamp от 0 до 1
+
+            // console.log(progress)
+
+            if (progress >= 0.3) {
+                setShowCollectionAnim(true)
+            } else {
+                setShowCollectionAnim(false)
+            }
 
             const maxRadius = 1600; // максимальный радиус круга
             smoothRadius.set(progress * maxRadius);
@@ -140,6 +158,14 @@ function AnimationShow() {
             const maxOffset = window.innerHeight;
             smoothRectOffset.set(progress * maxOffset);
 
+            // console.log(progress)
+
+            if (progress >= 0.6) {
+                setShowHistoryAnim(true)
+            } else {
+                setShowHistoryAnim(false)
+            }
+
             if (progress >= 1) {
                 setTimeout(() => {
                     setIsUnpinned(true);
@@ -150,7 +176,7 @@ function AnimationShow() {
 
             // Фаза 2: Двигаем весь блок вверх
             if (isUnpinned && !isUnpinned2) {
-                const localScroll = Math.max(scrollY - scrollEnd - 200, 0);
+                const localScroll = Math.max(scrollY - scrollEnd, 0);
                 const limitedOffset = Math.min(localScroll, historyMaxOffset);
                 smoothHistoryOffset.set(limitedOffset);
             }
@@ -226,6 +252,12 @@ function AnimationShow() {
             const maxOffset = window.innerHeight;
             smoothRectOffset2.set(progress * maxOffset);
 
+            if (progress >= 0.7) {
+                setShowFlatsAnim(true)
+            } else {
+                setShowFlatsAnim(false)
+            }
+
             if (progress >= 1) {
                 setTimeout(() => setIsUnpinned2(true), 500);
             } else {
@@ -233,7 +265,7 @@ function AnimationShow() {
             }
 
             if (isUnpinned2) {
-                const localScroll = Math.max(scrollY - scrollEnd - 200, 0);
+                const localScroll = Math.max(scrollY - scrollEnd, 0);
                 smoothFlatsOffset.set(localScroll);
             }
         };
@@ -277,16 +309,11 @@ function AnimationShow() {
         };
     }, [isUnpinned2]);
 
-
-
-
     const elegantMaskRef = useRef(null);
     const elegantContentRef = useRef(null);
     const smoothRectOffset3 = useRef(createSmoothDriver(0, 0.12)).current;
     const smoothElegantOffset = useRef(createSmoothDriver(0, 0.12)).current;
     const [isElegantUnpinned, setIsElegantUnpinned] = useState(false);
-
-    // console.log(scrollY)
 
     useEffect(() => {
         const scrollStart = 7200;
@@ -346,6 +373,59 @@ function AnimationShow() {
     }, [isElegantUnpinned]);
 
 
+
+
+
+
+    const flatsHistoryRef = useRef(null);
+    const flatsHistoryVisible = useIsVisible(flatsHistoryRef);
+
+    useEffect(() => {
+        if (flatsHistoryVisible) {
+            setShowFlatsHistoryAnim(true)
+        } else {
+            setShowFlatsHistoryAnim(false)
+        }
+    }, [flatsHistoryVisible]);
+
+
+    const elegantPrezentationRef = useRef(null);
+    const elegantPrezentationVisible = useIsVisible(elegantPrezentationRef);
+
+    useEffect(() => {
+        if (elegantPrezentationVisible) {
+            setShowElegantPrezentationAnim(true)
+        } else {
+            setShowElegantPrezentationAnim(false)
+        }
+    }, [elegantPrezentationVisible]);
+
+
+    const elegantContactsAnimRef = useRef(null);
+    const elegantContactsVisible = useIsVisible(elegantContactsAnimRef);
+
+    useEffect(() => {
+        if (elegantContactsVisible) {
+            setShowElegantContactsAnim(true)
+        } else {
+            setShowElegantContactsAnim(false)
+        }
+    }, [elegantContactsVisible]);
+
+
+    const elegantConsultationAnimRef = useRef(null);
+    const elegantConsultationVisible = useIsVisible(elegantConsultationAnimRef);
+
+    useEffect(() => {
+        if (elegantConsultationVisible) {
+            setShowElegantConsultationAnim(true)
+        } else {
+            setShowElegantConsultationAnim(false)
+        }
+    }, [elegantConsultationVisible]);
+
+
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.bottom} style={{
@@ -358,14 +438,14 @@ function AnimationShow() {
             <div className={classes.top} ref={topRef} style={{
                 zIndex: hasScrolled ? 2 : 0
             }}>
-                <Collection_section reveal={true} />
+                <Collection_section reveal={showCollectionAnim} />
             </div>
 
             <div className={classes.history} ref={historyMaskRef} style={{
                 zIndex: hasScrolled ? 3 : 0
             }}>
                 <div ref={historyContentRef}>
-                    <History_section shown={true} blockHeight={window.innerHeight} />
+                    <History_section shown={showHistoryAnim} blockHeight={window.innerHeight} />
                 </div>
             </div>
 
@@ -375,9 +455,10 @@ function AnimationShow() {
                 <div ref={flatsContentRef}>
                     <Flats_section
                         scrollPos={scrollY}
-                        shown={true}
+                        shown={showFlatsAnim}
                         scale={true}
-                        tower={true}
+                        tower={showFlatsHistoryAnim}
+                        flatsHistoryRef={flatsHistoryRef}
                     />
                 </div>
             </div>
@@ -387,9 +468,9 @@ function AnimationShow() {
             }}>
                 <div ref={elegantContentRef}>
                     <Elegant_section shown={true} />
-                    <Presentation_section presShow={true} />
-                    <Contacts contactShow={true} />
-                    <Consultation consultation={true} />
+                    <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef}/>
+                    <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef}/>
+                    <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef}/>
                     <Footer />
                 </div>
             </div>

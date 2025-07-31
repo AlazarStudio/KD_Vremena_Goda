@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './Presentation_section.module.css';
 
-function Presentation_section({ children, presShow, ...props }) {
+function Presentation_section({ children, presShow, elegantPrezentationRef, ...props }) {
     return (
-        <div className={classes.presentation}>
+        <div className={classes.presentation} ref={elegantPrezentationRef}>
             <div className={classes.presentation_left}>
                 <div className={`${classes.presentation_left_title} ${presShow ? classes.show : ""}`}
                     style={{ transitionDelay: "0.2s" }}>
@@ -33,7 +33,7 @@ function Presentation_section({ children, presShow, ...props }) {
             <div className={classes.presentation_right}>
                 <img src="/circle.png" alt="" className={`${classes.presCircle}`} />
                 <img src="/presentation_img.png" alt="" className={`${classes.presImg} ${presShow ? classes.showRight : ""}`}
-                    style={{ transitionDelay: "0.6s" }} />
+                    style={{ transitionDelay: "0.4s" }} />
             </div>
         </div>
     );

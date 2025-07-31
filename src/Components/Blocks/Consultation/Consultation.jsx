@@ -2,10 +2,10 @@ import React from "react";
 import classes from './Consultation.module.css';
 import Footer from "../Footer/Footer";
 
-function Consultation({ children, consultation, ...props }) {
+function Consultation({ children, consultation, elegantConsultationAnimRef, ...props }) {
     return (
         <>
-            <section className={classes.consultation}>
+            <section className={classes.consultation} ref={elegantConsultationAnimRef}>
                 <div className={classes.consultation_item}>
                     <div className={`${classes.consultation_item_left} ${consultation ? classes.show : ""}`}
                         style={{ transitionDelay: "0.4s" }}>

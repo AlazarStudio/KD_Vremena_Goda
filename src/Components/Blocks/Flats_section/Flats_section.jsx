@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, ...props }) {
     let images = [
         "Slider1 - img1.png",
         "Slider1 - img2.png",
@@ -44,7 +44,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
             </section>
 
             <div style={{ backgroundColor: '#fff' }}>
-                <section className={classes.flatsHistory}>
+                <section className={classes.flatsHistory} ref={flatsHistoryRef}>
                     <img src="/tower.png" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
 
                     <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
