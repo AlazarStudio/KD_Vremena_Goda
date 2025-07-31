@@ -79,8 +79,8 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, ...
                         Связаться с нами
                     </p>
                     <a className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
-                        href="tel:+70000000000" style={{ transitionDelay: "0.5s" }}>
-                        +7 (000) 000 00 00
+                        href="tel:+79380357788" style={{ transitionDelay: "0.5s" }}>
+                        +7 (938) 035 77 88
                     </a>
                     <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.7s" }}>
