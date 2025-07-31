@@ -12,17 +12,18 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
         "Slider1 - img6.png",
     ];
 
-    // useEffect(() => {
-    //     if (!isMobile && scale) {
-    //         window.scrollTo({ top: 24220 });
-    //     }
-    // }, [scale]);
+    useEffect(() => {
+        if (!isMobile && scale) {
+            window.scrollTo({ top: 4220 });
+        }
+    }, [scale]);
 
     // console.log(scale)
 
     return (
         <>
-            <section className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
+            <section
+                className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
                 <img src="/flats_logo.png" alt="" className={`${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.4s" }} />
 

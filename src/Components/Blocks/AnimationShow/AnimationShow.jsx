@@ -439,6 +439,8 @@ function AnimationShow() {
     }, [isElegantVisible, isScrollStopped]);
 
 
+
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.bottom} style={{
@@ -480,7 +482,7 @@ function AnimationShow() {
                 zIndex: hasScrolled ? 5 : 0
             }}>
                 <div ref={elegantContentRef}>
-                    <Elegant_section shown={true} elegantRef={elegantRef}/>
+                    <Elegant_section shown={true} elegantRef={elegantRef} />
                     <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} />
                     <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef} />
                     <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef} />
