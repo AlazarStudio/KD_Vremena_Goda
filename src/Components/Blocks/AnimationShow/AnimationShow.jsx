@@ -11,6 +11,7 @@ import Contacts from "../Contacts/Contacts";
 import Consultation from "../Consultation/Consultation";
 import Footer from "../Footer/Footer";
 import { useIsVisible } from "../../../useIsVisible";
+import { useScrollStop } from "../../../useScrollStop";
 
 function createSmoothDriver(initial = 0, speed = 0.12) {
     let current = initial;
@@ -426,6 +427,17 @@ function AnimationShow() {
     }, [elegantConsultationVisible]);
 
 
+    const elegantRef = useRef(null);
+    const isElegantVisible = useIsVisible(elegantRef);
+    const isScrollStopped = useScrollStop(500);
+
+    useEffect(() => {
+        if (isElegantVisible && isScrollStopped && elegantRef.current) {
+            const top = elegantRef.current.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top, behavior: "smooth" });
+        }
+    }, [isElegantVisible, isScrollStopped]);
+
 
     return (
         <div className={classes.wrapper}>
@@ -468,10 +480,10 @@ function AnimationShow() {
                 zIndex: hasScrolled ? 5 : 0
             }}>
                 <div ref={elegantContentRef}>
-                    <Elegant_section shown={true} />
-                    <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef}/>
-                    <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef}/>
-                    <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef}/>
+                    <Elegant_section shown={true} elegantRef={elegantRef}/>
+                    <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} />
+                    <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef} />
+                    <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef} />
                     <Footer />
                 </div>
             </div>

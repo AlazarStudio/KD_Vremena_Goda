@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import classes from './Elegant_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Elegant_section({ shown, isMobile, targetScroll }) {
+function Elegant_section({ shown, isMobile, targetScroll, elegantRef }) {
     let images = [
         "Slider2 - img1.png",
         "Slider2 - img2.png",
@@ -54,7 +54,7 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
             :
             8333
         const checkScroll = () => {
-            if (Math.round(window.scrollY) == scrollPosition) {
+            // if (Math.round(window.scrollY) == scrollPosition) {
                 setTimeout(() => {
                     let cx = 0;
                     let cy = 0;
@@ -72,12 +72,12 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
                     setIsMasking(true);
                     setIsOpened(true)
                 }, 500)
-            } else {
-                requestAnimationFrame(checkScroll);
-            }
+            // } else {
+            //     requestAnimationFrame(checkScroll);
+            // }
         };
 
-        window.scrollTo({ top: scrollPosition });
+        // window.scrollTo({ top: scrollPosition });
         requestAnimationFrame(checkScroll);
     };
 
@@ -96,7 +96,7 @@ function Elegant_section({ shown, isMobile, targetScroll }) {
     };
 
     return (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper} ref={elegantRef}>
             <div className={classes.topBlock}>
                 <div className={classes.startBlock}>
                     <div className={classes.startBlock_item}>
