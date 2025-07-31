@@ -113,6 +113,17 @@
     transform: translateX(0) translateY(0) !important;
 }
 
+@media (max-width: 1600px) {
+    .presentation_left_title{
+        font-size: 46px
+    }
+    .presentation form label p {
+        font-size: 14px;
+    }
+    .presentation form {
+        padding-right: 50px;
+    }
+}
 
 @media (max-width: 768px) {
     .presentation {

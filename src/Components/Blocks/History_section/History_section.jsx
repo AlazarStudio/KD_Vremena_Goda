@@ -3,7 +3,7 @@ import classes from './History_section.module.css';
 
 function History_section({ children, shown, blockHeight, ...props }) {
     return (
-        <section className={classes.history} style={{ height: blockHeight * 1.65 }}>
+        <section className={classes.history} >
             <div className={classes.history_info_before}></div>
             <div className={classes.history_info}>
                 <p className={`${classes.nameLeft} ${shown ? classes.show : ""}`}

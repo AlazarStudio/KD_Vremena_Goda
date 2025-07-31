@@ -1,6 +1,5 @@
 import React from "react";
 import classes from './Consultation.module.css';
-import Footer from "../Footer/Footer";
 
 function Consultation({ children, consultation, elegantConsultationAnimRef, ...props }) {
     return (

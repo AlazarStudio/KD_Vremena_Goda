@@ -90,6 +90,19 @@
     transform: translateX(0) translateY(0) !important;
 }
 
+@media (max-width: 1600px) {
+    .consultation_item_left{
+        font-size: 46px;
+    }
+
+    .consultation_item_right form{
+        padding: 0;
+    }
+    .consultation_item_right form label p{
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .consultation_item{
         flex-direction: column;

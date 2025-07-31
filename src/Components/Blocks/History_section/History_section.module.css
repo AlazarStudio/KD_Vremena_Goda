@@ -106,10 +106,59 @@
     transform: translateY(0) !important;
 }
 
-.history_bottomImg1{
+.history_bottomImg1 {
     display: none;
 }
 
+@media (max-width: 1800px) {
+    .history_info_before {
+        background:
+            linear-gradient(181.7deg,
+                #86817C 1.44%,
+                #978579 50%,
+                rgba(120, 99, 84, 0) 65%);
+    }
+}
+
+@media (max-width: 1500px) {
+    .history_info_before {
+        background:
+            linear-gradient(181.7deg,
+                #86817C 1.44%,
+                #978579 57%,
+                rgba(120, 99, 84, 0) 65%);
+    }
+}
+
+@media (max-width: 1400px) {
+    .history_info_before {
+        background:
+            linear-gradient(181.7deg,
+                #86817C 1.44%,
+                #978579 55%,
+                rgba(120, 99, 84, 0) 65%);
+    }
+}
+
+@media (max-width: 1300px) {
+    .history_info_before {
+        background:
+            linear-gradient(181.7deg,
+                #86817C 1.44%,
+                #978579 60%,
+                rgba(120, 99, 84, 0) 65%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .history_info_before {
+        background:
+            linear-gradient(181.7deg,
+                #86817C 1.44%,
+                #978579 65%,
+                rgba(120, 99, 84, 0) 75%);
+    }
+}
 
 @media (max-width: 768px) {
     .history {
@@ -138,11 +187,11 @@
         object-fit: cover;
     } */
 
-    .history_bottomImg{
+    .history_bottomImg {
         display: none;
     }
 
-    .history_bottomImg1{
+    .history_bottomImg1 {
         display: block;
         width: 100%;
         height: 100%;

@@ -144,6 +144,34 @@
     display: none;
 }
 
+@media (max-width: 1600px) {
+    .moveTower {
+        height: 120%;
+        left: -100px;
+    }
+
+    .flatsHistory_name {
+        font-size: 46px;
+    }
+
+    .flatsHistory_name_second {
+        font-size: 46px;
+    }
+
+    .flatsHistory_statistic_block p:first-child {
+        font-size: 80px;
+    }
+
+    .flatsHistory_main {
+        gap: 80px;
+    }
+
+    .flatsHistory_statistic{
+        gap: 80px;
+    }
+}
+
+
 @media (max-width: 768px) {
     .flats {
         padding-top: 80px;
@@ -208,7 +236,7 @@
         font-size: 14px;
     }
 
-    .flatsHistory_statistic_block{
+    .flatsHistory_statistic_block {
         gap: 10px;
     }
 

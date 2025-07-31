@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-.forImg{
+.forImg {
     position: relative;
 }
 
@@ -131,6 +131,27 @@
     transform: translateX(0) translateY(0) rotate(180deg) !important;
 }
 
+@media (max-width: 1600px) {
+    .contactsLeft_img1{
+        height: 550px;
+    }
+
+    .contactsLeft_img2{
+        height: 550px;
+        left: 450px;
+    }
+
+    .contactsRight_bigText{
+        font-size: 46px;
+    }
+
+    .contactsLeft{
+        width: 55%;
+    }
+    .contactsRight{
+        width: 45%;
+    }
+}
 
 @media (max-width: 768px) {
     .contacts {

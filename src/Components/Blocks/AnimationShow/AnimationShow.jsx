@@ -53,7 +53,8 @@ function AnimationShow() {
     //     setTimeout(() => window.scrollTo(0, 0), 50);
     // }, []);
 
-
+    // console.log(window.innerHeight)
+    // console.log(window.innerWidth)
     const [showCollectionAnim, setShowCollectionAnim] = useState(false);
     const [showHistoryAnim, setShowHistoryAnim] = useState(false);
     const [showFlatsAnim, setShowFlatsAnim] = useState(false);
