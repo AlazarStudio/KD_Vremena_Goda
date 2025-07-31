@@ -82,7 +82,7 @@ function AnimationShow() {
         const unsubscribe = smoothRadius.onUpdate(r => {
             if (topRef.current) {
                 const centerX = window.innerWidth / 2;
-                const centerY = window.innerHeight / 2 - 50;
+                const centerY = window.innerHeight / 2;
 
                 const offsetX = r * 0.85;
                 const offsetY = r * 0.85;
