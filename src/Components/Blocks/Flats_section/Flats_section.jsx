@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, ...props }) {
     let images = [
         "Slider1 - img1.png",
         "Slider1 - img2.png",
@@ -12,13 +12,16 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
         "Slider1 - img6.png",
     ];
 
-    useEffect(() => {
-        if (!isMobile && scale) {
-            window.scrollTo({ top: 4220 });
-        }
-    }, [scale]);
+    const [movePos, setMovePos] = useState(0);
 
-    // console.log(scale)
+    useEffect(() => {
+        if (scrollPos >= flatSliderMovePosition && scrollPos <= flatSliderMovePosition + 800) {
+            window.scrollTo({ top: flatSliderMovePosition + 511 });
+            setMovePos(true)
+        } else {
+            setMovePos(false)
+        }
+    }, [scrollPos]);
 
     return (
         <>
@@ -36,7 +39,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                     height: mobileChange && '100%'
                 }}>
                     <div className={classes.forSlider} style={{
-                        transform: !isMobile ? (scale ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
+                        transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
                         height: mobileChange && '100%'
                     }} >
                         <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} />

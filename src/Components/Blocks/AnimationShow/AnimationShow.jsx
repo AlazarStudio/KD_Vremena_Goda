@@ -64,6 +64,8 @@ function AnimationShow() {
     const [showElegantContactsAnim, setShowElegantContactsAnim] = useState(false);
     const [showElegantConsultationAnim, setShowElegantConsultationAnim] = useState(false);
 
+    const [flatSliderMovePosition, setFlatSliderMovePosition] = useState(0);
+
     const topRef = useRef(null);
     const smoothRadius = useRef(createSmoothDriver(0, 0.12)).current;
 
@@ -253,6 +255,8 @@ function AnimationShow() {
             const progress = Math.min(Math.max((scrollY - scrollStart) / (scrollEnd - scrollStart), 0), 1);
             const maxOffset = window.innerHeight;
             smoothRectOffset2.set(progress * maxOffset);
+
+            setFlatSliderMovePosition(scrollEnd)
 
             if (progress >= 0.7) {
                 setShowFlatsAnim(true)
@@ -474,6 +478,7 @@ function AnimationShow() {
                         scale={true}
                         tower={showFlatsHistoryAnim}
                         flatsHistoryRef={flatsHistoryRef}
+                        flatSliderMovePosition={flatSliderMovePosition}
                     />
                 </div>
             </div>
