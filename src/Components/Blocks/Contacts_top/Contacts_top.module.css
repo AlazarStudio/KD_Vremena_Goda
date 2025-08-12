@@ -70,8 +70,19 @@
     left: 530px;
     bottom: 0px;
     height: 650px;
-    z-index: 9999;
-    transition: transform 0.5s ease-out;
+    opacity: 0;
+    transform: translateY(400px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contactsLeft_img2_move {
+    position: absolute;
+    left: 530px;
+    bottom: 0px;
+    height: 650px;
+    opacity: 0;
+    transform: translateY(400px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .contactsRight_miniText {
@@ -133,23 +144,24 @@
 }
 
 @media (max-width: 1600px) {
-    .contactsLeft_img1{
+    .contactsLeft_img1 {
         height: 550px;
     }
 
-    .contactsLeft_img2{
+    .contactsLeft_img2 {
         height: 550px;
         left: 450px;
     }
 
-    .contactsRight_bigText{
+    .contactsRight_bigText {
         font-size: 46px;
     }
 
-    .contactsLeft{
+    .contactsLeft {
         width: 55%;
     }
-    .contactsRight{
+
+    .contactsRight {
         width: 45%;
     }
 }

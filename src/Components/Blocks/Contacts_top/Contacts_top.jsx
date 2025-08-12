@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import classes from './Contacts.module.css';
+import classes from './Contacts_top.module.css';
 
-function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, handleContactsClick, ...props }) {
+function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef, handleContactsClick, ...props }) {
     const imgRef = useRef(null);
     const sectionRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
@@ -36,7 +36,7 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
         const scrollSpeed = 3; // чем больше — тем быстрее "выпрыгивает"
         const offset = scrollSpeed * progress * (isMobile ? 60 : 100);
 
-        imgRef.current.style.transform =  `translateY(${offset - 100}px)`;
+        imgRef.current.style.transform = !contactShow ? `translateY(${offset - 100}px)` : `translateY(0px)`;
     }, [scrollY, contactShow]);
 
 
@@ -90,6 +90,12 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
                     style={{ transitionDelay: "0.4s" }}
                 />
 
+                <img
+                    className={`${classes.contactsLeft_img2} ${contactShow ? classes.show : ""}`}
+                    src="/contacts2.png" alt=""
+                    style={{ transitionDelay: "0.4s" }}
+                />
+
                 <div className={classes.contactsRight}>
                     <img src="/contacts_logo_text.png" alt="" className={`${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.4s" }} />
@@ -124,4 +130,4 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
     );
 }
 
-export default Contacts;
+export default Contacts_top;

@@ -377,11 +377,6 @@ function AnimationShow({ isMobile }) {
         };
     }, [isElegantUnpinned]);
 
-
-
-
-
-
     const flatsHistoryRef = useRef(null);
     const flatsHistoryVisible = useIsVisible(flatsHistoryRef);
 
@@ -442,8 +437,6 @@ function AnimationShow({ isMobile }) {
     }, [isElegantVisible, isScrollStopped]);
 
 
-
-
     const elegantSectionRef = useRef(null);
     const [elegantSectionScroll, setElegantSectionScroll] = useState(0);
 
@@ -457,7 +450,8 @@ function AnimationShow({ isMobile }) {
     return (
         <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '1500vh'}` }}>
             <div className={classes.bottom} style={{
-                zIndex: 1
+                zIndex: 1,
+                pointerEvents: scrollY > 0 ? 'none' : 'auto',
             }}>
                 <Header />
                 <Main_section />
