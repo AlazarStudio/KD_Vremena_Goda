@@ -41,7 +41,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
                 <p className={`${classes.flatsText} ${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.6s" }}>
-                    Холл, где начинается вечер
+                    От первого шага — к вашему пространству
                 </p>
 
                 <section className={`${classes.flatsSlider}`} style={{
