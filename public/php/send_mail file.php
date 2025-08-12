@@ -1,10 +1,12 @@
 <?php
-$to = "alimdzhatdoev@mail.ru"; // Email получателя
-$subject = "Заголовок письма"; // Тема письма
-$message = "Текст сообщения"; // Основное сообщение
+$to = $_POST['email']; 
+$fio = $_POST['fio'];
+
+$subject = 'Откройте для себя все грани проекта «Времена Года»'; // Тема письма
+$message = `Здравствуйте $fio, присылаем Вам подробную презентацию проекта "Времена Года"`; // Основное сообщение
 
 // Путь к файлу
-$file = "../about_title.webp";
+$file = "../Catalog_vremena_goda.pdf";
 
 // Получение содержимого файла
 $file_content = chunk_split(base64_encode(file_get_contents($file)));
@@ -33,8 +35,8 @@ $body .= "--$boundary--";
 
 // Отправка письма
 if (mail($to, $subject, $body, $headers)) {
-    echo "Письмо отправлено!";
+    echo "Success";
 } else {
-    echo "Ошибка при отправке письма.";
+    echo "error";
 }
 ?>

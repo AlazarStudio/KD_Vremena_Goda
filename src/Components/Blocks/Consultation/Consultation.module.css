@@ -90,10 +90,15 @@
     background-color: #978579;
 }
 
+.consultation_item_right form button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .consultation_item_right a {
     color: #000;
     font-weight: 400;
-    font-size: 16px;
     line-height: 150%;
     letter-spacing: 0%;
     border-bottom: 1px solid #000;
