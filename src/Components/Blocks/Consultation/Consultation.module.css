@@ -82,7 +82,21 @@
     font-size: 16px;
     line-height: 150%;
     letter-spacing: 0%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
 
+.consultation_item_right form button:hover{
+    background-color: #978579;
+}
+
+.consultation_item_right a {
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    border-bottom: 1px solid #000;
 }
 
 .show {
