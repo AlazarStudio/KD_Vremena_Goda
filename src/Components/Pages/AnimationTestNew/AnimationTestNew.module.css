@@ -1,13 +1,102 @@
+.wrapper {
+    margin: 0;
+    height: 1500vh;
+}
+
+.bottom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    /* начальный мусор, потом заменяется JS */
+    transition: clip-path 0.4s linear;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+
+.history {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    pointer-events: none;
+    transition: clip-path 0.3s linear;
+    transform: translateY(0);
+    /* обязательно */
+    will-change: transform;
+}
+
+.history>div {
+    will-change: transform;
+}
+
+.flats {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 4;
+    /* pointer-events: none; */
+    transition: clip-path 0.3s linear;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.flats>div {
+    will-change: transform;
+}
+
+.elegant {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    /* pointer-events: none; */
+    transition: clip-path 0.3s linear;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.elegant>div {
+    will-change: transform;
+}
+
+
+
 .animWrapper {
     position: relative;
     height: 4700vh;
 }
 
-.wrapper {
+/* .wrapper {
     position: relative;
     height: 100%;
     overflow-x: hidden;
-}
+} */
 
 .background {
     position: fixed;

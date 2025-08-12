@@ -12,6 +12,7 @@ import Consultation from "../Consultation/Consultation";
 import Footer from "../Footer/Footer";
 import { useIsVisible } from "../../../useIsVisible";
 import { useScrollStop } from "../../../useScrollStop";
+import Elegant_section_mobile from "../Elegant_section_mobile/Elegant_section_mobile";
 
 function createSmoothDriver(initial = 0, speed = 0.12) {
     let current = initial;
@@ -47,7 +48,7 @@ function createSmoothDriver(initial = 0, speed = 0.12) {
     };
 }
 
-function AnimationShow() {
+function AnimationShow({ isMobile }) {
     useEffect(() => {
         window.scrollTo(0, 0);
         requestAnimationFrame(() => window.scrollTo(0, 0));
@@ -209,7 +210,7 @@ function AnimationShow() {
         });
 
         const unsubTransform = smoothHistoryOffset.onUpdate(offset => {
-            if (historyContentRef.current) {
+            if (!isMobile && historyContentRef.current) {
                 historyContentRef.current.style.transform = `translateY(-${offset}px)`;
             }
         });
@@ -246,7 +247,7 @@ function AnimationShow() {
 
     useEffect(() => {
         const onScroll = () => {
-            const scrollStart = 4000;
+            const scrollStart = isMobile ? 3200 : 4000;
             const scrollEnd = scrollStart + window.innerHeight;
             const scrollY = window.scrollY;
 
@@ -320,7 +321,7 @@ function AnimationShow() {
     const [isElegantUnpinned, setIsElegantUnpinned] = useState(false);
 
     useEffect(() => {
-        const scrollStart = 7200;
+        const scrollStart = isMobile ? 5000 : 7200;
         const scrollEnd = scrollStart + window.innerHeight;
 
         const onScroll = () => {
@@ -443,8 +444,18 @@ function AnimationShow() {
 
 
 
+    const elegantSectionRef = useRef(null);
+    const [elegantSectionScroll, setElegantSectionScroll] = useState(0);
+
+    useEffect(() => {
+        if (elegantSectionRef.current) {
+            const blockTop = elegantSectionRef.current.offsetTop;
+            setElegantSectionScroll(blockTop);
+        }
+    }, []);
+
     return (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '1500vh'}` }}>
             <div className={classes.bottom} style={{
                 zIndex: 1
             }}>
@@ -477,6 +488,7 @@ function AnimationShow() {
                         tower={showFlatsHistoryAnim}
                         flatsHistoryRef={flatsHistoryRef}
                         flatSliderMovePosition={flatSliderMovePosition}
+                        isMobile={isMobile}
                     />
                 </div>
             </div>
@@ -485,9 +497,15 @@ function AnimationShow() {
                 zIndex: hasScrolled ? 5 : 0
             }}>
                 <div ref={elegantContentRef}>
-                    <Elegant_section shown={true} elegantRef={elegantRef} />
+                    {isMobile
+                        ?
+                        <Elegant_section_mobile shown={true} isMobile={isMobile} targetScroll={elegantSectionScroll} />
+                        :
+                        <Elegant_section shown={true} elegantRef={elegantRef} />
+                    }
+
                     <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} />
-                    <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef} />
+                    <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef} isMobile={isMobile} />
                     <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef} />
                     <Footer />
                 </div>

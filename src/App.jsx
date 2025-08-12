@@ -33,8 +33,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<AnimationShow />} /> */}
-          <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile} /> : <AnimationShow />} />
+          <Route index element={<AnimationShow isMobile={isMobile} />} />
+          {/* <Route index element={isMobile ? <AnimationTestNew isMobile={isMobile} /> : <AnimationShow isMobile={isMobile}/>} /> */}
           {/* <Route path="animation" element={<AnimationShow />} /> */}
           <Route path="*" element={<Non_Found_Page />} />
         </Route>

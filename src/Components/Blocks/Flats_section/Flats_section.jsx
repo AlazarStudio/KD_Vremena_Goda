@@ -4,6 +4,12 @@ import Slider from "../../Standart/Slider/Slider";
 
 function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, ...props }) {
     let images = [
+        // "Slider1 - img10.jpg",
+        // "Slider1 - img11.jpg",
+        // "Slider1 - img12.jpg",
+        // "Slider1 - img13.jpg",
+        // "Slider1 - img14.jpg",
+        // "Slider1 - img15.jpg",
         "Slider1 - img1.png",
         "Slider1 - img2.png",
         "Slider1 - img3.png",
@@ -15,7 +21,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
     const [movePos, setMovePos] = useState(0);
 
     useEffect(() => {
-        if (scrollPos >= flatSliderMovePosition && scrollPos <= flatSliderMovePosition + 800) {
+        if (scrollPos >= flatSliderMovePosition && scrollPos <= flatSliderMovePosition + 800 && !isMobile) {
             window.scrollTo({ top: flatSliderMovePosition + 511 });
             setMovePos(true)
         } else {

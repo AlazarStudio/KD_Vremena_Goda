@@ -162,7 +162,7 @@
 
 @media (max-width: 768px) {
     .history {
-        height: 1200px;
+        height: 100vh;
     }
 
     .history_info {

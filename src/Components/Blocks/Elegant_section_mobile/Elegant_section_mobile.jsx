@@ -51,7 +51,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
 
     const waitForScrollAndReveal = () => {
         let scrollPosition = isMobile ?
-            (targetScroll ? targetScroll : 0)
+            (targetScroll ? targetScroll : 6000)
             :
             34000
 
