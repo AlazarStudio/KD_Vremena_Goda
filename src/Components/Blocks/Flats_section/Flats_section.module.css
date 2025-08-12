@@ -144,6 +144,34 @@
     display: none;
 }
 
+.flatsSlider_mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1; 
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.9) 100%);
+    pointer-events: none;
+}
+
+/* Когда shown=true */
+.flatsSlider_mask.showMask {
+    animation: blinkAndHide 4s ease-in-out forwards;
+}
+
+/* Анимация мигания + исчезновения */
+@keyframes blinkAndHide {
+    0%   { opacity: 0; }
+    25% { opacity: 1; }
+    50% { opacity: 0; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 @media (max-width: 1600px) {
     .moveTower {
         height: 120%;
@@ -166,7 +194,7 @@
         gap: 80px;
     }
 
-    .flatsHistory_statistic{
+    .flatsHistory_statistic {
         gap: 80px;
     }
 }
@@ -245,5 +273,9 @@
         height: 50%;
         left: -15%;
         transform: translateY(100%);
+    }
+
+    .flatsSlider_mask {
+        display: none;
     }
 }

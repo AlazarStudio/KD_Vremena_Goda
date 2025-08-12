@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Slider.module.css';
+import { tr } from "framer-motion/client";
 
-function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale, handleHide, isMobile }) {
+function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMouse = false, shown, scale, handleHide, isMobile, moveMask = false, isSliderClicked, setIsSliderClicked }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
@@ -13,11 +14,13 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
 
     const prevSlide = () => {
         setCurrentIndex((prev) => Math.max(prev - 1, 0));
+        setIsSliderClicked(true)
         // console.log(currentIndex)
     };
 
     const nextSlide = () => {
         setCurrentIndex((prev) => Math.min(prev + 1, images.length - itemsPerSlide));
+        setIsSliderClicked(true)
     };
 
 
@@ -56,6 +59,18 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
         return () => cancelAnimationFrame(rafRef.current);
     }, [mousePos, followMouse]);
 
+    const [delayedMoveMask, setDelayedMoveMask] = useState(false);
+
+    useEffect(() => {
+        if (moveMask) {
+            const timer = setTimeout(() => {
+                setDelayedMoveMask(true);
+            }, 5000);
+            return () => clearTimeout(timer);
+        } else {
+            setDelayedMoveMask(false); // сброс, если moveMask=false
+        }
+    }, [moveMask]);
 
     return (
         <div
@@ -67,10 +82,13 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             }}
         >
             <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : isMobile ? "100%" : '100dvh' }}>
-                <div className={classes.slider}>
+                <div className={`${classes.slider} ${(delayedMoveMask && !isSliderClicked) ? classes.moveMask : ""}`}>
                     <div
-                        className={classes.slideTrack}
-                        style={{ transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`, paddingTop: !isMobile && arrowsBottom && '20px' }}
+                        className={`${classes.slideTrack}`}
+                        style={{
+                            transform: `translateX(-${(currentIndex * 100) / itemsPerSlide}%)`,
+                            paddingTop: !isMobile && arrowsBottom && '20px',
+                        }}
                     >
                         {Array.from({ length: images.length - itemsPerSlide + 1 }, (_, slideIndex) => (
                             <div className={classes.slideGroup} key={slideIndex}>

@@ -32,12 +32,12 @@
   right: 120px;
 }
 
-.prevButton img{
+.prevButton img {
   height: 60%;
   /* transform: translate(0, 35%); */
 }
 
-.nextButton img{
+.nextButton img {
   height: 60%;
   /* transform: translate(0, 35%); */
 }
@@ -117,4 +117,15 @@
 
 .mobileArrows {
   display: none;
+}
+
+
+.moveMask {
+  animation: blinkAndMove 1.5s ease-in-out forwards;
+}
+
+@keyframes blinkAndMove {
+    0%  { transform: translateX(0%); }
+    50% { transform: translateX(-5%);}
+    100% { transform: translateX(0%); }
 }

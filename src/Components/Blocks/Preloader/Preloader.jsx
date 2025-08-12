@@ -9,8 +9,8 @@ function Preloader() {
     function handleLoad() {
       // запускаем анимацию затухания
       setFadeOut(true);
-      // через 500мс скрываем прелоадер совсем
-      setTimeout(() => setLoading(false), 500);
+      // через 1000мс скрываем прелоадер совсем
+      setTimeout(() => setLoading(false), 1000);
     }
 
     if (document.readyState === "complete") {
@@ -26,10 +26,20 @@ function Preloader() {
 
   return (
     <div
-      className={`${classes.preloader} ${
-        fadeOut ? classes.fadeOut : ""
-      }`}
+      className={`${classes.preloader} ${fadeOut ? classes.fadeOut : ""
+        }`}
     >
+      <video
+        className={classes.bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        poster="/preloader_poster.png"
+      >
+        <source src="/Animation_Emunarq-2.webm" type="video/webm" />
+      </video>
       <div className={classes.spinner}>
         {/* Наш четырёхлистник как SVG */}
         <img src="/Preloader.png" alt="" />

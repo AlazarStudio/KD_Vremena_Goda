@@ -48,14 +48,12 @@ function createSmoothDriver(initial = 0, speed = 0.12) {
 }
 
 function AnimationShow() {
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    //     requestAnimationFrame(() => window.scrollTo(0, 0));
-    //     setTimeout(() => window.scrollTo(0, 0), 50);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+        setTimeout(() => window.scrollTo(0, 0), 50);
+    }, []);
 
-    // console.log(window.innerHeight)
-    // console.log(window.innerWidth)
     const [showCollectionAnim, setShowCollectionAnim] = useState(false);
     const [showHistoryAnim, setShowHistoryAnim] = useState(false);
     const [showFlatsAnim, setShowFlatsAnim] = useState(false);

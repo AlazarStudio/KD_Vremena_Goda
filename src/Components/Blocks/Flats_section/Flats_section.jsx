@@ -23,6 +23,9 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
         }
     }, [scrollPos]);
 
+    const [isSliderClicked, setIsSliderClicked] = useState(false);
+
+
     return (
         <>
             <section
@@ -38,11 +41,15 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 <section className={`${classes.flatsSlider}`} style={{
                     height: mobileChange && '100%'
                 }}>
+                    <div
+                        className={`${classes.flatsSlider_mask} ${(movePos && !isSliderClicked) ? classes.showMask : ""}`}
+                        style={{ transitionDelay: "1.6s" }}
+                    ></div>
                     <div className={classes.forSlider} style={{
                         transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
                         height: mobileChange && '100%'
                     }} >
-                        <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} />
+                        <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} moveMask={movePos} isSliderClicked={isSliderClicked} setIsSliderClicked={setIsSliderClicked} />
                     </div>
                 </section>
             </section>
