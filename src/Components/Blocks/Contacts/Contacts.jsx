@@ -48,26 +48,6 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
                 src="/contacts2.png" alt=""
             />
 
-            {contactShow &&
-                <img
-                    onClick={() => {
-                        handleContactsClick()
-                    }}
-
-                    style={{
-                        position: 'absolute',
-                        zIndex: 1000,
-                        top: '20px',
-                        right: '20px',
-                        width: '50px',
-                        height: '50px',
-                        cursor: 'pointer',
-                    }}
-                    src="/circle-with-x.png"
-                    alt=""
-                />
-            }
-
             <section className={classes.contacts} ref={sectionRef}>
                 <div className={classes.contactsLeft}>
                     <div className={classes.contactsLeftItem}

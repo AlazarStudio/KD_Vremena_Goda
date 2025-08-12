@@ -47,26 +47,23 @@ function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef,
                 className={`${classes.contactsLeft_img2}`}
                 src="/contacts2.png" alt=""
             />
+            <img
+                onClick={() => {
+                    handleContactsClick()
+                }}
 
-            {contactShow &&
-                <img
-                    onClick={() => {
-                        handleContactsClick()
-                    }}
-
-                    style={{
-                        position: 'absolute',
-                        zIndex: 1000,
-                        top: '20px',
-                        right: '20px',
-                        width: '50px',
-                        height: '50px',
-                        cursor: 'pointer',
-                    }}
-                    src="/circle-with-x.png"
-                    alt=""
-                />
-            }
+                style={{
+                    position: 'absolute',
+                    zIndex: 1000,
+                    top: '20px',
+                    right: '20px',
+                    width: '50px',
+                    height: '50px',
+                    cursor: 'pointer',
+                }}
+                src="/circle-with-x.png"
+                alt=""
+            />
 
             <section className={classes.contacts} ref={sectionRef}>
                 <div className={classes.contactsLeft}>
