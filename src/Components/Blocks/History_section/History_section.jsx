@@ -36,8 +36,8 @@ function History_section({ children, shown, blockHeight, ...props }) {
                     </p>
                 </div>
             </div>
-            <img src="/history_background.png" alt="" className={classes.history_bottomImg} />
-            <img src="/history_background_mobile.png" alt="" className={classes.history_bottomImg1} />
+            <img src="/history_background.webp" alt="" className={classes.history_bottomImg} />
+            <img src="/history_background_mobile.webp" alt="" className={classes.history_bottomImg1} />
         </section>
     );
 }

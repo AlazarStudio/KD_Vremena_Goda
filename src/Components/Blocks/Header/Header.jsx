@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import classes from './Header.module.css';
 import Contacts_top from "../Contacts_top/Contacts_top";
 
-function Header({ children, ...props }) {
+function Header({ children, isMobile, ...props }) {
     const [showContacts, setShowContacts] = useState(false);
 
     function handleContactsClick() {
-        setShowContacts(!showContacts);        
+        setShowContacts(!showContacts);
         document.body.style.overflow = showContacts ? 'auto' : 'hidden';
     }
     return (
         <>
             <header className={classes.header}>
                 <a href="tel:+79380357788" style={{ fontFamily: 'Gotham 400' }}>+7 (938) 035 77 88</a>
-                <img src="/logo.png" alt="" />
+                <img src="/logo.webp" alt="" />
                 <a onClick={handleContactsClick}>Контакты</a>
             </header>
 
-            <div style={{
+            {!isMobile && <div style={{
                 position: 'fixed',
                 top: 0,
                 right: 0,
@@ -28,11 +28,12 @@ function Header({ children, ...props }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transform: `translateY(${showContacts ? '0' : '100%'})`,
+                transform: `translateY(${showContacts ? '0' : '150%'})`,
                 transition: 'transform 0.6s ease-in-out'
             }}>
-                <Contacts_top contactShow={showContacts} handleContactsClick={handleContactsClick}/>
+                <Contacts_top contactShow={showContacts} handleContactsClick={handleContactsClick} />
             </div>
+            }
         </>
     );
 }

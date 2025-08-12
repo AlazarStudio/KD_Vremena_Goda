@@ -36,13 +36,13 @@ function Preloader() {
         muted
         playsInline
         preload="auto"
-        poster="/preloader_poster.png"
+        poster="/preloader_poster.webp"
       >
         <source src="/Animation_Emunarq-2.webm" type="video/webm" />
       </video>
       <div className={classes.spinner}>
         {/* Наш четырёхлистник как SVG */}
-        <img src="/Preloader.png" alt="" />
+        <img src="/Preloader.webp" alt="" />
       </div>
     </div>
   );

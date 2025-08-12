@@ -4,12 +4,12 @@ import Slider from "../../Standart/Slider/Slider";
 
 function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, ...props }) {
     let images = [
-        "Slider1 - img1.png",
-        "Slider1 - img2.png",
-        "Slider1 - img3.png",
-        "Slider1 - img4.png",
-        "Slider1 - img5.png",
-        "Slider1 - img6.png",
+        "Slider1 - img1.webp",
+        "Slider1 - img2.webp",
+        "Slider1 - img3.webp",
+        "Slider1 - img4.webp",
+        "Slider1 - img5.webp",
+        "Slider1 - img6.webp",
     ];
 
     const [movePos, setMovePos] = useState(0);
@@ -30,7 +30,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
         <>
             <section
                 className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
-                <img src="/flats_logo.png" alt="" className={`${shown ? classes.show : ""}`}
+                <img src="/flats_logo.webp" alt="" className={`${shown ? classes.show : ""}`}
                     style={{ transitionDelay: "0.4s" }} />
 
                 <p className={`${classes.flatsText} ${shown ? classes.show : ""}`}
@@ -56,7 +56,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
             <div style={{ backgroundColor: '#fff' }}>
                 <section className={classes.flatsHistory} ref={flatsHistoryRef}>
-                    <img src="/tower.png" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
+                    <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
 
                     <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
                         Квартиры, которые становятся

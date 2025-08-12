@@ -8,10 +8,10 @@ function Main_section({ children, mobileChange = false, ...props }) {
         }}>
             <div className={classes.animateImg} >
                 <p>
-                    <img src="/main_name.png" alt="" />
+                    <img src="/main_name.webp" alt="" />
                 </p>
                 <p>
-                    <img src="/main_name_bottom.png" alt="" />
+                    <img src="/main_name_bottom.webp" alt="" />
                 </p>
             </div>
         </section>

@@ -115,10 +115,10 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             {!followMouse && !arrowsBottom && (
                 <>
                     <div className={classes.prevButton} onClick={prevSlide}>
-                        <img src="/ArrowLeft.png" alt="" />
+                        <img src="/ArrowLeft.webp" alt="" />
                     </div>
                     <div className={classes.nextButton} onClick={nextSlide}>
-                        <img src="/ArrowRight.png" alt="" />
+                        <img src="/ArrowRight.webp" alt="" />
                     </div>
                 </>
             )}
@@ -135,7 +135,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                                 opacity: `${currentIndex <= 0 ? 0.2 : 1}`
                             }}
                         >
-                            <img src="/ArrowLeft.png" alt="left" />
+                            <img src="/ArrowLeft.webp" alt="left" />
                         </div>
                     )}
                     {showRight && (
@@ -148,7 +148,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                                 opacity: `${currentIndex == totalSlides - 1 ? 0.2 : 1}`
                             }}
                         >
-                            <img src="/ArrowRight.png" alt="right" />
+                            <img src="/ArrowRight.webp" alt="right" />
                         </div>
                     )}
                 </>
@@ -167,7 +167,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             height: isMobile && '15dvh',
                         }}
                     >
-                        <img src="/ArrowLeftBottom.png" alt=""
+                        <img src="/ArrowLeftBottom.webp" alt=""
                             style={{
                                 transform: isMobile && 'translate(0, 35%)'
                             }} />
@@ -183,7 +183,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             height: isMobile && '15dvh',
                         }}
                     >
-                        <img src="/ArrowRightBottom.png" alt=""
+                        <img src="/ArrowRightBottom.webp" alt=""
                             style={{
                                 transform: isMobile && 'translate(0, 35%)'
                             }} />

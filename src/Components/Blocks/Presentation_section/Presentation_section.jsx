@@ -108,9 +108,9 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, ...p
             </div>
 
             <div className={classes.presentation_right}>
-                <img src="/circle.png" alt="" className={classes.presCircle} />
+                <img src="/circle.webp" alt="" className={classes.presCircle} />
                 <img
-                    src="/presentation_img.png"
+                    src="/presentation_img.webp"
                     alt=""
                     className={`${classes.presImg} ${presShow ? classes.showRight : ""}`}
                     style={{ transitionDelay: "0.4s" }}

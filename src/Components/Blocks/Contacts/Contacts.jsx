@@ -45,7 +45,7 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
             <img
                 ref={imgRef}
                 className={`${classes.contactsLeft_img2}`}
-                src="/contacts2.png" alt=""
+                src="/contacts2.webp" alt=""
             />
 
             <section className={classes.contacts} ref={sectionRef}>
@@ -66,12 +66,12 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
 
                 <img
                     className={`${classes.contactsLeft_img1} ${contactShow ? classes.show : ""}`}
-                    src="/contacts1.png" alt=""
+                    src="/contacts1.webp" alt=""
                     style={{ transitionDelay: "0.4s" }}
                 />
 
                 <div className={classes.contactsRight}>
-                    <img src="/contacts_logo_text.png" alt="" className={`${contactShow ? classes.show : ""}`}
+                    <img src="/contacts_logo_text.webp" alt="" className={`${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.4s" }} />
                     <p className={`${classes.contactsRight_miniText} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.5s" }}>

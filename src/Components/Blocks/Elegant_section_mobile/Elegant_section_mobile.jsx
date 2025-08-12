@@ -4,14 +4,14 @@ import Slider from "../../Standart/Slider/Slider";
 
 function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
     let images = [
-        "Slider2 - img1.png",
-        "Slider2 - img2.png",
-        "Slider2 - img3.png",
-        "Slider2 - img4.png",
-        "Slider2 - img5.png",
-        "Slider2 - img6.png",
-        "Slider2 - img7.png",
-        "Slider2 - img8.png",
+        "Slider2 - img1.webp",
+        "Slider2 - img2.webp",
+        "Slider2 - img3.webp",
+        "Slider2 - img4.webp",
+        "Slider2 - img5.webp",
+        "Slider2 - img6.webp",
+        "Slider2 - img7.webp",
+        "Slider2 - img8.webp",
     ];
 
     const [radius, setRadius] = useState(0);
@@ -134,7 +134,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
                 }}
             >
                 <div className={classes.exitButon} onClick={handleHide}>
-                    <img src="/close.png" alt="" />
+                    <img src="/close.webp" alt="" />
                 </div>
                 <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
 
@@ -144,7 +144,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
             <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
                 <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
                     <img
-                        src="/ArrowRightBottom.png"
+                        src="/ArrowRightBottom.webp"
                         alt=""
                         className={`${classes.floatingButtonImg}`}
                         ref={buttonRef}

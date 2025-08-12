@@ -44,7 +44,7 @@ function InstallButton({ children, ...props }) {
 
   return (
     <button onClick={handleInstallClick} style={buttonStyle}>
-      <img src="/download.png" alt="" style={buttonStyleImg} />
+      <img src="/download.webp" alt="" style={buttonStyleImg} />
     </button>
   );
 }

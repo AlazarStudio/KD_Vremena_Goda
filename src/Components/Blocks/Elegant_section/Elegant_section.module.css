@@ -8,7 +8,7 @@
 .startBlock {
     width: 100%;
     height: 100vh;
-    background: url('/elegantStartAnimation.png');
+    background: url('/elegantStartAnimation.webp');
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -68,7 +68,7 @@
 .topBlock {
     position: relative;
     z-index: 1;
-    background: url("/history_background.png");
+    background: url("/history_background.webp");
     height: 100vh;
     color: white;
     display: flex;

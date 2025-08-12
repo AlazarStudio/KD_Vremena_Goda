@@ -453,7 +453,7 @@ function AnimationShow({ isMobile }) {
                 zIndex: 1,
                 pointerEvents: scrollY > 0 ? 'none' : 'auto',
             }}>
-                <Header />
+                <Header isMobile={isMobile}/>
                 <Main_section />
             </div>
 
