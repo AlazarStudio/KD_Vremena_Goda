@@ -125,7 +125,7 @@
         background:
             linear-gradient(181.7deg,
                 #86817C 1.44%,
-                #978579 57%,
+                #978579 55%,
                 rgba(120, 99, 84, 0) 65%);
     }
 }
@@ -146,7 +146,7 @@
             linear-gradient(181.7deg,
                 #86817C 1.44%,
                 #978579 60%,
-                rgba(120, 99, 84, 0) 65%);
+                rgba(120, 99, 84, 0) 70%);
     }
 }
 
@@ -155,7 +155,7 @@
         background:
             linear-gradient(181.7deg,
                 #86817C 1.44%,
-                #978579 65%,
+                #978579 50%,
                 rgba(120, 99, 84, 0) 75%);
     }
 }
@@ -166,7 +166,7 @@
     }
 
     .history_info {
-        padding-top: 80px;
+        padding-top: 50px;
         width: 100%;
     }
 
