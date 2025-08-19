@@ -299,7 +299,7 @@
 
     @media (max-width: 400px) {
         .flatsHistory {
-            padding: 60px 20px 20px 20px;
+            padding: 40px 20px 20px 20px;
             background-position: right;
             align-items: center;
             gap: 15px;
@@ -315,6 +315,10 @@
 
         .flatsHistory_statistic {
             gap: 20px;
+        }
+
+        .flatsHistory_statistic_block p:first-child {
+            font-size: 54px;
         }
     }
 }
