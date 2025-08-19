@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
+import MosaicReveal from "../../../MosaicReveal";
 
 function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, ...props }) {
+    const sectionRef = useRef(null);
+
     let images = [
         "Slider1 - img1.webp",
         "Slider1 - img2.webp",
@@ -25,7 +28,6 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
     const [isSliderClicked, setIsSliderClicked] = useState(false);
 
-
     return (
         <>
             <section
@@ -46,7 +48,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                         style={{ transitionDelay: "1.6s" }}
                     ></div>
                     <div className={classes.forSlider} style={{
-                        transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
+                        transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(0.7) translateY(0px) '),
                         height: mobileChange && '100%'
                     }} >
                         <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} moveMask={movePos} isSliderClicked={isSliderClicked} setIsSliderClicked={setIsSliderClicked} />
@@ -54,63 +56,67 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 </section>
             </section>
 
-            <div style={{ backgroundColor: '#fff' }}>
-                <section className={classes.flatsHistory} ref={flatsHistoryRef}>
-                    <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
+            <div style={{ backgroundColor: '#fff', paddingBottom: '60px', overflow: isMobile && 'hidden', position: "relative" }}>
 
-                    <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
-                        Квартиры, которые становятся
-                    </p>
-                    <p className={`${classes.flatsHistory_name_second} ${tower ? classes.show : ""}`}>
-                        частью  вашей истории
-                    </p>
+                {isMobile && <MosaicReveal targetRef={sectionRef}/>}
 
-                    <p className={`${classes.flatsHistory_name_mobile} ${tower ? classes.show : ""}`}>
-                        Квартиры, которые становятся частью  вашей истории
-                    </p>
+                <div ref={sectionRef}>
+                    <section className={classes.flatsHistory} ref={flatsHistoryRef}>
+                        <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
 
-                    <div className={classes.flatsHistory_main}>
-                        <div className={classes.flatsHistory_statistic}>
-                            <div className={classes.flatsHistory_statistic_block}>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.4s" }}>12</p>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.5s" }}>
-                                    ЭТАЖЕЙ
-                                </p>
+                        <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
+                            Квартиры, которые становятся
+                        </p>
+                        <p className={`${classes.flatsHistory_name_second} ${tower ? classes.show : ""}`}>
+                            частью  вашей истории
+                        </p>
+
+                        <p className={`${classes.flatsHistory_name_mobile} ${tower ? classes.show : ""}`}>
+                            Квартиры, которые становятся частью  вашей истории
+                        </p>
+
+                        <div className={classes.flatsHistory_main}>
+                            <div className={classes.flatsHistory_statistic}>
+                                <div className={classes.flatsHistory_statistic_block}>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.4s" }}>12</p>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.5s" }}>
+                                        ЭТАЖЕЙ
+                                    </p>
+                                </div>
+                                <div className={classes.flatsHistory_statistic_block}>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.5s" }}>4</p>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.6s" }}>
+                                        ПОДЪЕЗДА
+                                    </p>
+                                </div>
+                                <div className={classes.flatsHistory_statistic_block}>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.6s" }}>190</p>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.7s" }}>КВАРТИР</p>
+                                </div>
                             </div>
-                            <div className={classes.flatsHistory_statistic_block}>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.5s" }}>4</p>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.6s" }}>
-                                    ПОДЪЕЗДА
-                                </p>
-                            </div>
-                            <div className={classes.flatsHistory_statistic_block}>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.6s" }}>190</p>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.7s" }}>КВАРТИР</p>
+                            <div className={classes.flatsHistory_statistic}>
+                                <div className={classes.flatsHistory_statistic_block}>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.7s" }}>64</p>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.8s" }}>подземный <br /> паркинг</p>
+                                </div>
+                                <div className={classes.flatsHistory_statistic_block}>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.8s" }}>86</p>
+                                    <p className={`${tower ? classes.show : ""}`}
+                                        style={{ transitionDelay: "0.9s" }}>НАземный <br /> паркинг</p>
+                                </div>
                             </div>
                         </div>
-                        <div className={classes.flatsHistory_statistic}>
-                            <div className={classes.flatsHistory_statistic_block}>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.7s" }}>64</p>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.8s" }}>подземный <br /> паркинг</p>
-                            </div>
-                            <div className={classes.flatsHistory_statistic_block}>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.8s" }}>86</p>
-                                <p className={`${tower ? classes.show : ""}`}
-                                    style={{ transitionDelay: "0.9s" }}>НАземный <br /> паркинг</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
+                    </section>
+                </div>
             </div>
         </>
     );

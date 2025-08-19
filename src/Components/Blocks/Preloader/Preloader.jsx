@@ -2,33 +2,21 @@ import React, { useState, useEffect } from "react";
 import classes from "./Preloader.module.css";
 
 function Preloader() {
-  const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
-    function handleLoad() {
-      // запускаем анимацию затухания
-      setFadeOut(true);
-      // через 1000мс скрываем прелоадер совсем
-      setTimeout(() => setLoading(false), 1000);
-    }
+    // через 5 секунд скрываем прелоадер
+    const timer = setTimeout(() => {
+      setShowPreloader(false);
+    }, 5000);
 
-    if (document.readyState === "complete") {
-      // если уже загружено
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
-  if (!loading) return null;
+  if (!showPreloader) return null; // убираем полностью
 
   return (
-    <div
-      className={`${classes.preloader} ${fadeOut ? classes.fadeOut : ""
-        }`}
-    >
+    <div className={classes.preloader}>
       <video
         className={classes.bgVideo}
         autoPlay
@@ -41,7 +29,6 @@ function Preloader() {
         <source src="/Animation_Emunarq-2.webm" type="video/webm" />
       </video>
       <div className={classes.spinner}>
-        {/* Наш четырёхлистник как SVG */}
         <img src="/Preloader.webp" alt="" />
       </div>
     </div>

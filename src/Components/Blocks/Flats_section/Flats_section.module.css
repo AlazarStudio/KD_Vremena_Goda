@@ -5,6 +5,7 @@
     align-items: center;
     padding-top: 157px;
     background-color: #fff;
+    overflow: hidden;
 }
 
 .flats>img {
@@ -151,7 +152,7 @@
     width: 10%;
     height: 100%;
     opacity: 0;
-    z-index: 1; 
+    z-index: 1;
     background: linear-gradient(90deg,
             rgba(255, 255, 255, 0) 0%,
             rgba(255, 255, 255, 0.9) 100%);
@@ -163,13 +164,28 @@
     animation: blinkAndHide 4s ease-in-out forwards;
 }
 
+
 /* Анимация мигания + исчезновения */
 @keyframes blinkAndHide {
-    0%   { opacity: 0; }
-    25% { opacity: 1; }
-    50% { opacity: 0; }
-    75% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @media (max-width: 1600px) {
@@ -226,6 +242,7 @@
         background-position: right;
         align-items: center;
         gap: 30px;
+        overflow: hidden;
     }
 
     .flatsHistory_main {

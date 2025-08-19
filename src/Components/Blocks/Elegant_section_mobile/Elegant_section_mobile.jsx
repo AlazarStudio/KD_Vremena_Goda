@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Elegant_section_mobile.module.css';
 import Slider from "../../Standart/Slider/Slider";
+import MosaicReveal from "../../../MosaicReveal";
 
 function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
+    const sectionRef = useRef(null);
+
     let images = [
         "Slider2 - img1.webp",
         "Slider2 - img2.webp",
@@ -51,7 +54,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
 
     const waitForScrollAndReveal = () => {
         let scrollPosition = isMobile ?
-            (targetScroll ? targetScroll : 6000)
+            (targetScroll ? targetScroll : 4000)
             :
             34000
 
@@ -86,7 +89,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
 
     const handleReveal = (e) => {
         waitForScrollAndReveal();
-        setTimeout(() => {setIsOpenedToMove(true)}, 800)
+        setTimeout(() => { setIsOpenedToMove(true) }, 800)
     };
 
     const handleHide = () => {
@@ -114,44 +117,46 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll }) {
     }, [isOpenedToMove]);
 
     return (
-        <div className={classes.wrapper}>
-            <div className={`${classes.topBlock} ${isOpenedToMove ? classes.moveRight : ""}`}>
-                <div className={classes.startBlock}>
-                    <div className={classes.startBlock_item}>
-                        <p className={`${shown ? classes.show : ""}`}>элегантные <br />интерьеры</p>
-                        <p className={`${shown ? classes.show : ""}`}>ELEGANT INTERIORS</p>
+        <div className={classes.mainBlock}>
+            {isMobile && <MosaicReveal targetRef={sectionRef}  heightWant={'100px'}/>}
+
+            <div className={classes.wrapper} ref={sectionRef}>
+                <div className={`${classes.topBlock} ${isOpenedToMove ? classes.moveRight : ""}`}>
+                    <div className={classes.startBlock}>
+                        <div className={classes.startBlock_item}>
+                            <p className={`${shown ? classes.show : ""}`}>элегантные <br />интерьеры</p>
+                            <p className={`${shown ? classes.show : ""}`}>ELEGANT INTERIORS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    className={`${classes.maskedBlock}`}
+                    style={{
+                        pointerEvents: radius > 0 ? "all" : "none",
+                        zIndex: 0,
+                        display: visible ? "flex" : "none"
+                    }}
+                >
+                    <div className={classes.exitButon} onClick={handleHide}>
+                        <img src="/close.webp" alt="" />
+                    </div>
+                    <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
+
+                </div>
+
+                {/* КНОПКА, поверх всего */}
+                <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
+                    <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
+                        <img
+                            src="/ArrowRightBottom.webp"
+                            alt=""
+                            className={`${classes.floatingButtonImg}`}
+                            ref={buttonRef}
+                        />
                     </div>
                 </div>
             </div>
-
-
-            <div
-                className={`${classes.maskedBlock}`}
-                style={{
-                    pointerEvents: radius > 0 ? "all" : "none",
-                    zIndex: 0,
-                    display: visible ? "flex" : "none"
-                }}
-            >
-                <div className={classes.exitButon} onClick={handleHide}>
-                    <img src="/close.webp" alt="" />
-                </div>
-                <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
-
-            </div>
-
-            {/* КНОПКА, поверх всего */}
-            <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
-                <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
-                    <img
-                        src="/ArrowRightBottom.webp"
-                        alt=""
-                        className={`${classes.floatingButtonImg}`}
-                        ref={buttonRef}
-                    />
-                </div>
-            </div>
-
         </div>
     );
 }

@@ -121,3 +121,27 @@
     backface-visibility: hidden;
     will-change: transform, opacity;
 }
+
+
+
+.unpinned .top,
+.unpinned .bottom,
+.flow,
+.flowTop {
+    position: relative;
+    inset: unset;
+    height: auto;
+    /* важное: вернём нормальную высоту содержимого */
+    transform: none !important;
+}
+
+.unpinned {
+    height: auto;
+    /* убираем 1500vh/200vh, когда отпустили блок */
+}
+
+/* по желанию: убираем клипмаску у .top, когда отпустили */
+.unpinned .top,
+.flowTop {
+    clip-path: none !important;
+}
