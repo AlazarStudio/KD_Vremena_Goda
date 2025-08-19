@@ -81,7 +81,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 height: isMobile ? "100%" : 'auto'
             }}
         >
-            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : isMobile ? "100%" : '100dvh' }}>
+            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : isMobile ? "100%" : '100vh' }}>
                 <div className={`${classes.slider} ${(delayedMoveMask && !isSliderClicked) ? classes.moveMask : ""}`}>
                     <div
                         className={`${classes.slideTrack}`}
