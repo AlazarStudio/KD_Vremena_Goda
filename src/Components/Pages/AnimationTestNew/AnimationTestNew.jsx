@@ -534,29 +534,48 @@ function AnimationTestNew({ isMobile }) {
   const [contactsHostRef, contactsMetrics] = useSectionMetrics({ margin: 0 });
   const [consultationHostRef, consultationMetrics] = useSectionMetrics({ margin: 0 });
 
+  const vhRef = useRef(null);
+  const lvhRef = useRef(null);
+  const [viewHeight, setViewHeight] = useState(0);
+  const [viewHeightLarge, setViewHeightLarge] = useState(0);
+  const [viewHeightLarge2, setViewHeightLarge2] = useState(0);
+
+  useEffect(() => {
+    // вычисляем только один раз
+    // vhRef.current = window.innerHeight;
+    lvhRef.current = window.screen.height;
+    // setViewHeight(vhRef.current + 'px');
+    setViewHeight(lvhRef.current + 'px');
+    setViewHeightLarge2(lvhRef.current * 2 + 'px');
+  }, []);
+
   return (
     <>
       <div className={classes.wrapper} style={{
         width: '100%',
-        height: `${isMobile ? '200vh' : '1500vh'}`
+        height: `${isMobile ? viewHeightLarge2 : '1500vh'}`
       }}>
         <div className={classes.bottom} style={{
           zIndex: 1,
           pointerEvents: scrollY > 0 ? 'none' : 'auto',
         }}>
-          <Main_section />
+          <Main_section viewHeight={viewHeight} />
         </div>
 
         <div className={classes.top} ref={topRef} style={{
           zIndex: hasScrolled ? 2 : 0,
         }}>
-          <Collection_section reveal={showCollectionAnim} />
+          <Collection_section reveal={showCollectionAnim} viewHeight={viewHeight} />
         </div>
       </div >
 
       <div style={{ position: 'relative', zIndex: 3 }} >
+        {/* <Main_section mobileChange={true} viewHeight={viewHeight} />
+
+        <Collection_section reveal={showCollectionAnim} viewHeight={viewHeight} /> */}
+
         <div ref={historyHostRef}>
-          <History_section shown={historyMetrics.progress >= 0.15} />
+          <History_section shown={historyMetrics.progress >= 0.15} viewHeight={viewHeight} />
         </div>
 
         <div ref={flatsHostRef}>
@@ -568,11 +587,12 @@ function AnimationTestNew({ isMobile }) {
             flatsHistoryRef={flatsHistoryRef}
             flatSliderMovePosition={flatSliderMovePosition}
             isMobile={isMobile}
+            viewHeight={viewHeight}
           />
         </div>
 
         <div ref={elegantHostRef}>
-          <Elegant_section_mobile shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} />
+          <Elegant_section_mobile shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight} />
         </div>
 
         <div ref={presentationHostRef}>

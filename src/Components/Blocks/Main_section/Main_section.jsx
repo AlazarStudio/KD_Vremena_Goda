@@ -1,10 +1,11 @@
 import React from "react";
 import classes from './Main_section.module.css';
 
-function Main_section({ children, mobileChange = false, ...props }) {
+function Main_section({ children, mobileChange = false, viewHeight='100vh', ...props }) {
     return (
         <section className={classes.main} style={{
-            position: mobileChange ? 'relative' : 'fixed'
+            position: mobileChange ? 'relative' : 'fixed',
+            height: viewHeight
         }}>
             <div className={classes.animateImg} >
                 <p>

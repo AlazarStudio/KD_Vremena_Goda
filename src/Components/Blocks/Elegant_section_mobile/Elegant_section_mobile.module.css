@@ -29,7 +29,7 @@
     flex-direction: column;
     gap: 25px;
     width: 60%;
-    margin-bottom: 200px;
+    margin-bottom: 300px;
 }
 
 .startBlock_item img {
@@ -104,7 +104,7 @@
 
 .floatingButton {
     position: absolute;
-    bottom: 50px;
+    bottom: 150px;
     right: 0;
     width: 60%;
     padding-left: 66px;

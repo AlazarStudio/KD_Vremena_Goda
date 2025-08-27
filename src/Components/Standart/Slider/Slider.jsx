@@ -81,7 +81,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                 height: isMobile ? "100%" : 'auto'
             }}
         >
-            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85dvh' : isMobile ? "100%" : '100vh' }}>
+            <div className={classes.sliderContainer} style={{ height: arrowsBottom ? '85vh' : isMobile ? "100%" : '100vh' }}>
                 <div className={`${classes.slider} ${(delayedMoveMask && !isSliderClicked) ? classes.moveMask : ""}`}>
                     <div
                         className={`${classes.slideTrack}`}
@@ -155,7 +155,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
             )}
 
             {!followMouse && arrowsBottom && (
-                <div style={{ height: isMobile && '15dvh' }}>
+                <div style={{ height: isMobile && '15vh' }}>
                     <div
                         className={`${classes.prevButton} ${classes.bottomArrowLeft} ${shown ? classes.show : ""}`}
                         onClick={prevSlide}
@@ -164,7 +164,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             left: isMobile ? '15%' : '42%',
                             opacity: currentIndex <= 0 ? 0.4 : 1,
                             cursor: currentIndex <= 0 ? 'auto' : 'pointer',
-                            height: isMobile && '15dvh',
+                            height: isMobile && '15vh',
                         }}
                     >
                         <img src="/ArrowLeftBottom.webp" alt=""
@@ -180,7 +180,7 @@ function Slider({ images = [], itemsPerSlide = 1, arrowsBottom = false, followMo
                             right: isMobile ? '15%' : '42%',
                             opacity: currentIndex >= images.length - itemsPerSlide ? 0.4 : 1,
                             cursor: currentIndex >= images.length - itemsPerSlide ? 'auto' : 'pointer',
-                            height: isMobile && '15dvh',
+                            height: isMobile && '15vh',
                         }}
                     >
                         <img src="/ArrowRightBottom.webp" alt=""

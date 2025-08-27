@@ -3,7 +3,7 @@ import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 import MosaicReveal from "../../../MosaicReveal";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, viewHeight='100vh', ...props }) {
     const sectionRef = useRef(null);
 
     let images = [
@@ -31,12 +31,12 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
     return (
         <>
             <section
-                className={`${classes.flats} `} style={{ height: mobileChange ? '100vh' : 'auto' }}>
+                className={`${classes.flats} `} style={{ height: mobileChange ? viewHeight : 'auto' }}>
                 <img src="/flats_logo.webp" alt="" className={`${shown ? classes.show : ""}`}
-                    style={{ transitionDelay: "0.4s" }} />
+                    style={{ transitionDelay: "0.2s" }} />
 
                 <p className={`${classes.flatsText} ${shown ? classes.show : ""}`}
-                    style={{ transitionDelay: "0.6s" }}>
+                    style={{ transitionDelay: "0.3s" }}>
                     От первого шага — к вашему пространству
                 </p>
 
@@ -48,7 +48,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                         style={{ transitionDelay: "1.6s" }}
                     ></div>
                     <div className={classes.forSlider} style={{
-                        transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(0.7) translateY(0px) '),
+                        transform: !isMobile ? (movePos ? 'scale(1) translateX(0) ' : 'scale(0.9) translateY(-100px) ') : (scale ? 'scale(1) translateX(0) ' : 'scale(1) translateY(0px) '),
                         height: mobileChange && '100%'
                     }} >
                         <Slider images={images} followMouse={true} shown={shown} scale={scale} isMobile={isMobile} moveMask={movePos} isSliderClicked={isSliderClicked} setIsSliderClicked={setIsSliderClicked} />
@@ -58,10 +58,10 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
             <div style={{ backgroundColor: '#fff', paddingBottom: '60px', overflow: isMobile && 'hidden', position: "relative" }}>
 
-                {isMobile && <MosaicReveal targetRef={sectionRef}/>}
+                {isMobile && <MosaicReveal targetRef={sectionRef} />}
 
                 <div ref={sectionRef}>
-                    <section className={classes.flatsHistory} ref={flatsHistoryRef}>
+                    <section className={classes.flatsHistory} ref={flatsHistoryRef} style={{ height: viewHeight }}>
                         <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
 
                         <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>

@@ -1,24 +1,24 @@
 import React, { forwardRef } from "react";
 import classes from "./Collection_section.module.css";
 
-function Collection_section({ reveal }) {
+function Collection_section({ reveal,  viewHeight='100vh', ...props }) {
     return (
-        <section className={classes.collection}>
+        <section className={classes.collection} style={{ height: viewHeight }}>
             <p
                 className={`${classes.top} ${reveal ? classes.show : ""}`}
-                style={{ transitionDelay: "0.4s" }}
+                style={{ transitionDelay: "0.2s" }}
             >
                 The historical part of the city
             </p>
             <p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
-                style={{ transitionDelay: "0.3s" }}
+                style={{ transitionDelay: "0s" }}
             >
                 Историческая 
             </p>
              <p
                 className={`${classes.name} ${reveal ? classes.show : ""}`}
-                style={{ transitionDelay: "0.5s" }}
+                style={{ transitionDelay: "0s" }}
             >
                 часть города
             </p>
@@ -30,7 +30,7 @@ function Collection_section({ reveal }) {
             </p> */}
             <p
                 className={`${classes.middle} ${reveal ? classes.showRevers : ""}`}
-                style={{ transitionDelay: "0.4s" }}
+                style={{ transitionDelay: "0s" }}
             >
                 Спокойная архитектура. <br />
                 Уверенные решения. <br />

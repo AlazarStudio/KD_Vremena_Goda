@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './History_section.module.css';
 
-function History_section({ children, shown, blockHeight, ...props }) {
+function History_section({ children, shown, blockHeight, viewHeight='1700px',...props }) {
     return (
-        <section className={classes.history} >
+        <section className={classes.history} style={{ height: viewHeight }}>
             <div className={classes.history_info_before}></div>
             <div className={classes.history_info}>
                 <p className={`${classes.nameLeft} ${shown ? classes.show : ""}`}
