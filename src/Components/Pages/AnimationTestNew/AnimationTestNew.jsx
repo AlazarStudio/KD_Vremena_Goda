@@ -11,6 +11,7 @@ import Elegant_section_mobile from "../../Blocks/Elegant_section_mobile/Elegant_
 import { useIsVisible } from "../../../useIsVisible";
 import { useScrollStop } from "../../../useScrollStop";
 import Footer from "../../Blocks/Footer/Footer";
+import Header from "../../Blocks/Header/Header";
 
 function createSmoothDriver(initial = 0, speed = 0.12) {
   let current = initial;
@@ -548,7 +549,6 @@ function AnimationTestNew({ isMobile }) {
     setViewHeight(lvhRef.current + 'px');
     setViewHeightLarge2(lvhRef.current * 2 + 'px');
   }, []);
-
   return (
     <>
       <div className={classes.wrapper} style={{
@@ -568,6 +568,10 @@ function AnimationTestNew({ isMobile }) {
           <Collection_section reveal={showCollectionAnim} viewHeight={viewHeight} />
         </div>
       </div >
+
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 4 }}>
+        <Header viewHeight={viewHeight} scrollY={scrollY} />
+      </div>
 
       <div style={{ position: 'relative', zIndex: 3 }} >
         {/* <Main_section mobileChange={true} viewHeight={viewHeight} />

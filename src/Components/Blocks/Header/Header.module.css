@@ -60,7 +60,8 @@
     height: 19px;
     object-fit: contain;
 }
-.header .dropdownIcon{
+
+.header .dropdownIcon {
     width: 10px;
     object-fit: contain;
 }
@@ -77,11 +78,11 @@
     font-size: 16px !important;
 }
 
-.dropdownItem:first-child{
+.dropdownItem:first-child {
     padding-top: 20px;
 }
 
-.dropdownItem:last-child{
+.dropdownItem:last-child {
     padding-bottom: 20px;
 }
 
@@ -104,6 +105,56 @@
 
 @media (max-width: 768px) {
     .header {
-        display: none;
+        padding: 10px;
+    }
+
+    .header img {
+        height: auto;
+    }
+
+    .header>img {
+        order: 1;
+        width: 35px;
+        height: 35px;
+    }
+
+    .header .phoneWrapper {
+        order: 2;
+        width: auto;
+        height: fit-content;
+    }
+
+    .header>a {
+        order: 3;
+        font-size: 12px;
+        width: auto;
+        text-transform: uppercase;
+    }
+
+    .phoneButton {
+        font-size: 12px;
+    }
+
+    .dropdownMenu {
+        background-color: #ffffff33;
+        font-size: 12px;
+        border-radius: 15px;
+        min-width: 185px;
+        margin-top: 10px;
+    }
+
+    .dropdownItem {
+        width: 185px;
+        gap: 20px;
+        padding: 8px 12px;
+        font-size: 12px !important;
+    }
+
+    .dropdownItem:first-child {
+        padding-top: 10px;
+    }
+
+    .dropdownItem:last-child {
+        padding-bottom: 10px;
     }
 }

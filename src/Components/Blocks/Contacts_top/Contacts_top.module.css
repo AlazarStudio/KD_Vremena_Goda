@@ -9,10 +9,12 @@
     position: relative;
     overflow: hidden;
     color: #000;
+    min-height: 850px;
 }
 
 .forImg {
-    position: relative;
+    position: absolute;
+    top: 0;
 }
 
 .contactsLeft {
@@ -173,20 +175,20 @@
         gap: 0;
         justify-content: start;
         height: 130vh;
-        max-height: 850px;
+        /* max-height: 850px; */
     }
 
     .contactsLeft_img1 {
         /* display: none; */
         position: absolute;
         bottom: 0px;
-        height: 375px;
+        height: 400px;
         left: -120px;
     }
 
     .contactsLeft_img2 {
         left: 33%;
-        height: 400px;
+        height: 450px;
         /* display: none; */
     }
 
