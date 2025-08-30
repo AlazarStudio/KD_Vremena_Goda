@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 157px;
+    padding-top: 80px;
     background-color: #fff;
     overflow: hidden;
 }
@@ -33,7 +33,7 @@
 .flatsSlider {
     width: 100%;
     height: 100vh;
-    margin: 172px 0 200px;
+    margin-top: 72px;
 }
 
 .forSlider {
@@ -164,6 +164,179 @@
     animation: blinkAndHide 4s ease-in-out forwards;
 }
 
+.flatsImg {
+    width: 100%;
+    height: 100vh;
+    background: url('/architecture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.flatsImgExt {
+    width: 100%;
+    height: 100vh;
+    background: url('/ext.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.flatsImg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.flatsBlock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, -30%);
+}
+
+.flatsTitle {
+    color: #fff;
+    font-family: Gotham;
+    font-weight: 400;
+    font-style: Book;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+.flatsDesc {
+    color: #fff;
+    font-family: Cormorant;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 96px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.flatsTextInfo {
+    background-color: #fff8e8;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+}
+
+.flatsTextInfo_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.flatsTextInfo_img img {
+    width: 310px;
+}
+
+.flatsTextInfo_imgOverlay {
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid rgba(73, 67, 66, 0.2);
+}
+
+.flatsTextInfo_descText {
+    width: 100%;
+    font-family: Cormorant;
+    font-size: 38px;
+    font-weight: 500;
+    color: #494342;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 200px;
+}
+
+.flatsTextInfo_underText {
+    width: 100%;
+    font-family: Cormorant;
+    font-size: 22px;
+    font-weight: 500;
+    color: #494342;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flatsTextInfo_underText_right {
+    width: 50%;
+    padding-right: 300px;
+}
+
+.flatsImgProject {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff8e8;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.flatsImgProject_inner {
+    width: 800px;
+    height: 700px;
+    position: relative;
+}
+
+.flatsImgProject img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: path("M300 233 A233 233 0 0 1 533 0 A233 233 0 1 1 533 466 L533 700 H0 V233 H300 Z");
+}
+
+.flatsImgProject_overlay {
+    position: absolute;
+    top: -33%;
+    right: -33%;
+    width: 533px;
+    height: 467px;
+    background: #af7f4b85;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.flatsImgProject_text {
+    text-transform: uppercase;
+    padding-top: 300px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 50px;
+}
+
+
+.flatsImgProject_text span{
+    font-family: Cormorant;
+    font-size: 100px;
+    font-weight: 600;
+}
+
+.flatsImgProject_text span:nth-child(2) {
+    padding-left: 100px;
+}
 
 /* Анимация мигания + исчезновения */
 @keyframes blinkAndHide {

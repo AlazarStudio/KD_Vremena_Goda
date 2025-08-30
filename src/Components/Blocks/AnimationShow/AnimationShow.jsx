@@ -247,7 +247,7 @@ function AnimationShow({ isMobile }) {
 
     useEffect(() => {
         const onScroll = () => {
-            const scrollStart = isMobile ? 3200 : 4000;
+            const scrollStart = isMobile ? 3200 : 7200;
             const scrollEnd = scrollStart + window.innerHeight;
             const scrollY = window.scrollY;
 
@@ -300,7 +300,7 @@ function AnimationShow({ isMobile }) {
 
         const unsubTransform = smoothFlatsOffset.onUpdate(offset => {
             if (flatsContentRef.current) {
-                const flatsHeight = flatsContentRef.current.offsetHeight;
+                const flatsHeight = flatsContentRef.current.offsetHeight - 100;
                 const clampedOffset = Math.min(offset, flatsHeight - window.innerHeight);
                 flatsContentRef.current.style.transform = `translateY(-${clampedOffset}px)`;
             }
@@ -321,8 +321,8 @@ function AnimationShow({ isMobile }) {
     const [isElegantUnpinned, setIsElegantUnpinned] = useState(false);
 
     useEffect(() => {
-        const scrollStart = isMobile ? 5000 : 7200;
-        const scrollEnd = scrollStart + window.innerHeight;
+        const scrollStart = isMobile ? 5000 : 13000;
+        const scrollEnd = (scrollStart) + window.innerHeight;
 
         const onScroll = () => {
             const scrollY = window.scrollY;
@@ -365,6 +365,10 @@ function AnimationShow({ isMobile }) {
             if (elegantContentRef.current) {
                 const maxScroll = elegantContentRef.current.offsetHeight - window.innerHeight;
                 const clampedOffset = Math.min(offset, maxScroll);
+
+                console.log(offset)
+                console.log(clampedOffset)
+                console.log(maxScroll)
                 elegantContentRef.current.style.transform = `translateY(-${clampedOffset}px)`;
             }
         });
@@ -448,12 +452,12 @@ function AnimationShow({ isMobile }) {
     }, []);
 
     return (
-        <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '1500vh'}` }}>
+        <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '2500vh'}` }}>
             <div className={classes.bottom} style={{
                 zIndex: 1,
                 pointerEvents: scrollY > 0 ? 'none' : 'auto',
             }}>
-                <Header isMobile={isMobile}/>
+                <Header isMobile={isMobile} />
                 <Main_section />
             </div>
 
@@ -495,7 +499,7 @@ function AnimationShow({ isMobile }) {
                         ?
                         <Elegant_section_mobile shown={true} isMobile={isMobile} targetScroll={elegantSectionScroll} />
                         :
-                        <Elegant_section shown={true} elegantRef={elegantRef} />
+                        <Elegant_section shown={true} />
                     }
 
                     <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} />
