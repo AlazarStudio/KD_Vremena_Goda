@@ -118,7 +118,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
 
     return (
         <div className={classes.mainBlock} >
-            {isMobile && <MosaicReveal targetRef={sectionRef} heightWant={'100px'} />}
+            {/* {isMobile && <MosaicReveal targetRef={sectionRef} heightWant={'100px'} />} */}
 
             <div className={classes.wrapper} ref={sectionRef} style={{ height: viewHeight }}>
                 <div className={`${classes.topBlock} ${isOpenedToMove ? classes.moveRight : ""}`} style={{ height: viewHeight }}>

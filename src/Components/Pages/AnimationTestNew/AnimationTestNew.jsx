@@ -595,7 +595,7 @@ function AnimationTestNew({ isMobile }) {
           />
         </div>
 
-        <div style={{ paddingBottom: '40px', backgroundColor: '#fff' }}></div>
+        {/* <div style={{ paddingBottom: '40px', backgroundColor: '#fff' }}></div> */}
 
 
         <div ref={elegantHostRef}>

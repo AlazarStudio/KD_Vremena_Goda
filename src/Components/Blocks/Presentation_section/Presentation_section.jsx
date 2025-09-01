@@ -92,8 +92,8 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
                 </div>
             </div>
 
-            <div className={classes.elegantExclusiv} style={{ height: viewHeight }}>
-                <div className={classes.flatsImgProject} style={{ height: viewHeight }}>
+            <div className={classes.elegantExclusiv} style={{ height: isMobile ? "800px" : viewHeight }}>
+                <div className={classes.flatsImgProject} style={{ height: isMobile ? "800px" : viewHeight }}>
                     <div className={classes.flatsImgProject_inner}>
                         <img src="/Slider2 - img2.webp" alt="" />
                         <div className={classes.flatsImgProject_overlay}></div>

@@ -90,6 +90,7 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, .
                     <span> с районом</span>
                 </div>
             </div>
+
         </section>
     );
 }

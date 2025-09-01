@@ -128,7 +128,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 </div>
             </div>
 
-            <div style={{backgroundColor: '#fff', backgroundColor: '#fff', paddingBottom: '60px', overflow: isMobile && 'hidden', position: "relative" }}>
+            <div style={{ backgroundColor: '#fff',  overflow: isMobile && 'hidden', position: "relative" }}>
 
                 {isMobile && <MosaicReveal targetRef={sectionRef} colors={["#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8"]} />}
 
@@ -190,6 +190,18 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                     </section>
                 </div>
             </div>
+
+            {/* {isMobile && <div className={classes.history_info_blockCircle}>
+                <div className={classes.history_info_blockCircle_left}></div>
+                <div className={classes.history_info_blockCircle_circle}>
+                    <img src="/city.jpg" alt="" />
+                </div>
+                <div className={classes.history_info_blockCircle_text}>
+                    <span>Знакомство</span>
+                    <span> с районом</span>
+                </div>
+            </div>
+            } */}
         </>
     );
 }
