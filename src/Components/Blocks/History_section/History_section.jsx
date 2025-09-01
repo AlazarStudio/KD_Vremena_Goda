@@ -5,8 +5,8 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, .
     return (
         <section className={classes.history} >
             {/* <div className={classes.history_info_before}></div> */}
-            <div className={classes.history_info_block}>
-                <div className={classes.history_info}>
+            <div className={classes.history_info_block} style={{ height: isMobile ? "500px" : viewHeight }}>
+                <div className={classes.history_info} style={{ paddingTop: isMobile ? "0px" : "50px" }}>
                     <p className={`${classes.nameLeft} ${shown ? classes.show : ""}`}
                         style={{ transitionDelay: "0.3s" }}>
                         новая история
@@ -39,7 +39,7 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, .
                 </div>
             </div>
 
-            <div className={classes.history_info_blockImg} style={{ height: viewHeight }}>
+            <div className={classes.history_info_blockImg} style={{ height: isMobile ? "500px" : viewHeight }}>
                 <img src="/history_background.webp" alt="" />
             </div>
 

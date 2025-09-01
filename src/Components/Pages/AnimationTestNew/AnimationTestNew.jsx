@@ -603,7 +603,7 @@ function AnimationTestNew({ isMobile }) {
         </div>
         
         <div ref={presentationHostRef}>
-          <Presentation_section presShow={presentationMetrics.progress >= 0.15}  isMobile={isMobile}/>
+          <Presentation_section presShow={presentationMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile}/>
         </div>
 
         <div ref={contactsHostRef}>
