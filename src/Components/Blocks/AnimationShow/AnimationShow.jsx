@@ -321,7 +321,7 @@ function AnimationShow({ isMobile }) {
     const [isElegantUnpinned, setIsElegantUnpinned] = useState(false);
 
     useEffect(() => {
-        const scrollStart = isMobile ? 5000 : 13000;
+        const scrollStart = isMobile ? 5000 : 14500;
         const scrollEnd = (scrollStart) + window.innerHeight;
 
         const onScroll = () => {
@@ -366,9 +366,9 @@ function AnimationShow({ isMobile }) {
                 const maxScroll = elegantContentRef.current.offsetHeight - window.innerHeight;
                 const clampedOffset = Math.min(offset, maxScroll);
 
-                console.log(offset)
-                console.log(clampedOffset)
-                console.log(maxScroll)
+                // console.log(offset)
+                // console.log(clampedOffset)
+                // console.log(maxScroll)
                 elegantContentRef.current.style.transform = `translateY(-${clampedOffset}px)`;
             }
         });

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './History_section.module.css';
 
-function History_section({ children, shown, blockHeight, viewHeight, ...props }) {
+function History_section({ children, shown, blockHeight, viewHeight, isMobile, ...props }) {
     return (
         <section className={classes.history} >
             {/* <div className={classes.history_info_before}></div> */}
@@ -39,17 +39,24 @@ function History_section({ children, shown, blockHeight, viewHeight, ...props })
                 </div>
             </div>
 
-            <div className={classes.history_info_blockImg}>
+            <div className={classes.history_info_blockImg} style={{ height: viewHeight }}>
                 <img src="/history_background.webp" alt="" />
             </div>
 
             <div className={classes.history_info_blockTime}>
                 <div className={classes.history_info_blockTime_title}>
-                    <div className={classes.line1}>Время</div>
-                    <div className={classes.line2}>
-                        перемен <span> Moscow’s Most Desirable  Neighbourhood</span>
-                    </div>
-                    <div className={classes.line3}> и трансформаций</div>
+                    <div className={classes.line4}> Moscow’s Most Desirable <br /> Neighbourhood</div>
+                    {isMobile ?
+                        <div className={classes.mobileTitle}>
+                            Время перемен и трансформаций
+                        </div>
+                        :
+                        <>
+                            <div className={classes.line1}>Время</div>
+                            <div className={classes.line2}>перемен </div>
+                            <div className={classes.line3}> и трансформаций</div>
+                        </>
+                    }
                 </div>
 
                 <div className={classes.history_info_blockTime_text}>

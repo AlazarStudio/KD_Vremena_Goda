@@ -579,7 +579,7 @@ function AnimationTestNew({ isMobile }) {
         <Collection_section reveal={showCollectionAnim} viewHeight={viewHeight} /> */}
 
         <div ref={historyHostRef}>
-          <History_section shown={historyMetrics.progress >= 0.15} viewHeight={viewHeight} />
+          <History_section shown={historyMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile} />
         </div>
 
         <div ref={flatsHostRef}>
@@ -595,12 +595,15 @@ function AnimationTestNew({ isMobile }) {
           />
         </div>
 
+        <div style={{ paddingBottom: '40px', backgroundColor: '#fff' }}></div>
+
+
         <div ref={elegantHostRef}>
           <Elegant_section_mobile shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight} />
         </div>
-
+        
         <div ref={presentationHostRef}>
-          <Presentation_section presShow={presentationMetrics.progress >= 0.15} />
+          <Presentation_section presShow={presentationMetrics.progress >= 0.15}  isMobile={isMobile}/>
         </div>
 
         <div ref={contactsHostRef}>

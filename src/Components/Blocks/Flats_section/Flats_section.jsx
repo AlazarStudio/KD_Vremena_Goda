@@ -30,14 +30,25 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
     return (
         <>
-            <div className={classes.flatsImg} style={{ height: viewHeight }}>
-                <div className={classes.flatsBlock}>
-                    <div className={classes.flatsTitle}>Exquisite architecture</div>
-                    <div className={classes.flatsDesc}>Изысканная архитектура</div>
-                </div>
-            </div>
 
-            <div className={classes.flatsTextInfo} style={{ height: viewHeight }}>
+            {isMobile ?
+                <div className={classes.flatsImg}>
+                    <div className={classes.flatsBlock}>
+                        <div className={classes.flatsTitle}>Exquisite architecture</div>
+                        <div className={classes.flatsDesc}>Изысканная <br /> архитектура</div>
+                    </div>
+                    <img src="/architecture.jpg" alt="" />
+                </div>
+                :
+                <div className={classes.flatsImg} style={{ height: viewHeight }}>
+                    <div className={classes.flatsBlock}>
+                        <div className={classes.flatsTitle}>Exquisite architecture</div>
+                        <div className={classes.flatsDesc}>Изысканная архитектура</div>
+                    </div>
+                </div>
+            }
+
+            <div className={classes.flatsTextInfo}>
                 <div className={classes.flatsTextInfo_img}>
                     <img src="/org1.webp" alt="" />
                     <div className={classes.flatsTextInfo_imgOverlay}></div>
@@ -55,7 +66,20 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 </div>
             </div>
 
-            <div className={classes.flatsImgExt} style={{ height: viewHeight }}>
+            <div className={classes.flatsImgExt}>
+            </div>
+
+            <div className={classes.flatsImgProject}>
+                <div className={classes.flatsImgProject_inner}>
+                    <img src="/project.jpg" alt="" />
+                    <div className={classes.flatsImgProject_overlay}>
+                        masterplan <br /> View
+                    </div>
+                </div>
+                <div className={classes.flatsImgProject_text}>
+                    <span>Обзор</span>
+                    <span>проекта</span>
+                </div>
             </div>
 
             <section
@@ -84,26 +108,33 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 </section>
             </section>
 
-            <div className={classes.flatsImgProject} style={{ height: viewHeight }}>
-                <div className={classes.flatsImgProject_inner}>
-                    <img src="/project.jpg" alt="" />
-                    <div className={classes.flatsImgProject_overlay}>
-                        masterplan <br /> View
-                    </div>
+            <div className={classes.flatsTextInfo}>
+                <div className={classes.flatsTextInfo_titleText}>
+                    <span>Выдающиеся</span>
+                    <span>интерьеры</span>
+                    <span>общественных</span>
+                    <span>пространств</span>
                 </div>
-                <div className={classes.flatsImgProject_text}>
-                    <span>Обзор</span>
-                    <span>проекта</span>
+
+                <div className={classes.flatsTextInfo_underText}>
+                    <div className={classes.flatsTextInfo_underText_block}>
+                        <div className={classes.flatsTextInfo_underText_block_desc}>
+                            Общественные пространства Nicole — это настоящие произведения искусства от двух ведущих мировых дизайнерских бюро. Концепцию Nicole Club и Nicole Residence разработала компания Hirsch Bedner Associates (HBA), создающая интерьеры для таких люксовых отелей, как Six Senses и Ritz Carlton.
+                        </div>
+                        <div className={classes.flatsTextInfo_underText_block_desc}>
+                            Студия Coho Interior Design, известная изысканным французским стилем и глубоким пониманием высокой эстетики, спроектировала общественные и приватные зоны Nicole Collection, опираясь на тонкое восприятие культурного контекста.
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div style={{ backgroundColor: '#fff', paddingBottom: '60px', overflow: isMobile && 'hidden', position: "relative" }}>
+            <div style={{backgroundColor: '#fff', backgroundColor: '#fff', paddingBottom: '60px', overflow: isMobile && 'hidden', position: "relative" }}>
 
-                {isMobile && <MosaicReveal targetRef={sectionRef} />}
+                {isMobile && <MosaicReveal targetRef={sectionRef} colors={["#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8"]} />}
 
                 <div ref={sectionRef}>
+                    <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} style={{ zIndex: '99' }} />
                     <section className={classes.flatsHistory} ref={flatsHistoryRef} style={{ height: viewHeight }}>
-                        <img src="/tower.webp" alt="" className={`${classes.moveTower} ${tower ? classes.show : ""}`} />
 
                         <p className={`${classes.flatsHistory_name} ${tower ? classes.show : ""}`}>
                             Квартиры, которые становятся
