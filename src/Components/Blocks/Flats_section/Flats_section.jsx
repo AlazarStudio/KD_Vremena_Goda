@@ -37,7 +37,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                         <div className={classes.flatsTitle}>Exquisite architecture</div>
                         <div className={classes.flatsDesc}>Изысканная <br /> архитектура</div>
                     </div>
-                    <img src="/architecture.jpg" alt="" />
+                    <img src="/architecture.webp" alt="" />
                 </div>
                 :
                 <div className={classes.flatsImg} style={{ height: viewHeight }}>
@@ -71,7 +71,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
             <div className={classes.flatsImgProject}>
                 <div className={classes.flatsImgProject_inner}>
-                    <img src="/project.jpg" alt="" />
+                    <img src="/project.webp" alt="" />
                     <div className={classes.flatsImgProject_overlay}>
                         masterplan <br /> View
                     </div>
@@ -194,7 +194,7 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
             {/* {isMobile && <div className={classes.history_info_blockCircle}>
                 <div className={classes.history_info_blockCircle_left}></div>
                 <div className={classes.history_info_blockCircle_circle}>
-                    <img src="/city.jpg" alt="" />
+                    <img src="/city.webp" alt="" />
                 </div>
                 <div className={classes.history_info_blockCircle_text}>
                     <span>Знакомство</span>

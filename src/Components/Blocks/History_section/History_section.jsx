@@ -75,7 +75,7 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, .
                 </div>
 
                 <div className={classes.history_info_blockTime_img}>
-                    <img src="/change.jpg" alt="" />
+                    <img src="/change.webp" alt="" />
                 </div>
 
             </div>
@@ -83,7 +83,7 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, .
             <div className={classes.history_info_blockCircle}>
                 <div className={classes.history_info_blockCircle_left}></div>
                 <div className={classes.history_info_blockCircle_circle}>
-                    <img src="/city.jpg" alt="" />
+                    <img src="/city.webp" alt="" />
                 </div>
                 <div className={classes.history_info_blockCircle_text}>
                     <span>Знакомство</span>

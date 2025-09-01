@@ -168,7 +168,7 @@
 .flatsImg {
     width: 100%;
     height: 100vh;
-    background: url('/architecture.jpg');
+    background: url('/architecture.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,7 +178,7 @@
 .flatsImgExt {
     width: 100%;
     height: 100vh;
-    background: url('/ext.jpg');
+    background: url('/ext.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

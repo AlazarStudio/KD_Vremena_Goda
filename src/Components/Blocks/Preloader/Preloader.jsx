@@ -18,7 +18,7 @@ function Preloader({ isMobile }) {
   if (!showPreloader) return null; // убираем полностью
 
   let videoName = isMobile ? "/IMG_8540.webm" : "/Animation_Emunarq-2.webm"
-  let videPosterName = isMobile ? "/IMG_8540.jpg" : "/preloader_poster.webp"
+  let videPosterName = isMobile ? "/IMG_8540.webp" : "/preloader_poster.webp"
 
   return (
     <div className={classes.preloader}>
