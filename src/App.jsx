@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-      <Preloader />
+      <Preloader isMobile={isMobile}/>
 
       <Routes>
         <Route path="/" element={<Layout />}>
