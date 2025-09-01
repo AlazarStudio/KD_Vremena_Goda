@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import classes from './Header.module.css';
 import Contacts_top from "../Contacts_top/Contacts_top";
 
-function Header({ children, isMobile, viewHeight = '100vh', scrollY, ...props }) {
+function Header({ children, isMobile, viewHeight = '100vh', scrollY, headerMove, ...props }) {
     const [showContacts, setShowContacts] = useState(false);
 
     const [showDropdown, setShowDropdown] = useState(false);
@@ -26,7 +26,10 @@ function Header({ children, isMobile, viewHeight = '100vh', scrollY, ...props })
 
     return (
         <>
-            <header className={classes.header} style={{ backgroundColor: scrollY > 500 ? '#494342ec' : 'transparent', transition: 'background-color 0.3s ease-in-out' }}>
+            <header className={`${classes.header} ${headerMove ? classes.moveHeader : classes.headerEnter}`} style={{
+                backgroundColor: scrollY > 500 ? '#494342ec' : 'transparent', 
+                transition: 'background-color 0.3s ease-in-out',
+            }}>
                 <div className={classes.phoneWrapper} ref={phoneRef}>
                     <button
                         className={classes.phoneButton}

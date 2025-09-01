@@ -549,6 +549,9 @@ function AnimationTestNew({ isMobile }) {
     setViewHeight(lvhRef.current + 'px');
     setViewHeightLarge2(lvhRef.current * 2 + 'px');
   }, []);
+
+  const [headerMove, setHeaderMove] = useState(false);
+
   return (
     <>
       <div className={classes.wrapper} style={{
@@ -570,7 +573,7 @@ function AnimationTestNew({ isMobile }) {
       </div >
 
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 4 }}>
-        <Header viewHeight={viewHeight} scrollY={scrollY} />
+        <Header viewHeight={viewHeight} scrollY={scrollY} headerMove={headerMove} />
       </div>
 
       <div style={{ position: 'relative', zIndex: 3 }} >
@@ -599,11 +602,11 @@ function AnimationTestNew({ isMobile }) {
 
 
         <div ref={elegantHostRef}>
-          <Elegant_section_mobile shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight} />
+          <Elegant_section_mobile setHeaderMove={setHeaderMove} shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight} />
         </div>
-        
+
         <div ref={presentationHostRef}>
-          <Presentation_section presShow={presentationMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile}/>
+          <Presentation_section presShow={presentationMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile} />
         </div>
 
         <div ref={contactsHostRef}>

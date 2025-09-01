@@ -3,7 +3,7 @@ import classes from './Elegant_section_mobile.module.css';
 import Slider from "../../Standart/Slider/Slider";
 import MosaicReveal from "../../../MosaicReveal";
 
-function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '100vh' }) {
+function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '100vh', setHeaderMove }) {
     const sectionRef = useRef(null);
 
     let images = [
@@ -60,23 +60,22 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
 
         const checkScroll = () => {
             if (true) {
-                setTimeout(() => {
-                    let cx = 0;
-                    let cy = 0;
+                let cx = 0;
+                let cy = 0;
 
-                    if (buttonRef.current) {
-                        const rect = buttonRef.current.getBoundingClientRect();
-                        cx = rect.left + rect.width / 2;
-                        cy = rect.top + rect.height / 2;
-                    }
+                if (buttonRef.current) {
+                    const rect = buttonRef.current.getBoundingClientRect();
+                    cx = rect.left + rect.width / 2;
+                    cy = rect.top + rect.height / 2;
+                }
 
-                    document.body.style.overflow = "hidden";
-                    setCirclePos({ cx, cy });
-                    startAnimationTo(1600);
-                    setIsClosing(false);
-                    setIsMasking(true);
-                    setIsOpened(true)
-                }, 0)
+                document.body.style.overflow = "hidden";
+                setCirclePos({ cx, cy });
+                startAnimationTo(1600);
+                setIsClosing(false);
+                setIsMasking(true);
+                setIsOpened(true)
+
             } else {
                 requestAnimationFrame(checkScroll);
             }
@@ -88,11 +87,13 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
 
 
     const handleReveal = (e) => {
+        setHeaderMove(true)
         waitForScrollAndReveal();
-        setTimeout(() => { setIsOpenedToMove(true) }, 800)
+        setTimeout(() => { setIsOpenedToMove(true); }, 800)
     };
 
     const handleHide = () => {
+        setHeaderMove(false)
         document.body.style.overflow = "";
         setIsMasking(false);
         setIsClosing(true);
@@ -122,7 +123,7 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
 
             <div className={classes.wrapper} ref={sectionRef} style={{ height: viewHeight }}>
                 <div className={`${classes.topBlock} ${isOpenedToMove ? classes.moveRight : ""}`} style={{ height: viewHeight }}>
-                    <div className={classes.startBlock}  style={{ height: viewHeight }}>
+                    <div className={classes.startBlock} style={{ height: viewHeight }}>
                         <div className={classes.startBlock_item}>
                             <p className={`${shown ? classes.show : ""}`}>элегантные <br />интерьеры</p>
                             <p className={`${shown ? classes.show : ""}`}>ELEGANT INTERIORS</p>
@@ -138,25 +139,25 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
                         display: visible ? "flex" : "none",
                     }}
                 >
-                <div className={classes.exitButon} onClick={handleHide}>
-                    <img src="/close.webp" alt="" />
-                </div>
-                <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
+                    <div className={classes.exitButon} onClick={handleHide}>
+                        <img src="/close.webp" alt="" />
+                    </div>
+                    <Slider isMobile={isMobile} images={images} itemsPerSlide={isMobile ? 1 : 3} arrowsBottom={true} shown={isOpened} handleHide={handleHide} />
 
-            </div>
+                </div>
 
-            {/* КНОПКА, поверх всего */}
-            <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
-                <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
-                    <img
-                        src="/ArrowRightBottom.webp"
-                        alt=""
-                        className={`${classes.floatingButtonImg}`}
-                        ref={buttonRef}
-                    />
+                {/* КНОПКА, поверх всего */}
+                <div className={`${classes.floatingButton} ${!isMasking && shown ? classes.showBTN : ""}`}>
+                    <div className={`${classes.circleBlock} ${isClosing && classes.circleBlockBg}`} onClick={handleReveal}>
+                        <img
+                            src="/ArrowRightBottom.webp"
+                            alt=""
+                            className={`${classes.floatingButtonImg}`}
+                            ref={buttonRef}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     );
 }
