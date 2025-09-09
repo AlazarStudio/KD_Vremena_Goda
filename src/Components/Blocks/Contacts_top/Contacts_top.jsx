@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from './Contacts_top.module.css';
 
-function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef, handleContactsClick, viewHeight,...props }) {
+function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef, handleContactsClick, viewHeight, ...props }) {
     const imgRef = useRef(null);
     const sectionRef = useRef(null);
     const [scrollY, setScrollY] = useState(0);
@@ -65,7 +65,7 @@ function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef,
                 alt=""
             />
 
-            <section className={classes.contacts} ref={sectionRef} style={{height: viewHeight}}>
+            <section className={classes.contacts} ref={sectionRef} style={{ height: viewHeight }}>
                 <div className={classes.contactsLeft}>
                     <div className={classes.contactsLeftItem}
                     >
@@ -106,6 +106,14 @@ function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef,
                     </a>
                     <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.7s" }}>
+                        Офис
+                    </p>
+                    <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
+                        style={{ transitionDelay: "0.7s" }}>
+                        Первомайская, 22
+                    </p>
+                    <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
+                        style={{ transitionDelay: "0.7s" }}>
                         Наш адрес
                     </p>
                     <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
@@ -114,7 +122,7 @@ function Contacts_top({ children, contactShow, isMobile, elegantContactsAnimRef,
                     </p>
                     <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.8s" }}>
-                        квартал / Золотой квартал
+                        квартал
                     </p>
                     <p className={`${classes.contactsRight_miniText} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.9s" }}>
