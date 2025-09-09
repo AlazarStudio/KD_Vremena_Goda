@@ -582,7 +582,7 @@ function AnimationTestNew({ isMobile }) {
         <Collection_section reveal={showCollectionAnim} viewHeight={viewHeight} /> */}
 
         <div ref={historyHostRef}>
-          <History_section shown={historyMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile} />
+          <History_section shown={historyMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile} useSectionMetrics={useSectionMetrics}/>
         </div>
 
         <div ref={flatsHostRef}>
@@ -595,6 +595,7 @@ function AnimationTestNew({ isMobile }) {
             flatSliderMovePosition={flatSliderMovePosition}
             isMobile={isMobile}
             viewHeight={viewHeight}
+             useSectionMetrics={useSectionMetrics}
           />
         </div>
 
@@ -602,19 +603,19 @@ function AnimationTestNew({ isMobile }) {
 
 
         <div ref={elegantHostRef}>
-          <Elegant_section_mobile setHeaderMove={setHeaderMove} shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight} />
+          <Elegant_section_mobile setHeaderMove={setHeaderMove} shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight}  useSectionMetrics={useSectionMetrics}/>
         </div>
 
         <div ref={presentationHostRef}>
-          <Presentation_section presShow={presentationMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile} />
+          <Presentation_section presShow={presentationMetrics.progress >= 0.15} viewHeight={viewHeight} isMobile={isMobile}  useSectionMetrics={useSectionMetrics}/>
         </div>
 
         <div ref={contactsHostRef}>
-          <Contacts contactShow={contactsMetrics.progress >= 0.15} isMobile={isMobile} />
+          <Contacts contactShow={contactsMetrics.progress >= 0.15} isMobile={isMobile}  useSectionMetrics={useSectionMetrics}/>
         </div>
 
         <div ref={consultationHostRef} >
-          <Consultation consultation={consultationMetrics.progress >= 0.15} />
+          <Consultation consultation={consultationMetrics.progress >= 0.15}  useSectionMetrics={useSectionMetrics}/>
         </div>
         <Footer />
       </div>

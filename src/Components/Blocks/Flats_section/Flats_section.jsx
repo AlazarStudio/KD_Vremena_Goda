@@ -3,8 +3,9 @@ import classes from './Flats_section.module.css';
 import Slider from "../../Standart/Slider/Slider";
 import MosaicReveal from "../../../MosaicReveal";
 
-function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, viewHeight = '100vh', ...props }) {
+function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mobileChange = false, flatsHistoryRef, flatSliderMovePosition, viewHeight = '100vh', useSectionMetrics, ...props }) {
     const sectionRef = useRef(null);
+    const sectionNewRef = useRef(null);
 
     let images = [
         "Slider1 - img1.webp",
@@ -28,67 +29,96 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
 
     const [isSliderClicked, setIsSliderClicked] = useState(false);
 
+
+    const [flatsTextInfoRef, flatsTextInfoMetrics] = useSectionMetrics({ margin: 0 });
+    const [flatsImgProjectRef, flatsImgProjectMetrics] = useSectionMetrics({ margin: 0 });
+    const [flatsRef, flatsMetrics] = useSectionMetrics({ margin: 0 });
+    const [flatsTextInfoNewRef, flatsTextInfoNewMetrics] = useSectionMetrics({ margin: 0 });
+
     return (
         <>
 
             {isMobile ?
                 <div className={classes.flatsImg}>
                     <div className={classes.flatsBlock}>
-                        <div className={classes.flatsTitle}>Exquisite architecture</div>
-                        <div className={classes.flatsDesc}>Изысканная <br /> архитектура</div>
+                        <div className={classes.flatsTitleMob}>Exquisite architecture</div>
+                        <div className={classes.flatsDescMob}>
+                            <span>Изысканная</span>
+                            <span>архитектура</span>
+                        </div>
                     </div>
                     <img src="/architecture.webp" alt="" />
                 </div>
                 :
                 <div className={classes.flatsImg} style={{ height: viewHeight }}>
                     <div className={classes.flatsBlock}>
-                        <div className={classes.flatsTitle}>Exquisite architecture</div>
-                        <div className={classes.flatsDesc}>Изысканная архитектура</div>
+                        <div className={`${classes.flatsTitle} ${shown ? classes.show : ""}`}>Exquisite architecture</div>
+                        <div className={classes.flatsDesc}>
+                            <span className={`${shown ? classes.show : ""}`}>Изысканная</span>
+                            <span className={`${shown ? classes.show : ""}`}>архитектура</span>
+                        </div>
                     </div>
                 </div>
             }
 
-            <div className={classes.flatsTextInfo}>
-                <div className={classes.flatsTextInfo_img}>
-                    <img src="/org1.webp" alt="" />
-                    <div className={classes.flatsTextInfo_imgOverlay}></div>
-                    <img src="/org2.webp" alt="" />
-                </div>
+            <div ref={flatsTextInfoRef} className={classes.flatsTextInfo}>
 
-                <div className={classes.flatsTextInfo_descText}>
-                    Два архитектурных бюро с мировыми именами — Heatherwick Studio и Paris Classical Architecture — направили весь свой опыт и талант на создание неповторимой архитектуры Nicole. Впервые прошлое и будущее гармонично соединятся в проекте подобного масштаба не только в России, но и в мире
+                {/* <div className={classes.flatsTextInfo_img}>
+                    <img src="/org1.webp" alt=""
+                        className={`${classes.flatsTextInfo_img_icon} ${flatsTextInfoMetrics.progress >= 0.15 ? classes.show : ""}`} />
+
+                    <div className={classes.flatsTextInfo_imgOverlay}></div>
+
+                    <img src="/org2.webp" alt=""
+                        className={`${classes.flatsTextInfo_img_icon2} ${flatsTextInfoMetrics.progress >= 0.15 ? classes.show : ""}`} />
+                </div> */}
+
+                <div className={`${classes.flatsTextInfo_descText} ${flatsTextInfoMetrics.progress >= 0.25 ? classes.show : ""}`}>
+                    Жилой комплекс представляет собой однокорпусное здание высотой до 13 этажей.
+
+                    <br />
+                    <br />
+                    Фасады до второго этажа облицованы гранитными плитами, что придаёт комплексу элегантный вид. Выше применена технология мокрого фасада с оштукатуриванием и рустовкой. Такая отделка эстетически привлекательна и функциональна — защищает здание от внешних воздействий.
+
+                    <br />
+                    <br />
+                    Кровля наплавляемая и многослойная, что гарантирует надёжную защиту от влаги и других погодных условий.
                 </div>
 
                 <div className={classes.flatsTextInfo_underText}>
-                    <div className={classes.flatsTextInfo_underText_right}>
-                        Уникальный архитектурный объект, не имеющий аналогов и переворачивающий представления о недвижимости высочайшего класса Москвы.
+                    <div className={`${classes.flatsTextInfo_underText_right} ${flatsTextInfoMetrics.progress >= 0.35 ? classes.show : ""}`}>
+                        Особое внимание уделяется качеству и надёжности строительства. Каркас и несущие конструкции «Времён года» выполнены из цельного бетона с армированием, что обеспечивает высокую прочность здания. Наружные стены и внутренние перегородки возведены с использованием кирпичной кладки или керамоблоков.
                     </div>
                 </div>
             </div>
 
-            <div className={classes.flatsImgExt}>
+            <div style={{ overflow: isMobile && 'hidden', position: "relative" }}>
+                {isMobile && <MosaicReveal targetRef={sectionNewRef} colors={["#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8"]} />}
+
+                <div className={classes.flatsImgExt} ref={sectionNewRef} style={{ overflow: isMobile && 'hidden', position: "relative" }}>
+                </div>
             </div>
 
-            <div className={classes.flatsImgProject}>
+            <div ref={flatsImgProjectRef} className={classes.flatsImgProject}>
                 <div className={classes.flatsImgProject_inner}>
                     <img src="/project.webp" alt="" />
                     <div className={classes.flatsImgProject_overlay}>
-                        masterplan <br /> View
+                        {/* masterplan <br /> View */}
                     </div>
                 </div>
                 <div className={classes.flatsImgProject_text}>
-                    <span>Обзор</span>
-                    <span>проекта</span>
+                    <span className={`${flatsImgProjectMetrics.progress >= 0.25 ? classes.show : ""}`}>Обзор</span>
+                    <span className={`${flatsImgProjectMetrics.progress >= 0.25 ? classes.show : ""}`}>проекта</span>
                 </div>
             </div>
 
             <section
+                ref={flatsRef}
                 className={`${classes.flats} `} style={{ height: mobileChange ? viewHeight : 'auto' }}>
-                <img src="/flats_logo.webp" alt="" className={`${shown ? classes.show : ""}`}
-                    style={{ transitionDelay: "0.2s" }} />
 
-                <p className={`${classes.flatsText} ${shown ? classes.show : ""}`}
-                    style={{ transitionDelay: "0.3s" }}>
+                <img src="/flats_logo.webp" alt="" className={flatsMetrics.progress >= 0.15 ? classes.show : ""} />
+
+                <p className={`${classes.flatsText} ${flatsMetrics.progress >= 0.15 ? classes.show : ""}`}>
                     От первого шага — к вашему пространству
                 </p>
 
@@ -108,27 +138,29 @@ function Flats_section({ children, shown, scale, tower, scrollPos, isMobile, mob
                 </section>
             </section>
 
-            <div className={classes.flatsTextInfo}>
+            <div
+                ref={flatsTextInfoNewRef}
+                className={classes.flatsTextInfo}>
                 <div className={classes.flatsTextInfo_titleText}>
-                    <span>Выдающиеся</span>
-                    <span>интерьеры</span>
-                    <span>общественных</span>
-                    <span>пространств</span>
+                    {/* <span className={`${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>интерьеры</span> */}
+                    <span className={`${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>интерьеры</span>
+                    <span className={`${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>общественных</span>
+                    <span className={`${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>пространств</span>
                 </div>
 
                 <div className={classes.flatsTextInfo_underText}>
                     <div className={classes.flatsTextInfo_underText_block}>
-                        <div className={classes.flatsTextInfo_underText_block_desc}>
-                            Общественные пространства Nicole — это настоящие произведения искусства от двух ведущих мировых дизайнерских бюро. Концепцию Nicole Club и Nicole Residence разработала компания Hirsch Bedner Associates (HBA), создающая интерьеры для таких люксовых отелей, как Six Senses и Ritz Carlton.
+                        <div className={`${classes.flatsTextInfo_underText_block_desc} ${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>
+                            Мы стремимся к экологичности и комфорту. Поэтому в интерьерах общественных помещений клубного дома мы используем натуральные материалы, такие как дуб и мрамор в отделке, а также камень, дерево и кожу в элементах дизайна.
                         </div>
-                        <div className={classes.flatsTextInfo_underText_block_desc}>
-                            Студия Coho Interior Design, известная изысканным французским стилем и глубоким пониманием высокой эстетики, спроектировала общественные и приватные зоны Nicole Collection, опираясь на тонкое восприятие культурного контекста.
+                        <div className={`${classes.flatsTextInfo_underText_block_desc} ${flatsTextInfoNewMetrics.progress >= 0.25 ? classes.show : ""}`}>
+                            Это придает пространству теплоту и чувство единения с природой. Запахи, тактильные ощущения- все создано для гармоничного нахождения в доме с первого шага.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div style={{ backgroundColor: '#fff',  overflow: isMobile && 'hidden', position: "relative" }}>
+            <div style={{ backgroundColor: '#fff', overflow: isMobile && 'hidden', position: "relative" }}>
 
                 {isMobile && <MosaicReveal targetRef={sectionRef} colors={["#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8", "#fff8e8"]} />}
 

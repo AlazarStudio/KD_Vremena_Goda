@@ -48,6 +48,74 @@ function createSmoothDriver(initial = 0, speed = 0.12) {
     };
 }
 
+function useSectionMetrics(options = {}) {
+    const { margin = 0 } = options;
+    const ref = useRef(null);
+    const [state, setState] = useState({
+        topAbs: 0,
+        height: 0,
+        inView: false,
+        progress: 0,
+        distanceToViewportTop: 0,
+    });
+
+    useEffect(() => {
+        let raf = null;
+
+        const measure = () => {
+            raf = null;
+            if (!ref.current) return;
+
+            const rect = ref.current.getBoundingClientRect();
+            const topAbs = rect.top + window.scrollY;
+            const height = rect.height;
+            const viewportH = window.innerHeight;
+
+            // Прогресс прохождения: начинаем считать, когда низ вьюпорта касается верха секции,
+            // и заканчиваем, когда верх вьюпорта проходит низ секции.
+            const start = topAbs - viewportH - margin;
+            const end = topAbs + height + margin;
+            const y = window.scrollY;
+            const raw = (y - start) / (end - start);
+            const progress = Math.max(0, Math.min(1, raw));
+
+            const inView = rect.top < viewportH && rect.bottom > 0;
+
+            setState({
+                topAbs,
+                height,
+                inView,
+                progress,
+                distanceToViewportTop: rect.top,
+            });
+        };
+
+        const onScroll = () => {
+            if (raf !== null) return;
+            raf = requestAnimationFrame(measure);
+        };
+
+        const onResize = measure;
+
+        // Следим за изменением размеров узла (динамический контент)
+        const ro = new ResizeObserver(measure);
+        if (ref.current) ro.observe(ref.current);
+
+        measure();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onResize);
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onResize);
+            ro.disconnect();
+            if (raf) cancelAnimationFrame(raf);
+        };
+    }, [margin]);
+
+    return [ref, state];
+}
+
 function AnimationShow({ isMobile }) {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -452,7 +520,7 @@ function AnimationShow({ isMobile }) {
     }, []);
 
     return (
-        <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '2500vh'}` }}>
+        <div className={classes.wrapper} style={{ height: `${isMobile ? '1100vh' : '3000vh'}` }}>
             <div className={classes.bottom} style={{
                 zIndex: 1,
                 pointerEvents: scrollY > 0 ? 'none' : 'auto',
@@ -471,7 +539,7 @@ function AnimationShow({ isMobile }) {
                 zIndex: hasScrolled ? 3 : 0
             }}>
                 <div ref={historyContentRef}>
-                    <History_section shown={showHistoryAnim} blockHeight={window.innerHeight} />
+                    <History_section shown={showHistoryAnim} blockHeight={window.innerHeight} useSectionMetrics={useSectionMetrics} />
                 </div>
             </div>
 
@@ -487,6 +555,7 @@ function AnimationShow({ isMobile }) {
                         flatsHistoryRef={flatsHistoryRef}
                         flatSliderMovePosition={flatSliderMovePosition}
                         isMobile={isMobile}
+                        useSectionMetrics={useSectionMetrics}
                     />
                 </div>
             </div>
@@ -502,7 +571,7 @@ function AnimationShow({ isMobile }) {
                         <Elegant_section shown={true} />
                     }
 
-                    <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} />
+                    <Presentation_section presShow={showElegantPrezentationAnim} elegantPrezentationRef={elegantPrezentationRef} useSectionMetrics={useSectionMetrics} />
                     <Contacts contactShow={showElegantContactsAnim} elegantContactsAnimRef={elegantContactsAnimRef} isMobile={isMobile} />
                     <Consultation consultation={showElegantConsultationAnim} elegantConsultationAnimRef={elegantConsultationAnimRef} />
                     <Footer />

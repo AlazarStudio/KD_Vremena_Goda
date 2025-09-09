@@ -106,7 +106,7 @@
 }
 
 .contactsRight_miniText {
-    margin: 20px 0;
+    margin: 10px 0;
 
     opacity: 0;
     transform: translateY(100px);
@@ -114,8 +114,8 @@
 }
 
 .contactsRight_miniTextItem {
-    margin-top: 70px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 10px;
 
     opacity: 0;
     transform: translateY(100px);

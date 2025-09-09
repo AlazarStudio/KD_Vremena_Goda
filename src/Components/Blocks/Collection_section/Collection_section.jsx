@@ -32,11 +32,11 @@ function Collection_section({ reveal,  viewHeight='100vh', ...props }) {
                 className={`${classes.middle} ${reveal ? classes.showRevers : ""}`}
                 style={{ transitionDelay: "0s" }}
             >
-                Спокойная архитектура. <br />
-                Уверенные решения. <br />
-                Продуманное окружение. <br />
-                Этот дом построен для тех, кто ценит устойчивость. <br />
-                В деталях, в жизни, в себе.
+                Спокойная архитектура <br />
+                Уверенные решения <br />
+                Продуманное окружение <br />
+                Этот дом построен для тех, кто ценит устойчивость <br />
+                В деталях, в жизни, в себе
             </p>
             {/* <p
                 className={`${classes.bottom} ${reveal ? classes.showRevers : ""}`}

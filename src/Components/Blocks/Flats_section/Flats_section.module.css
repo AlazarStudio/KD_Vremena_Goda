@@ -14,7 +14,7 @@
     object-fit: contain;
     display: block;
     opacity: 0;
-    transform: translateY(-150px);
+    transform: translateX(-50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -212,9 +212,18 @@
     letter-spacing: 0%;
     text-transform: uppercase;
     margin-bottom: 50px;
+
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsDesc {
+    display: flex;
+    flex-direction: column;
+}
+
+.flatsDesc span {
     color: #fff;
     font-family: Cormorant;
     font-weight: 500;
@@ -223,6 +232,18 @@
     line-height: 100%;
     letter-spacing: 0%;
     text-transform: uppercase;
+}
+
+.flatsDesc span:nth-child(1) {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.flatsDesc span:nth-child(2) {
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsTextInfo {
@@ -234,6 +255,7 @@
     justify-content: center;
     align-items: center;
     gap: 120px;
+    overflow: hidden;
 }
 
 .flatsTextInfo_img {
@@ -246,6 +268,19 @@
 .flatsTextInfo_img img {
     width: 310px;
 }
+
+.flatsTextInfo_img_icon {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.flatsTextInfo_img_icon2 {
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
 
 .flatsTextInfo_imgOverlay {
     width: 1px;
@@ -262,6 +297,10 @@
     text-transform: uppercase;
     text-align: center;
     padding: 0 200px;
+
+    transform: translateY(100px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsTextInfo_underText {
@@ -277,6 +316,10 @@
 .flatsTextInfo_underText_right {
     width: 50%;
     padding-right: 300px;
+
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsImgProject {
@@ -333,10 +376,18 @@
     font-family: Cormorant;
     font-size: 100px;
     font-weight: 600;
+
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsImgProject_text span:nth-child(2) {
     padding-left: 100px;
+
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 .flatsTextInfo_titleText {
@@ -354,6 +405,30 @@
     line-height: 100%;
 }
 
+.flatsTextInfo_titleText span:nth-child(1) {
+    transform: translateX(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.flatsTextInfo_titleText span:nth-child(2) {
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.flatsTextInfo_titleText span:nth-child(3) {
+    transform: translateX(150px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
+.flatsTextInfo_titleText span:nth-child(4) {
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
+}
+
 .flatsTextInfo_underText_block {
     display: flex;
     width: 50%;
@@ -364,6 +439,10 @@
 .flatsTextInfo_underText_block_desc {
     width: 50%;
     font-size: 20px;
+
+    transform: translateY(50px);
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out
 }
 
 /* Анимация мигания + исчезновения */
@@ -413,6 +492,24 @@
 
     .flatsHistory_statistic {
         gap: 80px;
+    }
+
+    .flatsTextInfo_descText{
+        font-size: 32px;
+        padding: 0 100px;
+    }
+
+    .flatsTextInfo_underText_right{
+        padding-right: 100px;
+        font-size: 20px;
+    }
+
+    .flatsImgProject_text span{
+        font-size: 70px;
+    }
+
+    .flatsTextInfo_underText_block{
+        width: 60%;
     }
 }
 
@@ -568,14 +665,33 @@
         background: rgba(0, 0, 0, 0);
     }
 
-    .flatsTitle {
+    .flatsTitleMob {
+        color: #fff;
+        font-family: Gotham;
+        font-weight: 400;
+        font-style: Book;
+        line-height: 150%;
+        letter-spacing: 0%;
+        text-transform: uppercase;
         font-size: 12px;
         margin-bottom: 20px;
     }
 
-    .flatsDesc {
-        font-size: 36px;
+    .flatsDescMob {
+        display: flex;
+        flex-direction: column;
         margin-bottom: 60px;
+    }
+
+    .flatsDescMob span {
+        color: #fff;
+        font-family: Cormorant;
+        font-weight: 500;
+        font-style: Medium;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-transform: uppercase;
+        font-size: 36px;
     }
 
     .flatsImgExt {
@@ -713,7 +829,7 @@
         margin-left: -320px;
     }
 
-/* 
+    /* 
 
     .history_info_blockTime_img {
         width: 100%;

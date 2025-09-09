@@ -83,6 +83,14 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
                     </a>
                     <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.7s" }}>
+                        Офис
+                    </p>
+                    <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
+                        style={{ transitionDelay: "0.7s" }}>
+                        Первомайская, 22
+                    </p>
+                    <p className={`${classes.contactsRight_miniTextItem} ${contactShow ? classes.show : ""}`}
+                        style={{ transitionDelay: "0.7s" }}>
                         Наш адрес
                     </p>
                     <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
@@ -91,11 +99,11 @@ function Contacts({ children, contactShow, isMobile, elegantContactsAnimRef, han
                     </p>
                     <p className={`${classes.contactsRight_bigText} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.8s" }}>
-                        квартал / Золотой квартал
+                        квартал
                     </p>
                     <p className={`${classes.contactsRight_miniText} ${contactShow ? classes.show : ""}`}
                         style={{ transitionDelay: "0.9s" }}>
-                        пн-пт: 10:00–19:00 <br />
+                        пн-пт: 09:00–17:00 <br />
                         сб-вс: по записи
                     </p>
                 </div>
