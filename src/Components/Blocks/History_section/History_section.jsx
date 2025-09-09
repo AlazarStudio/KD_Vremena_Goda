@@ -50,7 +50,7 @@ function History_section({ children, shown, blockHeight, viewHeight, isMobile, u
                             ${historyMetrics.progress >= 0.15 ? classes.showFromBot : ""}
                             `
                         }>
-                        Moscow’s Most Desirable <br /> Neighbourhood
+                        Cherkessk’s Most Desirable <br /> Neighbourhood
                     </div>
                     {isMobile ?
                         <div className={`${classes.mobileTitle} ${historyMetrics.progress >= 0.15 ? classes.showFromBot : ""}`}>
