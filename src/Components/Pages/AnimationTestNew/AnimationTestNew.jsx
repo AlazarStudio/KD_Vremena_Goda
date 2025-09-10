@@ -602,7 +602,7 @@ function AnimationTestNew({ isMobile }) {
         {/* <div style={{ paddingBottom: '40px', backgroundColor: '#fff' }}></div> */}
 
 
-        <div ref={elegantHostRef}>
+        <div ref={elegantHostRef} style={{position: 'relative', zIndex: '999999'}}>
           <Elegant_section_mobile setHeaderMove={setHeaderMove} shown={elegantMetrics.progress >= 0.4} isMobile={isMobile} targetScroll={elegantMetrics.topAbs} viewHeight={viewHeight}  useSectionMetrics={useSectionMetrics}/>
         </div>
 

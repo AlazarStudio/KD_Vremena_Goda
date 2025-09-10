@@ -69,7 +69,6 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
                     cy = rect.top + rect.height / 2;
                 }
 
-                document.body.style.overflow = "hidden";
                 setCirclePos({ cx, cy });
                 startAnimationTo(1600);
                 setIsClosing(false);
@@ -83,6 +82,8 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
 
         window.scrollTo({ top: scrollPosition });
         requestAnimationFrame(checkScroll);
+
+        document.body.style.overflow = "hidden";
     };
 
 
@@ -93,14 +94,17 @@ function Elegant_section_mobile({ shown, isMobile, targetScroll, viewHeight = '1
     };
 
     const handleHide = () => {
-        setHeaderMove(false)
-        document.body.style.overflow = "";
-        setIsMasking(false);
-        setIsClosing(true);
-        setIsClosing(false);
-        startAnimationTo(0);
-        setIsOpened(false)
-        setIsOpenedToMove(false)
+        window.scrollTo({ top: targetScroll });
+        setTimeout(() => {
+            setHeaderMove(false)
+            document.body.style.overflow = "";
+            setIsMasking(false);
+            setIsClosing(true);
+            setIsClosing(false);
+            startAnimationTo(0);
+            setIsOpened(false)
+            setIsOpenedToMove(false)
+        }, 500)
     };
 
     const [visible, setVisible] = useState(false);
