@@ -61,7 +61,7 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
                 </div>
 
                 <div className={`${classes.flatsTextInfo_underText} ${flatsTextInfoMetrics.progress >= 0.15 ? classes.show : ""}`}>
-                    Планировки квартир в клубном доме «Времена года» разнообразные, чтобы каждый мог найти подходящий вариант. Площадь от 70 квадратных метров, французские окна, потолки высотой 3 метра, индивидуальное отопление, шумоизоляция класса А — все это делает квартиры - местом, в котором быт уступает комфорту.
+                    Планировки квартир в клубном доме «Времена года» разнообразные, чтобы каждый мог найти подходящий вариант. Площадь от 39 квадратных метров, французские окна, потолки высотой 3 метра, индивидуальное отопление, шумоизоляция класса А — все это делает квартиры - местом, в котором быт уступает комфорту.
                 </div>
 
                 {/* <div className={classes.flatsTextInfo_underImg}>
@@ -88,9 +88,9 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
 
             <div ref={flatsTextInfo2Ref} className={classes.flatsTextInfo} >
                 <div className={classes.elegantTextInfo_titleText}>
-                    <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}>New Luxury Aesthetics</span>
-                    <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}>Финишная</span>
-                    <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}>отделка</span>
+                    <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}>PRIVATE CLUB LIVING</span>
+                    <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}>СПОРТ, КОМФОРТ, БЕЗОПАСНОСТЬ</span>
+                    {/* <span className={flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}></span> */}
                 </div>
 
                 <div className={`${classes.elegantTextInfo_text} ${flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}`}>
@@ -118,13 +118,10 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
                 <div className={classes.elegantExclusiv_desc} >
                     <div className={`${classes.elegantExclusiv_desc_text} ${elegantExclusivMetrics.progress >= 0.15 ? classes.show : ""}`}>
                         <p>
-                            Квартиры сдаются в концепции White box. Это готовое решение для тех, кто ценит время и качество.
+                            Квартиры сдаются в концепции White box. Это готовое решение для тех, кто ценит время и качество. 
                         </p>
                         <p>
-                            Внутренняя отделка не осуществляется, что даёт возможность воплотить дизайнерские идеи и создать пространство по своему вкусу.
-                        </p>
-                        <p>
-                            Вы получаете полностью подготовленную квартиру с черновой отделкой, ровные стены, потолок и полы, проведенную электропроводку, разведенную систему отопления, готовую сантехнику.
+                            Вы получаете полностью подготовленную квартиру с предчистовой отделкой, готовые ровные стены, потолок, теплые полы, индивидуальное отопление,проведенную электропроводку.
                         </p>
 
                     </div>

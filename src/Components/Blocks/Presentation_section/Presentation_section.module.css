@@ -140,6 +140,7 @@ button[disabled] {
     align-items: center;
     gap: 120px;
     position: relative;
+    padding-bottom: 100px;
 }
 
 
@@ -250,7 +251,7 @@ button[disabled] {
 
 .elegantTextInfo_titleText span {
     font-family: Cormorant;
-    font-size: 38px;
+    font-size: 68px;
     font-weight: 600;
     color: #fff;
     text-transform: uppercase;
@@ -264,7 +265,7 @@ button[disabled] {
 
 
 .elegantTextInfo_titleText span:nth-child(1) {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
     margin-bottom: 50px;
     opacity: 0;
@@ -551,6 +552,14 @@ button[disabled] {
     .flatsImgProject {
         left: 100px;
     }
+
+    .infrastructureText_block:nth-child(1) {
+        font-size: 19px;
+    }
+
+    .infrastructureText_block {
+        font-size: 19px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -691,7 +700,7 @@ button[disabled] {
         transform: scale(0.4);
     }
 
-    .infrastructure{
+    .infrastructure {
         height: auto;
         padding: 40px 0 20px 0;
     }
@@ -713,7 +722,7 @@ button[disabled] {
         height: 400px;
     }
 
-    .infrastructure_cutBlock_text{
+    .infrastructure_cutBlock_text {
         margin-top: 100px;
     }
 
@@ -730,19 +739,19 @@ button[disabled] {
         font-size: 38px;
     }
 
-    .infrastructure_cutBlock_square1{
+    .infrastructure_cutBlock_square1 {
         width: 50px;
         height: 50px;
         top: 100px;
     }
 
-    .infrastructure_cutBlock_square2{
+    .infrastructure_cutBlock_square2 {
         width: 100px;
         height: 50px;
         top: 50px;
     }
 
-    .infrastructure_cutBlock_square3{
+    .infrastructure_cutBlock_square3 {
         width: 150px;
         height: 50px;
     }
