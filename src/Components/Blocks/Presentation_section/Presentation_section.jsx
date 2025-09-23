@@ -94,10 +94,7 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
                 </div>
 
                 <div className={`${classes.elegantTextInfo_text} ${flatsTextInfo2Metrics.progress >= 0.15 ? classes.show : ""}`}>
-                    Изысканный дизайн квартир, пентхаусов
-                    и таунхаусов, авторская финишная отделка
-                    и разнообразие планировочных решений, делают
-                    каждое жилое пространство неповторимым
+                    Современный спортивный зал для жителей дома, двор без машин и закрытая система безопасности, создают атмосферу приватности, где всё пространство работает на ваш комфорт и спокойствие.
                 </div>
             </div>
 
@@ -118,7 +115,7 @@ function Presentation_section({ children, presShow, elegantPrezentationRef, view
                 <div className={classes.elegantExclusiv_desc} >
                     <div className={`${classes.elegantExclusiv_desc_text} ${elegantExclusivMetrics.progress >= 0.15 ? classes.show : ""}`}>
                         <p>
-                            Квартиры сдаются в концепции White box. Это готовое решение для тех, кто ценит время и качество. 
+                            Квартиры сдаются в концепции White box. Это готовое решение для тех, кто ценит время и качество.
                         </p>
                         <p>
                             Вы получаете полностью подготовленную квартиру с предчистовой отделкой, готовые ровные стены, потолок, теплые полы, индивидуальное отопление,проведенную электропроводку.
