@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Времена Года</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#0b0c10;
+      --bg-2:#101218;
+      --accent:#169986;
+      --accent-2:#B8CE20;
+      --text:#ffffff;
+      --muted:#a7b0be;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.12);
+      --blur: 14px;
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(184,206,32,.18), transparent 60%),
+        radial-gradient(800px 400px at 80% 100%, rgba(22,153,134,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    .wrap{
+      width:min(960px, 100%);
+      display:grid;
+      gap:22px;
+      text-align:center;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      opacity:.95;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .brand img{
+      width:40px;height:40px;object-fit:contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+    }
+    .brand span{
+      font-weight:700; letter-spacing:.3px;
+    }
+    .card{
+      backdrop-filter: blur(var(--blur));
+      background: var(--card);
+      border:1px solid var(--stroke);
+      border-radius: calc(var(--radius) + 8px);
+      padding: clamp(24px, 3.2vw, 40px);
+      box-shadow: var(--shadow);
+    }
+    .code{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--stroke);
+      border-radius: 999px;
+      padding:10px 16px;
+      margin-inline:auto;
+      margin-bottom:14px;
+      letter-spacing:.8px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(40px, 8vw, 72px);
+      line-height:1.05;
+      font-weight:800;
+      letter-spacing:-.5px;
+    }
+    p.lead{
+      margin:0 auto 20px;
+      max-width: 70ch;
+      color:var(--muted);
+      font-size:clamp(14px, 2.2vw, 18px);
+      line-height:1.6;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:8px;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      border-radius: 999px;
+      padding:14px 22px;
+      font-weight:700;
+      letter-spacing:.2px;
+      text-decoration: none;
+      cursor:pointer;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 6px 18px rgba(22,153,134,.25);
+      display:inline-flex; align-items:center; gap:10px;
+      margin-bottom: 20px;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--accent), #12b9a6);
+      color:white;
+    }
+    .btn-primary:hover{ transform: translateY(-1px); }
+    .btn-secondary{
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      border:1px solid var(--stroke);
+      box-shadow:none;
+    }
+    .btn svg{width:18px;height:18px;opacity:.95}
+    .tips{
+      display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+      color:var(--muted); font-size:13px; margin-top:6px;
+    }
+    .footer{
+      opacity:.6; font-size:12px; text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="/">
+      <img src="/contacts_logo.webp" alt="Логотип Времена Года" onerror="this.style.display='none'">
+      <span>Клубный дом «Времена Года»</span>
+    </a>
+
+    <section class="card">
+      <div class="code">Ошибка 404 · Страница не найдена</div>
+      <h1>Кажется, вы свернули не туда</h1>
+      <p class="lead">
+        Такой страницы на сайте нет или она была перемещена. Проверьте адрес или вернитесь на главную — там вы найдёте актуальные разделы,
+        планировки и контакты отдела продаж.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/" aria-label="Вернуться на главную">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-9 9 9M5 10v10h5v-6h4v6h5V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Вернуться на главную
+        </a>
+      </div>
+      <div class="tips">
+        <span>Если проблема повторяется — напишите нам на <a href="mailto:yugstroy09gmail.com" style="color:#fff">yugstroy09gmail.com</a></span>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="y"></span> «Времена Года». Все права защищены.</div>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
