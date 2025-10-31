@@ -11,7 +11,8 @@ if ($fio === '' || $phone === '') { http_response_code(400); echo 'Заполн�
 $fio   = str_replace(["\r", "\n"], ' ', $fio);
 $phone = str_replace(["\r", "\n"], ' ', $phone);
 
-$to = 'sz-kirpi@yandex.ru';
+$to = ' kirpi.09@mail.ru';
+// $to = 'sz-kirpi@yandex.ru';
 // $to = 'yugstroy09gmail.com';
 
 $subject    = 'Заявка на индивидуальную консультацию с сайта ВременаГода';
