@@ -11,7 +11,8 @@ if ($fio === '' || $phone === '') { http_response_code(400); echo 'Заполн�
 $fio   = str_replace(["\r", "\n"], ' ', $fio);
 $phone = str_replace(["\r", "\n"], ' ', $phone);
 
-$to = ' kirpi.09@mail.ru';
+// $to = 'alimdzhatdoev@mail.ru';
+$to = 'kirpi.09@mail.ru';
 // $to = 'sz-kirpi@yandex.ru';
 // $to = 'yugstroy09gmail.com';
 
@@ -22,7 +23,7 @@ $bodyText =
     "Новая заявка\n\n" .
     "ФИО: {$fio}\n" .
     "Телефон: {$phone}\n" .
-    "—\nОтправлено с формы vremenagoda.online";
+    "—\nОтправлено с формы временагода.online";
 
 // ВАРИАНТ A: если шлёте «от домена» (и настроили SPF/DKIM/DMARC)
 $fromEmail = 'no-reply@vremenagoda.online';
